@@ -1,0 +1,6 @@
+# Apache configuration file (see httpd.apache.org/docs/current/mod/quickreference.html)
+
+# All requests are routed to www folder
+RewriteEngine On
+RewriteRule ^$ www/ [L]
+RewriteRule (.*) www/$1 [L]
