@@ -1,3 +1,99 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Make room for footer */
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #9C2056;
+}
+
+a {
+    color: #D3D3D3;
+    text-decoration: none;
+}
+
+a:focus, a:hover {
+    color: #A9A9A9;
+    text-decoration: none;
+}
+
 .navbar {
-    margin-bottom: 20px;
+    background-color: #C2E2E1;
+}
+
+.navbar-toggler {
+    border-color: white;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+nav {
+    position: absolute;
+    overflow: hidden;
+    width: 300px;
+    margin: 0;
+    z-index: 999;
+}
+
+nav ul {
+    padding-left: 0;
+    margin: 0;
+}
+
+nav li {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin-bottom: -2px;
+    background-color: #E0F0EF;
+    border: 2px solid #88C0BF;
+}
+
+nav li:last-child {
+    margin-bottom: 0;
+}
+
+nav li a {
+    color: #651940;
+    display: block;
+    padding: .75rem 1.25rem;
+    text-transform: uppercase;
+}
+
+nav li a:hover {
+    color: #651940;
+    text-decoration: none;
+    background-color: #A2CECF;
+}
+
+main {
+    margin-top: 100px;
+    margin-bottom: 40px;
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+    main {
+        padding-left: 0;
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: black;
+}
+
+.prague-heart {
+    width: 200px;
+    height: 230px;
+    /* Same value or higher must be set in 'main' margin-top property */
+    margin-bottom: -80px;
 }
