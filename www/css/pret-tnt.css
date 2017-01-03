@@ -24,15 +24,18 @@ a:focus, a:hover {
 
 .navbar {
     background-color: #C2E2E1;
+    padding-bottom: 0;
 }
 
 .navbar-toggler {
+    margin-bottom: 1rem;
     border-color: white;
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 nav {
-    position: absolute;
+    position: relative;
+    float: left;
     overflow: hidden;
     width: 300px;
     margin: 0;
@@ -57,6 +60,14 @@ nav li:last-child {
     margin-bottom: 0;
 }
 
+nav li:hover {
+    background-color: #A2CECF;
+}
+
+nav li.active {
+    background-color: #A2CECF;
+}
+
 nav li a {
     color: #651940;
     display: block;
@@ -67,12 +78,22 @@ nav li a {
 nav li a:hover {
     color: #651940;
     text-decoration: none;
-    background-color: #A2CECF;
+}
+
+nav li ul li {
+    border: none;
+    margin: 0;
+    border-top: 2px solid #88C0BF;
+}
+
+nav li ul li a {
+    padding: .5rem 2.5rem;
 }
 
 main {
-    margin-top: 100px;
-    margin-bottom: 40px;
+    margin-top: 165px;
+    /* Height of footer has to be added to margin */
+    margin-bottom: 70px;
     padding-left: 300px;
 }
 
@@ -92,8 +113,8 @@ footer {
 }
 
 .prague-heart {
-    width: 200px;
-    height: 230px;
+    width: 320px;
+    height: 300px;
     /* Same value or higher must be set in 'main' margin-top property */
-    margin-bottom: -80px;
+    margin-bottom: -165px;
 }

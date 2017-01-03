@@ -1,0 +1,18 @@
+{block nav}
+        <nav class="hidden-md-down">
+            <ul>
+                <li n:foreach="$items as $item"{if $item->active} class="active"{/if}>
+                    {if $item->subItems}
+                        <a href="#nav-{$item->linkPresenter}" data-toggle="collapse" aria-expanded="{$item->active ? 'true' : 'false'}" aria-controls="nav-{$item->linkPresenter}">{$item->name}</a>
+                        <ul class="collapse{$item->active ? ' in' : ''}" id="nav-{$item->linkPresenter}">
+                            <li n:foreach="$item->subItems as $subItem"{if $subItem->active} class="active"{/if}>
+                                <a href="{plink $subItem->linkPresenter . ':' . $subItem->linkAction}">{$subItem->name}</a>
+                            </li>
+                        </ul>
+                    {else}
+                        <a href="{plink $item->linkPresenter . ':' . $item->linkAction}">{$item->name}</a>
+                    {/if}
+                </li>
+            </ul>
+        </nav>
+{/block}
