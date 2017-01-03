@@ -11,7 +11,7 @@ use Nette;
 class MenuControl extends Nette\Application\UI\Control
 {
 
-    private function createItems(): array
+    private function createItems()
     {
         $items = array();
 
@@ -50,7 +50,7 @@ class MenuControl extends Nette\Application\UI\Control
         return $items;
     }
 
-    private function create(): array
+    private function create()
     {
         $result = $this->createItems();
 
