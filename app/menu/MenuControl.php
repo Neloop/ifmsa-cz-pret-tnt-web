@@ -18,8 +18,8 @@ class MenuControl extends Nette\Application\UI\Control
         // create all top level items
         $items[] = new MenuItem("Homepage", "Homepage");
         $items[] = $aboutUs = new MenuItem("About Us", "AboutUs");
-        $items[] = $pret = new MenuItem("Pret", "Pret");
-        $items[] = $tnt = new MenuItem("Tnt", "Tnt");
+        $items[] = $pret = new MenuItem("PRET", "Pret");
+        $items[] = $tnt = new MenuItem("TNT", "Tnt");
         $items[] = $venues = new MenuItem("Venues", "Venues");
         $items[] = $registration = new MenuItem("Registration & fees", "Registration");
         $items[] = new MenuItem("Contacts", "Contacts");

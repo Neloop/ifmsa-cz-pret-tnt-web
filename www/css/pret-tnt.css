@@ -27,21 +27,43 @@ a:focus, a:hover {
     background-color: #c1e2e0;
     padding: 2rem;
     padding-bottom: 0;
+    z-index: 500;
+
 }
 
 .navbar-toggler {
-    margin-bottom: 1rem;
-    border-color: white;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    position: absolute;
+    left: 0;
+    margin: 1rem;
+    border-color: #c1e2e0;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(193, 226, 224)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+#nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 997;
 }
 
 nav {
-    position: relative;
+    display: block;
+    position: absolute;
     float: left;
     overflow: hidden;
     width: 300px;
     margin: 0;
-    z-index: 999;
+    z-index: 1000;
+    transition: all 0.5s ease;
+}
+
+@media only screen and (max-width : 992px) {
+    nav {
+        width: 0;
+    }
 }
 
 nav ul {
@@ -75,7 +97,6 @@ nav li a {
     display: block;
     font-size: 1.1rem;
     padding: .5rem 1rem;
-    text-transform: uppercase;
 }
 
 nav li a:hover {
@@ -96,7 +117,7 @@ nav li ul li a {
 }
 
 main {
-    margin-top: 165px;
+    margin-top: 170px;
     /* Height of footer has to be added to margin */
     margin-bottom: 70px;
     padding-left: 300px;
@@ -105,6 +126,7 @@ main {
 @media only screen and (max-width : 992px) {
     main {
         padding-left: 0;
+        margin-top: 90px;
     }
 }
 
@@ -117,9 +139,44 @@ footer {
     background-color: black;
 }
 
+.date-area {
+    height: 60px;
+    line-height: 60px;
+}
+
+.date-area span {
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.social-area {
+    /* Must be same as height in .date-area */
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.social-area img {
+    width: 40px;
+    height: 40px;
+}
+
 .prague-heart {
-    width: 320px;
     height: 300px;
     /* Same value or higher must be set in 'main' margin-top property */
-    margin-bottom: -165px;
+    margin-bottom: -159px;
+}
+
+@media only screen and (max-width : 992px) {
+    .prague-heart {
+        height: 150px;
+        /* Same value or higher must be set in 'main' margin-top property */
+        margin-bottom: -80px;
+    }
+
+    .date-area span {
+        font-size: 1.5rem;
+    }
 }
