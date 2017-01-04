@@ -6,11 +6,16 @@ html {
 body {
     /* Make room for footer */
     margin-bottom: 30px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 h1 {
     color: #9C2055;
+    text-transform: uppercase;
+}
+
+h2 {
+    text-transform: uppercase;
 }
 
 a {
@@ -75,9 +80,9 @@ nav li {
     position: relative;
     display: block;
     padding: 0;
-    margin-bottom: -2px;
+    margin-bottom: -1px;
     background-color: #e0f0ef;
-    border: 2px solid #88c0c0;
+    border: 1px solid #88c0c0;
 }
 
 nav li:last-child {
@@ -93,10 +98,12 @@ nav li.active {
 }
 
 nav li a {
-    color: #9c2055;
+    color: #651941;
     display: block;
     font-size: 1.1rem;
+    font-weight: bold;
     padding: .5rem 1rem;
+    text-transform: uppercase;
 }
 
 nav li a:hover {
@@ -107,13 +114,20 @@ nav li a:hover {
 nav li ul li {
     border: none;
     margin: 0;
-    background-color: #f0f7f7;
-    border-top: 2px solid #88C0BF;
+    background-color: #ffffff;
+    border-top: 1px solid #88C0BF;
 }
 
 nav li ul li a {
+    color: #9c2055;
     padding: .5rem 2.5rem;
     font-size: .9rem;
+    font-weight: normal;
+}
+
+.invitation-package-heart {
+    padding: 0 1.8rem;
+    width: 100%;
 }
 
 main {
