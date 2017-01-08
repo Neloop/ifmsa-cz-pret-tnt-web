@@ -22,4 +22,16 @@ $(function() {
 
         $('nav').width() > 0 ? closeMenu() : openMenu();
     });
+
+    function extendMainIfNeeded() {
+        var main = $('main');
+        var mainHeight = main.height();
+        var navHeightMinusPadding = $('nav').height() - parseInt(main.css('margin-top'));
+
+        if (mainHeight < navHeightMinusPadding) {
+            main.height(navHeightMinusPadding);
+        }
+    }
+
+    extendMainIfNeeded();
 });
