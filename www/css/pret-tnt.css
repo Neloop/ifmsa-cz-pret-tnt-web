@@ -4,6 +4,7 @@ html {
 }
 
 body {
+    min-height: 100%;
     /* Make room for footer */
     margin-bottom: 30px;
     font-family: 'Nunito Sans', sans-serif;
@@ -30,7 +31,7 @@ a:focus, a:hover {
 
 .navbar {
     background-color: #c1e2e0;
-    padding: 2rem;
+    padding: 20px 30px;
     padding-bottom: 0;
     z-index: 500;
 
@@ -131,7 +132,7 @@ nav li ul li a {
 }
 
 main {
-    margin-top: 170px;
+    margin-top: 190px;
     /* Height of footer has to be added to margin */
     margin-bottom: 70px;
     padding-left: 300px;
@@ -140,7 +141,7 @@ main {
 @media only screen and (max-width : 992px) {
     main {
         padding-left: 0;
-        margin-top: 90px;
+        margin-top: 110px;
     }
 }
 
