@@ -66,12 +66,6 @@ nav {
     transition: all 0.5s ease;
 }
 
-@media only screen and (max-width : 992px) {
-    nav {
-        width: 0;
-    }
-}
-
 nav ul {
     padding-left: 0;
     margin: 0;
@@ -138,13 +132,6 @@ main {
     padding-left: 300px;
 }
 
-@media only screen and (max-width : 992px) {
-    main {
-        padding-left: 0;
-        margin-top: 110px;
-    }
-}
-
 footer {
     position: absolute;
     bottom: 0;
@@ -185,13 +172,36 @@ footer {
 }
 
 @media only screen and (max-width : 992px) {
+    nav {
+        width: 0;
+    }
+
+    main {
+        padding-left: 0;
+        margin-top: 110px;
+    }
+
     .prague-heart {
         height: 150px;
         /* Same value or higher must be set in 'main' margin-top property */
         margin-bottom: -80px;
     }
 
+    .date-area {
+        height: 40px;
+        line-height: 40px;
+    }
+
     .date-area span {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    .social-area {
+        height: 40px;
+    }
+
+    .social-area img {
+        width: 20px;
+        height: 20px;
     }
 }
