@@ -31,7 +31,7 @@ a:focus, a:hover {
 
 .navbar {
     background-color: #c1e2e0;
-    padding: 20px 30px;
+    padding: 30px;
     padding-bottom: 0;
     z-index: 500;
 
@@ -139,28 +139,36 @@ footer {
     height: 30px;
     line-height: 30px;
     background-color: black;
+    color: white;
+    font-size: 12px;
 }
 
 .date-area {
-    height: 60px;
-    line-height: 60px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .date-area span {
-    padding: 0;
-    margin: 0;
     color: white;
-    font-size: 2.5rem;
+    font-size: 40px;
 }
 
 .social-area {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    padding: 0;
+    margin: 0;
     /* Must be same as height in .date-area */
-    height: 60px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    height: 40px;
+    z-index: 1000;
 }
 
 .social-area img {
+    vertical-align: top;
     width: 40px;
     height: 40px;
 }
@@ -188,16 +196,17 @@ footer {
     }
 
     .date-area {
-        height: 40px;
-        line-height: 40px;
+        height: 20px;
+        line-height: 20px;
+        margin-bottom: 10px;
     }
 
     .date-area span {
-        font-size: 1.3rem;
+        font-size: 20px;
     }
 
     .social-area {
-        height: 40px;
+        height: 20px;
     }
 
     .social-area img {
