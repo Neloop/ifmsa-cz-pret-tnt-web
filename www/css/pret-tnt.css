@@ -186,13 +186,48 @@ footer {
 
     main {
         padding-left: 0;
-        margin-top: 110px;
+        margin-top: 140px;
+    }
+
+    .prague-heart {
+        height: 200px;
+        /* Same value or higher must be set in 'main' margin-top property */
+        margin-bottom: -106px;
+    }
+
+    .date-area {
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 15px;
+    }
+
+    .date-area span {
+        font-size: 30px;
+    }
+
+    .social-area {
+        height: 30px;
+    }
+
+    .social-area img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    .navbar {
+        padding: 20px;
+    }
+
+    main {
+        margin-top: 120px;
     }
 
     .prague-heart {
         height: 150px;
         /* Same value or higher must be set in 'main' margin-top property */
-        margin-bottom: -80px;
+        margin-bottom: -100px;
     }
 
     .date-area {
@@ -206,6 +241,8 @@ footer {
     }
 
     .social-area {
+        top: 20px;
+        right: 20px;
         height: 20px;
     }
 
