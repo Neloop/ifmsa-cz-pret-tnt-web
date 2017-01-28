@@ -126,7 +126,7 @@ nav li ul li a {
 }
 
 main {
-    margin-top: 190px;
+    margin-top: 200px;
     /* Height of footer has to be added to margin */
     margin-bottom: 70px;
     padding-left: 300px;
@@ -179,6 +179,10 @@ footer {
     margin-bottom: -159px;
 }
 
+.welcome-text {
+    font-size: 1.2rem;
+}
+
 @media only screen and (max-width : 992px) {
     nav {
         width: 0;
@@ -186,7 +190,7 @@ footer {
 
     main {
         padding-left: 0;
-        margin-top: 140px;
+        margin-top: 150px;
     }
 
     .prague-heart {
@@ -221,7 +225,7 @@ footer {
     }
 
     main {
-        margin-top: 120px;
+        margin-top: 130px;
     }
 
     .prague-heart {
