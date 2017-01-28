@@ -183,8 +183,9 @@ footer {
     font-size: 1.2rem;
 }
 
-.content-img {
-    height: 200px;
+.content-img-wrap {
+    width: 25%;
+    margin: 10px;
 }
 
 @media only screen and (max-width : 992px) {
@@ -220,6 +221,10 @@ footer {
     .social-area img {
         width: 30px;
         height: 30px;
+    }
+
+    .content-img-wrap {
+        width: 50%;
     }
 }
 
