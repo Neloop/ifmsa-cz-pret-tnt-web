@@ -183,9 +183,30 @@ footer {
     font-size: 1.2rem;
 }
 
-.content-img-wrap {
+.card {
+    border-radius: 0;
+}
+
+.card img {
+    border-radius: 0;
+}
+
+.card .card-footer {
+    background-color: #e0f0ef;
+}
+
+.card-img-left {
+    float: left;
+    padding-right: 1em;
+}
+
+.content-img-card {
     width: 25%;
     margin: 10px;
+}
+
+.profile-img-card {
+    width: 25%;
 }
 
 @media only screen and (max-width : 992px) {
@@ -223,7 +244,7 @@ footer {
         height: 30px;
     }
 
-    .content-img-wrap {
+    .content-img-card {
         width: 50%;
     }
 }
