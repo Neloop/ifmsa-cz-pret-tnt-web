@@ -3,6 +3,7 @@
 # https://nette.org/security-warning
 #
 parameters:
+	googleApiKey: YOUR_API_KEY
 
 
 application:
@@ -17,6 +18,7 @@ session:
 
 services:
 	router: App\RouterFactory::createRouter
+	- App\Helpers\AppConfig(@container::getParameters())
 
 
 extensions:

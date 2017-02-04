@@ -143,6 +143,14 @@ footer {
     font-size: 12px;
 }
 
+.vgap-1 {
+    min-height: 1rem;
+}
+
+.vgap-2 {
+    min-height: 2rem;
+}
+
 .date-area {
     padding: 0;
     margin: 0;
@@ -193,6 +201,19 @@ footer {
 
 .card .card-footer {
     background-color: #e0f0ef;
+    border-radius: 0;
+}
+
+.table .thead-default th {
+    background-color: #e0f0ef;
+}
+
+.table thead th {
+    border-color: #88c0c0;
+}
+
+.table-bordered td, .table-bordered th {
+    border-color: #88c0c0;
 }
 
 .card-img-left {
@@ -245,6 +266,10 @@ footer {
     }
 
     .content-img-card {
+        width: 50%;
+    }
+
+    .profile-img-card {
         width: 50%;
     }
 }
