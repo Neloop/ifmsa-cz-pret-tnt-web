@@ -32,6 +32,6 @@ doctrine:
   user: 'root'
   password: ''
   host: localhost
-  dbname: 'ifmsa-pret'
+  dbname: 'ifmsa-pret-tnt'
   metadata:
     App\Model: %appDir%/model
