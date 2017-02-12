@@ -14,7 +14,7 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
         <link rel="shortcut icon" href="{$basePath}/images/favicon.ico">
-        <link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css?version=1">
         <link rel="stylesheet" href="{$basePath}/css/lightbox.min.css">
         <link rel="stylesheet" href="{$basePath}/css/pret-tnt.css?version=6">
     </head>
@@ -27,8 +27,8 @@
                 </a>
             </div>
             <div class="row">
-                <div class="col-xs-12 text-xs-center date-area"><span>27. 4. &#8211; 1. 5. 2017</span></div>
-                <div class="col-xs-12 text-xs-center">
+                <div class="col-12 text-center date-area"><span>27. 4. &#8211; 1. 5. 2017</span></div>
+                <div class="col-12 text-center">
                     <a n:href="Homepage:"><img class="prague-heart" src="{$basePath}/images/prague-heart.png"></a>
                 </div>
             </div>
@@ -46,7 +46,7 @@
         </main>
 
         <footer>
-            <div class="text-xs-center">
+            <div class="text-center">
                 &copy; 2017<span n:if="date('Y') > 2017">-{date('Y')}</span><span class="hidden-xs-down">;</span>
                 <span class="hidden-xs-down">
                     Code: <a href="https://github.com/Neloop" target="_blank">Martin Polanka</a>;
@@ -56,12 +56,12 @@
         </footer>
 
         {block scripts}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-        <script src="{$basePath}/js/bootstrap.min.js"></script>
+        <script src="{$basePath}/js/bootstrap.min.js?version=1"></script>
         <script src="{$basePath}/js/lightbox.min.js"></script>
-        <script src="{$basePath}/js/pret-tnt.js"></script>
+        <script src="{$basePath}/js/pret-tnt.js?version=1"></script>
         {/block}
     </body>
 </html>

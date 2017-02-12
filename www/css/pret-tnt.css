@@ -228,7 +228,8 @@ footer {
 
 .content-img {
     width: 25%;
-    margin: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .profile-img-card {

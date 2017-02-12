@@ -4,7 +4,7 @@
                 <li n:foreach="$items as $item"{if $item->active} class="active"{/if}>
                     {if $item->subItems}
                         <a href="#nav-{$item->linkPresenter}" data-toggle="collapse" aria-expanded="{$item->active ? 'true' : 'false'}" aria-controls="nav-{$item->linkPresenter}">{$item->name}</a>
-                        <ul class="collapse{$item->active ? ' in' : ''}" id="nav-{$item->linkPresenter}">
+                        <ul class="collapse{$item->active ? ' show' : ''}" id="nav-{$item->linkPresenter}">
                             <li n:foreach="$item->subItems as $subItem"{if $subItem->active} class="active"{/if}>
                                 <a href="{plink $subItem->linkPresenter . ':' . $subItem->linkAction}">{$subItem->name}</a>
                             </li>
