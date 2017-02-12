@@ -14,67 +14,82 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h3>From an airport</h3>
-        <table class="table table-bordered">
-            <thead class="thead-default">
-                <tr>
-                    <th>FROM</th>
-                    <th>TO</th>
-                    <th>BUS LINK number</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Terminal 1 / 2</td>
-                    <td>Divoká Šárka</td>
-                    <td>119</td>
-                </tr>
-                <tr>
-                    <td>Divoká Šárka</td>
-                    <td>Strossmayerovo náměstí</td>
-                    <td>26</td>
-                </tr>
-                <tr>
-                    <td>Strossmayerovo náměstí</td>
-                    <td>Přívozní</td>
-                    <td>156</td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-bordered">
-            <thead class="thead-default">
-                <tr>
-                    <th>FROM</th>
-                    <th>TO</th>
-                    <th>BUS LINK number</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Terminal 1 / 2</td>
-                    <td>Nádraží Veleslavín</td>
-                    <td>119</td>
-                </tr>
-                <tr>
-                    <td>Nádraží Veleslavín</td>
-                    <td>Hradčanská</td>
-                    <td>Subway "link A"</td>
-                </tr>
-                <tr>
-                    <td>Hradčanská</td>
-                    <td>Vltavská</td>
-                    <td>25</td>
-                </tr>
-                <tr>
-                    <td>Vltavská</td>
-                    <td>Přívozní</td>
-                    <td>156</td>
-                </tr>
-            </tbody>
-        </table>
-        <iframe width="100%" height="450" frameborder="0" style="border:0"
-                src="https://www.google.com/maps/embed/v1/directions?key={$appConfig->getGoogleApiKey()}&origin=Letiště+Václava+Havla+Praha&destination=Plus+Prague+Hostel&mode=transit" allowfullscreen>
-        </iframe>
+        <p>
+            The best way how to get from the airport, the bus station or the train station is by the public transport (subway, bus or tram). It is the fastest and the cheapest way. First, how to buy a transport ticket? It is easy, you can buy them almost everywhere at metro stations and surface transport stops in the orange ticket machines. You can set up a language into english and few other languages. Payment is with coins or credit cards. There are different types according to the lenght of travel. The best one is for 30 or 90 minutes. They cost 24 and 32 CZK. Don't buy them for longer time, we have the tickets for you, for whole time of stay. They are included in the welcome package. The ticket apply for every type of transport. Don't forget to validate them! You can validate the tickets before you enter the subway through the orange machines or in the tram or bus.
+        </p>
+    </div>
+    <div class="col-xs-4">
+        <figure class="figure">
+            <a href="{$basePath}/images/content/ticket-machine.png" data-lightbox="reachUs" data-title="Ticket machine">
+                <img class="img-fluid" alt="Ticket machine" src="{$basePath}/images/content/ticket-machine.png">
+            </a>
+            <figcaption class="figure-caption text-xs-center">Ticket machine</figcaption>
+        </figure>
+    </div>
+    <div class="col-xs-4">
+        <figure class="figure">
+            <a href="{$basePath}/images/content/validation-machine.png" data-lightbox="reachUs" data-title="Validation machine at the subway">
+                <img class="img-fluid" alt="Validation machine at subway" src="{$basePath}/images/content/validation-machine.png">
+            </a>
+            <figcaption class="figure-caption text-xs-center">Validation machine at the subway</figcaption>
+        </figure>
+    </div>
+    <div class="col-xs-4">
+        <figure class="figure">
+            <a href="{$basePath}/images/content/validation-machine-bus.png" data-lightbox="reachUs" data-title="Validation machine in the bus">
+                <img class="img-fluid" alt="Validation machine in the bus" src="{$basePath}/images/content/validation-machine-bus.png">
+            </a>
+            <figcaption class="figure-caption text-xs-center">Validation machine int the bus</figcaption>
+        </figure>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card">
+            <a href="#from-airport-collapse" data-toggle="collapse" aria-expanded="false" aria-controls="from-airport-collapse">
+                <div class="card-header" role="tab" id="from-airport-heading">
+                    FROM AN AIRPORT
+                </div>
+            </a>
+            <div id="from-airport-collapse" class="card-block collapse" role="tabpanel" aria-labelledby="from-airport-heading">
+                <p>It takes about 1h 06 min.</p>
+                <table class="table table-bordered">
+                    <thead class="thead-default">
+                        <tr>
+                            <th width="33%">From</th>
+                            <th width="33%">To</th>
+                            <th width="33%">Line number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Terminal 1 / 2</td>
+                            <td>Nádraží Veleslavín</td>
+                            <td>119</td>
+                        </tr>
+                        <tr>
+                            <td>Nádraží Veleslavín</td>
+                            <td>Hradčanská</td>
+                            <td>Subway "line A"</td>
+                        </tr>
+                        <tr>
+                            <td>Hradčanská</td>
+                            <td>Vltavská</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>Vltavská</td>
+                            <td>Přívozní</td>
+                            <td>156</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <iframe width="100%" height="450" frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/directions?key={$appConfig->getGoogleApiKey()}&origin=Letiště+Václava+Havla+Praha&destination=Plus+Prague+Hostel&mode=transit" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -82,52 +97,40 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h3>From Florenc Prague bus station</h3>
-        <table class="table table-bordered">
-            <thead class="thead-default">
-                <tr>
-                    <th>FROM</th>
-                    <th>TO</th>
-                    <th>BUS LINK number</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Florenc</td>
-                    <td>Nádraží Holešovice</td>
-                    <td>Subway "link C"</td>
-                </tr>
-                <tr>
-                    <td>Nádraží Holešovice</td>
-                    <td>Přívozní</td>
-                    <td>156</td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-bordered">
-            <thead class="thead-default">
-                <tr>
-                    <th>FROM</th>
-                    <th>TO</th>
-                    <th>BUS LINK number</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Florenc</td>
-                    <td>Vltavská</td>
-                    <td>Subway "link C"</td>
-                </tr>
-                <tr>
-                    <td>Vltavská</td>
-                    <td>Přívozní</td>
-                    <td>156</td>
-                </tr>
-            </tbody>
-        </table>
-        <iframe width="100%" height="450" frameborder="0" style="border:0"
-                src="https://www.google.com/maps/embed/v1/directions?key={$appConfig->getGoogleApiKey()}&origin=Praha+Florenc&destination=Plus+Prague+Hostel&mode=transit" allowfullscreen>
-        </iframe>
+        <div class="card">
+            <a href="#from-florenc-collapse" data-toggle="collapse" aria-expanded="false" aria-controls="from-florenc-collapse">
+                <div class="card-header" role="tab" id="from-florenc-heading">
+                    FROM FLORENC PRAGUE BUS STATION
+                </div>
+            </a>
+            <div id="from-florenc-collapse" class="card-block collapse" role="tabpanel" aria-labelledby="from-florenc-heading">
+                <p>It takes about 11 min.</p>
+                <table class="table table-bordered">
+                    <thead class="thead-default">
+                        <tr>
+                            <th width="33%">From</th>
+                            <th width="33%">To</th>
+                            <th width="33%">Line number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Florenc</td>
+                            <td>Vltavská</td>
+                            <td>Subway "line C"</td>
+                        </tr>
+                        <tr>
+                            <td>Vltavská</td>
+                            <td>Přívozní</td>
+                            <td>156</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <iframe width="100%" height="450" frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/directions?key={$appConfig->getGoogleApiKey()}&origin=Praha+Florenc&destination=Plus+Prague+Hostel&mode=transit" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -135,52 +138,40 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h3>From The main train station in Prague</h3>
-        <table class="table table-bordered">
-            <thead class="thead-default">
-                <tr>
-                    <th>FROM</th>
-                    <th>TO</th>
-                    <th>BUS LINK number</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Florenc</td>
-                    <td>Nádraží Holešovice</td>
-                    <td>Subway "link C"</td>
-                </tr>
-                <tr>
-                    <td>Nádraží Holešovice</td>
-                    <td>Přívozní</td>
-                    <td>156</td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-bordered">
-            <thead class="thead-default">
-                <tr>
-                    <th>FROM</th>
-                    <th>TO</th>
-                    <th>BUS LINK number</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Florenc</td>
-                    <td>Vltavská</td>
-                    <td>Subway "link C"</td>
-                </tr>
-                <tr>
-                    <td>Vltavská</td>
-                    <td>Přívozní</td>
-                    <td>156</td>
-                </tr>
-            </tbody>
-        </table>
-        <iframe width="100%" height="450" frameborder="0" style="border:0"
-                src="https://www.google.com/maps/embed/v1/directions?key={$appConfig->getGoogleApiKey()}&origin=Praha+Hlavní+Nádraží&destination=Plus+Prague+Hostel&mode=transit" allowfullscreen>
-        </iframe>
+        <div class="card">
+            <a href="#from-main-collapse" data-toggle="collapse" aria-expanded="false" aria-controls="from-main-collapse">
+                <div class="card-header" role="tab" id="from-main-heading">
+                    FROM THE MAIN TRAIN STATION IN PRAGUE
+                </div>
+            </a>
+            <div id="from-main-collapse" class="card-block collapse" role="tabpanel" aria-labelledby="from-main-heading">
+                <p>It takes about 12 min.</p>
+                <table class="table table-bordered">
+                    <thead class="thead-default">
+                        <tr>
+                            <th width="33%">From</th>
+                            <th width="33%">To</th>
+                            <th width="33%">Line number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hlavní nádraží</td>
+                            <td>Vltavská</td>
+                            <td>Subway "line C"</td>
+                        </tr>
+                        <tr>
+                            <td>Vltavská</td>
+                            <td>Přívozní</td>
+                            <td>156</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <iframe width="100%" height="450" frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/directions?key={$appConfig->getGoogleApiKey()}&origin=Praha+Hlavní+Nádraží&destination=Plus+Prague+Hostel&mode=transit" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
 </div>
 

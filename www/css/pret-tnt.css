@@ -204,6 +204,11 @@ footer {
     border-radius: 0;
 }
 
+.card .card-header {
+    background-color: #e0f0ef;
+    border-radius: 0;
+}
+
 .table th {
     background-color: #e0f0ef;
 }
@@ -221,9 +226,9 @@ footer {
     padding-right: 1em;
 }
 
-.content-img-card {
+.content-img {
     width: 25%;
-    margin: 10px;
+    margin: 15px;
 }
 
 .profile-img-card {
@@ -265,7 +270,7 @@ footer {
         height: 30px;
     }
 
-    .content-img-card {
+    .content-img {
         width: 50%;
     }
 
