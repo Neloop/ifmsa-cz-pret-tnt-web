@@ -1,45 +1,33 @@
-IFMSA CZ - PRET/TNT Website
-=============
+# IFMSA CZ - PRET/TNT Website
 
 Desc
 
+## Installation
 
-Installation
-------------
+1. Clone the git repository
+2. Run `composer install`
+3. Create a database and fill in the access information in `app/config/config.local.neon` (for an example, see `app/config/config.local.neon.example`)
+4. Setup the database schema by running `php www/index.php orm:schema-tool:update --force`
 
-The best way to install Web Project is using Composer. If you don't have Composer yet,
-download it following [the instructions](https://doc.nette.org/composer). Then use command:
+Do not forget to make directories `temp/` and `log/` writable.
 
-	composer create-project nette/sandbox path/to/install
-	cd path/to/install
-
-
-Make directories `temp/` and `log/` writable.
-
-
-Web Server Setup
-----------------
+## Web Server Setup
 
 The simplest way to get started is to start the built-in PHP server in the root directory of your project:
 
-	php -S localhost:8000 -t www
+	php -S localhost:4000 -t www
 
-Then visit `http://localhost:8000` in your browser to see the welcome page.
+Then visit `http://localhost:4000` in your browser to see the welcome page.
 
-For Apache or Nginx, setup a virtual host to point to the `www/` directory of the project and you
-should be ready to go.
+## Security Warning
 
-It is CRITICAL that whole `app/`, `log/` and `temp/` directories are not accessible directly
-via a web browser. See [security warning](https://nette.org/security-warning).
+It is CRITICAL that whole `app/`, `log/` and `temp/` directories are not accessible directly via a web browser. See [security warning](https://nette.org/security-warning).
 
 
-Requirements
-------------
+## Requirements
 
-PHP 7 or higher.
+PHP 7.0 or higher.
 
+## License
 
-License
--------
-
-MIT license.
+MIT License

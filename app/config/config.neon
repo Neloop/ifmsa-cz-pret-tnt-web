@@ -3,13 +3,18 @@
 # https://nette.org/security-warning
 #
 parameters:
-	googleApiKey: YOUR_API_KEY
+    googleApiKey: YOUR_API_KEY
+    payment:
+        service: "pret-tnt"
+        serverAuthKey: ""
+        serverStartTransactionUrl: ""
+        serverGetTransactionResultUrl: ""
 
 
 application:
-	errorPresenter: Error
-	mapping:
-		*: App\*Module\Presenters\*Presenter
+    errorPresenter: Error
+    mapping:
+        *: App\*Module\Presenters\*Presenter
 
 
 http:
@@ -32,12 +37,24 @@ http:
 
 
 session:
-	expiration: 14 days
+    expiration: 14 days
 
 
 services:
-	router: App\RouterFactory::createRouter
-	- App\Helpers\AppConfig(@container::getParameters())
+    router: App\RouterFactory::createRouter
+
+    # helpers
+    - App\Helpers\AppConfig(@container::getParameters())
+
+    # payment
+    - App\Helpers\Payment\PaymentConnection
+    - App\Helpers\Payment\PaymentParams(%payment%)
+    - App\Helpers\Payment\PaymentTransactionsHelper
+
+    # repositories
+    - App\Model\Repository\PaymentErrors
+    - App\Model\Repository\PaymentTransactions
+    - App\Model\Repository\Participants
 
 
 extensions:
@@ -48,9 +65,9 @@ extensions:
 
 
 doctrine:
-  user: 'root'
-  password: ''
-  host: localhost
-  dbname: 'ifmsa-pret-tnt'
-  metadata:
-    App\Model: %appDir%/model
+    user: 'root'
+    password: ''
+    host: localhost
+    dbname: 'ifmsa-pret-tnt'
+    metadata:
+        App\Model: %appDir%/model

@@ -22,7 +22,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         return new MenuControl();
     }
 
-    protected function startup() {
+    protected function startup()
+    {
         parent::startup();
 
         $this->template->appConfig = $this->appConfig;
