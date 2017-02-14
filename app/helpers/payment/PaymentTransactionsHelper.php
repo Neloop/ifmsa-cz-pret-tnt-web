@@ -47,17 +47,20 @@ class PaymentTransactionsHelper
     public function startTransaction(string $description, int $amount, string $ip): array
     {
         // create connection and register transaction
-        $response = $this->paymentConnection->startTransaction($amount, $ip, $description);
+        $response =
+                $this->paymentConnection->startTransaction(
+                    $amount,
+                    $ip,
+                    $description,
+                    $this->paymentParams->currency
+                );
         $respArray = json_decode($response, true);
 
         // process response from server
         if (array_key_exists("transactionId", $respArray) &&
                 array_key_exists("url", $respArray)) {
-            $transactionId = $respArray["transactionId"];
-            $url = $respArray["url"];
-
             $transaction = new PaymentTransaction(
-                $transactionId,
+                $respArray["transactionId"],
                 $amount,
                 $ip,
                 $description,
@@ -65,7 +68,7 @@ class PaymentTransactionsHelper
             );
             $this->paymentTransactions->persist($transaction);
 
-            return array($url, $transaction);
+            return array($respArray["url"], $transaction);
         } else {
             $error = new PaymentError('startTransaction', $response);
             $this->paymentErrors->persist($error);

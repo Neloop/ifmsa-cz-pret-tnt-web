@@ -21,12 +21,13 @@ class PaymentConnection
         ));
     }
 
-    public function startTransaction($amount, $ip, $desc)
+    public function startTransaction($amount, $ip, $desc, $currency)
     {
         $response = $this->guzzleClient->post($this->paymentParams->serverStartTransactionUrl, array(
             "form_params" => array(
                 "service" => $this->paymentParams->service,
                 "amount" => $amount,
+                "currency" => $currency,
                 "ipAddress" => $ip,
                 "description" => $desc
             )

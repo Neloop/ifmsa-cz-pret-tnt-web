@@ -6,6 +6,7 @@ parameters:
     googleApiKey: YOUR_API_KEY
     payment:
         service: "pret-tnt"
+        currency: 978 # 203=CZK 978=EUR 840=USD 941=RSD 703=SKK 440=LTL 233=EEK 643=RUB 891=YUM
         serverAuthKey: ""
         serverStartTransactionUrl: ""
         serverGetTransactionResultUrl: ""
