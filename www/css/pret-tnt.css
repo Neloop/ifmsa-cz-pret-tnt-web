@@ -241,6 +241,11 @@ footer {
     margin-left: 15px;
 }
 
+.content-img-group {
+    width: 75%;
+    margin: auto;
+}
+
 .content-video {
     width: 50%;
 }
@@ -289,6 +294,10 @@ footer {
     }
 
     .content-video {
+        width: 100%;
+    }
+
+    .content-img-group {
         width: 100%;
     }
 
