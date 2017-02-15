@@ -7,6 +7,9 @@ parameters:
     private:
         username: "user"
         password: "pass"
+    emails:
+        from: "from@from.from"
+        subjectPrefix: "PRET&TNT CZ"
     payment:
         service: "pret-tnt"
         currency: 978 # 203=CZK 978=EUR 840=USD 941=RSD 703=SKK 440=LTL 233=EEK 643=RUB 891=YUM
@@ -54,6 +57,9 @@ services:
     - App\Helpers\AppParams(@container::getParameters())
     - App\Helpers\PrivateParams(%private%)
     - App\Helpers\RegistrationLabelsHelper
+    - App\Helpers\Emails\RegistrationEmailsSender
+    - App\Helpers\Emails\PaymentEmailsSender
+    - App\Helpers\Emails\EmailsParams(%emails%)
 
     # payment
     - App\Helpers\Payment\PaymentConnection

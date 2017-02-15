@@ -5,6 +5,7 @@ namespace App\Forms;
 use App\Model\Entity\Participant;
 use App\Model\Repository\Participants;
 use App\Helpers\RegistrationLabelsHelper;
+use App\Helpers\Emails\RegistrationEmailsSender;
 use Nette\Forms\Form;
 
 /**
@@ -17,14 +18,18 @@ class RegistrationFormsFactory
     private $participants;
     /** @var RegistrationLabelsHelper */
     private $labelsHelper;
+    /** @var RegistrationEmailsSender */
+    private $registrationEmailsSender;
 
     public function __construct(
         Participants $participants,
-        RegistrationLabelsHelper $registrationLabelsHelper
+        RegistrationLabelsHelper $registrationLabelsHelper,
+        RegistrationEmailsSender $registrationEmailsSender
     ) {
 
         $this->participants = $participants;
         $this->labelsHelper = $registrationLabelsHelper;
+        $this->registrationEmailsSender = $registrationEmailsSender;
     }
 
     private function getAllergiesItems()
@@ -150,6 +155,8 @@ class RegistrationFormsFactory
 
     private function createBasicParticipant(BootstrapForm $form, $values): Participant
     {
+        // TODO: solve radios with additional texts
+
         $participant = new Participant(
             $values->firstname,
             $values->surname,
@@ -180,7 +187,7 @@ class RegistrationFormsFactory
         $participant->setPret();
         $this->participants->persist($participant);
 
-        // TODO: send emails
+        $this->registrationEmailsSender->send($participant);
     }
 
     public function tntRegistrationFormSucceeded(BootstrapForm $form, $values)
@@ -196,6 +203,6 @@ class RegistrationFormsFactory
         $participant->tntUsageOfKnowledge = $values->tntUsageOfKnowledge;
         $this->participants->persist($participant);
 
-        // TODO: send emails
+        $this->registrationEmailsSender->send($participant);
     }
 }
