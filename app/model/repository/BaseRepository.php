@@ -24,7 +24,7 @@ class BaseRepository extends Nette\Object
         $this->repository = $em->getRepository($entityType);
     }
 
-    public function get($id)
+    public function findOneById($id)
     {
         return $this->repository->findOneById($id);
     }
@@ -46,7 +46,7 @@ class BaseRepository extends Nette\Object
 
     public function findOrThrow($id)
     {
-        $entity = $this->get($id);
+        $entity = $this->findOneById($id);
         if (!$entity) {
             throw new NotFoundException("Cannot find '$id'");
         }

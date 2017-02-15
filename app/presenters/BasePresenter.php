@@ -4,7 +4,7 @@ namespace App\Presenters;
 
 use Nette;
 use App\Menu\MenuControl;
-use App\Helpers\AppConfig;
+use App\Helpers\AppParams;
 
 /**
  * Base presenter for all application presenters.
@@ -12,10 +12,10 @@ use App\Helpers\AppConfig;
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
     /**
-     * @var AppConfig
+     * @var AppParams
      * @inject
      */
-    public $appConfig;
+    public $appParams;
 
     protected function createComponentMenu()
     {
@@ -26,6 +26,6 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     {
         parent::startup();
 
-        $this->template->appConfig = $this->appConfig;
+        $this->template->appParams = $this->appParams;
     }
 }

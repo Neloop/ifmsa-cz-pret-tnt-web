@@ -13,7 +13,7 @@ class BootstrapForm extends Form
 
         $renderer = $this->getRenderer();
         $renderer->wrappers['controls']['container'] = null;
-        $renderer->wrappers['pair']['container'] = 'div class=form-group';
+        $renderer->wrappers['pair']['container'] = 'div class=row form-group';
         $renderer->wrappers['pair']['.error'] = 'has-error';
         $renderer->wrappers['control']['container'] = 'div class=col-9';
         $renderer->wrappers['label']['container'] = 'div class="col-3 control-label"';

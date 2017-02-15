@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Nette\Utils\Arrays;
 
-class AppConfig
+class AppParams
 {
     protected $googleApiKey;
 
