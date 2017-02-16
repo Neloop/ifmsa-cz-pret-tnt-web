@@ -151,7 +151,7 @@ class Participant
     /**
      * @ORM\Column(type="datetime")
      */
-    protected $registrationDate;
+    protected $registrationDateUtc;
 
     /**
      * @ORM\OneToOne(targetEntity="PaymentTransaction", inversedBy="participant")
@@ -176,7 +176,7 @@ class Participant
         $yearOfStudy,
         $motivation
     ) {
-    
+
         $this->firstname = $firstname;
         $this->surname = $surname;
         $this->email = $email;
@@ -193,7 +193,7 @@ class Participant
         $this->yearOfStudy = $yearOfStudy;
         $this->motivation = $motivation;
 
-        $this->registrationDate = new \DateTime;
+        $this->registrationDateUtc = \App\Helpers\DatetimeHelper::getNowUTC();
     }
 
     public function isPret(): bool

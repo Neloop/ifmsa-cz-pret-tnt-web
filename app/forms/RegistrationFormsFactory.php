@@ -153,22 +153,47 @@ class RegistrationFormsFactory
         return true;
     }
 
+    private function getAllergiesFromValues($values): string
+    {
+        if ($values->allergies === "yes") {
+            return $values->allergiesText;
+        } else {
+            return $this->getAllergiesItems()[$values->allergies];
+        }
+    }
+
+    private function getDietFromValues($values): string
+    {
+        if ($values->diet === "another") {
+            return $values->dietText;
+        } else {
+            return $this->getDietItems()[$values->diet];
+        }
+    }
+
+    private function getEventsAttendedFromValues($values): string
+    {
+        if ($values->ifmsaEventsAttended === "some") {
+            return $values->ifmsaEventsAttendedText;
+        } else {
+            return $this->getEventsAttendedItems()[$values->ifmsaEventsAttended];
+        }
+    }
+
     private function createBasicParticipant(BootstrapForm $form, $values): Participant
     {
-        // TODO: solve radios with additional texts
-
         $participant = new Participant(
             $values->firstname,
             $values->surname,
             $values->email,
             $values->phone,
-            $values->allergies,
-            $values->diet,
+            $this->getAllergiesFromValues($values),
+            $this->getDietFromValues($values),
             $values->visaNeeded,
             $values->invitationLetterNeeded,
             $values->nmo,
             $values->nmoPosition,
-            $values->ifmsaEventsAttended,
+            $this->getEventsAttendedFromValues($values),
             $values->universityFaculty,
             $values->city,
             $values->yearOfStudy,

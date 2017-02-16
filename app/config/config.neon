@@ -12,10 +12,11 @@ parameters:
         password: "pass"
     emails:
         from: "from@from.from"
+        reportTo: "to@to.to"  # after registration, report about participant is sent to this email
         subjectPrefix: "PRET&TNT CZ"
     payment:
         service: "pret-tnt"
-        currency: 978 # 203=CZK 978=EUR 840=USD 941=RSD 703=SKK 440=LTL 233=EEK 643=RUB 891=YUM
+        currency: 978  # 203=CZK 978=EUR 840=USD 941=RSD 703=SKK 440=LTL 233=EEK 643=RUB 891=YUM
         serverAuthKey: ""
         serverStartTransactionUrl: ""
         serverGetTransactionResultUrl: ""

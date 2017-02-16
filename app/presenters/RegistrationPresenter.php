@@ -16,7 +16,8 @@ class RegistrationPresenter extends BasePresenter
     {
         $form = $this->registrationFormsFactory->createPretRegistrationForm();
         $form->onSuccess[] = function () {
-            $this->redirect("Registration:completed");
+            $this->flashMessage("Your PRET registration was successful, further details were sent to your email account.", "success");
+            $this->redirect("Homepage:");
         };
         return $form;
     }
@@ -25,7 +26,8 @@ class RegistrationPresenter extends BasePresenter
     {
         $form = $this->registrationFormsFactory->createTntRegistrationForm();
         $form->onSuccess[] = function () {
-            $this->redirect("Registration:completed");
+            $this->flashMessage("Your TNT registration was successful, further details were sent to your email account.", "success");
+            $this->redirect("Homepage:");
         };
         return $form;
     }

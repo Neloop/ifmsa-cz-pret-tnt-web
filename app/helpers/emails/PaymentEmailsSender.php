@@ -20,6 +20,6 @@ class PaymentEmailsSender
 
     public function send(Participant $participant): bool
     {
-        ;
+        // TODO
     }
 }
