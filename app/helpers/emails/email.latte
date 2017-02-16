@@ -6,11 +6,11 @@
         <style>
             body {
                 margin: 0;
+                color: #000000;
             }
 
             .wrapper {
                 padding: 30px 0;
-                background-color: #f6f6f6;
                 font-family: Arial, sans-serif;
             }
 
@@ -18,21 +18,34 @@
                 width: 80%;
             }
 
-            .logo {
-                margin: 0;
-                margin-right: -2px;
-                margin-bottom: -110px;
-                text-align: right;
-                color: #00A65A;
+            table {
+                border: 0;
+                padding: 0;
+                border-spacing: 0;
             }
 
-            .logo img {
-                width: 200px;
+            .header-logo {
+                margin: 0;
+                padding: 0;
+                text-align: right;
+                background-color: #c1e2e0;
+            }
+
+            .header-logo h1 {
+                padding: 0;
+                margin: 0;
+                padding: 5px;
+                padding-right: 20px;
+                color: #651941;
+            }
+
+            .header-logo img {
+                width: 60px;
             }
 
             a {
                 font-weight: bold;
-                color: #9c2055;
+                color: #9c2055 !important;
                 text-decoration: none;
             }
 
@@ -45,12 +58,12 @@
 
             .header {
                 background-color: #c1e2e0;
-                color: #ffffff;
+                color: #651941;
                 font-weight: bold;
                 padding: 20px;
             }
 
-            h2 {
+            .header h1 {
                 margin: 0;
                 font-weight: bold;
             }
@@ -59,9 +72,8 @@
                 margin: 0;
             }
 
-            .body {
+            .container-body {
                 padding: 20px;
-                padding-top: 50px;
             }
 
             .container-footer {
@@ -104,20 +116,22 @@
     </head>
     <body>
         <div class="wrapper">
-            <table class="wrapper-table" align="center">
+            <table class="wrapper-table" align="center" cellspacing="0" cellpadding="0">
                 <tr>
                     <td class="nopadding">
-                        <h1 class="logo">
-                            <img src="{$siteUrl}/images/prague-heart.png" alt="PRET&TNT Logo">
-                        </h1>
-                        <table align="center" class="container">
+                        <table class="container" align="center" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td class="header" colspan="2">
-                                    <h2>{$subject}</h2>
+                                <td class="header">
+                                    <h1>{$subject}</h1>
+                                </td>
+                                <td class="header-logo">
+                                    <h1>
+                                        <img style="width:60px;" src="{$siteUrl}/images/prague-heart.png" alt="PRET&TNT Logo">
+                                    </h1>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="body" colspan="2">
+                                <td class="container-body" colspan="2">
                                     {$message|noescape}
                                 </td>
                             </tr>
@@ -130,7 +144,7 @@
                                 </td>
                                 <td class="social-icons">
                                     <a href="{$facebookUrl}" class="social-icon" target=_blank>
-                                        <img src="{$siteUrl}/images/social/facebook.png" alt="Facebook">
+                                        <img style="width:30px;height:30px;" src="{$siteUrl}/images/social/facebook.png" alt="Facebook">
                                     </a>
                                 </td>
                             </tr>
