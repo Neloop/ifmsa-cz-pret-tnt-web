@@ -2,8 +2,7 @@
 
 namespace App\Helpers\Emails;
 
-use Nette\Mail\Message;
-use Nette\Mail\IMailer;
+use App\Model\Entity\Participant;
 
 /**
  *
@@ -11,19 +10,16 @@ use Nette\Mail\IMailer;
  */
 class PaymentEmailsSender
 {
-    /** @var IMailer */
-    private $mailer;
+    /** @var EmailHelper */
+    private $emailHelper;
 
-    /** @var EmailsParams */
-    private $emailsParams;
-
-    public function __construct(IMailer $mailer, EmailsParams $emailsParams) {
-        $this->mailer = $mailer;
-        $this->emailsParams = $emailsParams;
+    public function __construct(EmailHelper $emailHelper)
+    {
+        $this->emailHelper = $emailHelper;
     }
 
-    public function send(Participant $participant)
+    public function send(Participant $participant): bool
     {
-        ; // TODO
+        ;
     }
 }

@@ -2,9 +2,10 @@
 
 namespace App\Helpers\Emails;
 
+use Nette;
 use Nette\Utils\Arrays;
 
-class EmailsParams
+class EmailsParams extends Nette\Object
 {
     protected $from;
     protected $subjectPrefix;

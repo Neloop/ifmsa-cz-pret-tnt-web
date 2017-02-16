@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{$siteName}</title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .wrapper {
+                padding: 30px 0;
+                background-color: #f6f6f6;
+                font-family: Arial, sans-serif;
+            }
+
+            .wrapper-table {
+                width: 80%;
+            }
+
+            .logo {
+                margin: 0;
+                margin-right: -2px;
+                margin-bottom: -110px;
+                text-align: right;
+                color: #00A65A;
+            }
+
+            .logo img {
+                width: 200px;
+            }
+
+            a {
+                font-weight: bold;
+                color: #9c2055;
+                text-decoration: none;
+            }
+
+            .container {
+                width: 100%;
+                margin: 0 auto;
+                background-color: #ffffff;
+                border: 1px solid #cbd9dc;
+            }
+
+            .header {
+                background-color: #c1e2e0;
+                color: #ffffff;
+                font-weight: bold;
+                padding: 20px;
+            }
+
+            h2 {
+                margin: 0;
+                font-weight: bold;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            .body {
+                padding: 20px;
+                padding-top: 50px;
+            }
+
+            .container-footer {
+                margin: 0 30px;
+                padding: 30px 0;
+                text-align: left;
+                overflow: hidden;
+                background-color: #f8f8f8;
+            }
+
+            .footer-text {
+                padding: 20px;
+            }
+
+            .social-icons {
+                padding: 20px;
+                text-align: right;
+            }
+
+            .social-icon {
+                width: 30px;
+                height: 30px;
+                padding-left: 10px;
+                border: 0;
+            }
+
+            .social-icon img {
+                width: 30px;
+                height: 30px;
+            }
+
+            img {
+                border: 0;
+            }
+
+            .nopadding {
+                padding: 0 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <table class="wrapper-table" align="center">
+                <tr>
+                    <td class="nopadding">
+                        <h1 class="logo">
+                            <img src="{$siteUrl}/images/prague-heart.png" alt="PRET&TNT Logo">
+                        </h1>
+                        <table align="center" class="container">
+                            <tr>
+                                <td class="header" colspan="2">
+                                    <h2>{$subject}</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="body" colspan="2">
+                                    {$message|noescape}
+                                </td>
+                            </tr>
+                            <tr class="container-footer">
+                                <td class="footer-text">
+                                    <p>
+                                        Best regards,<br>PRET & TNT OC<br>
+                                        <a href="{$siteUrl}">{$siteUrl}</a>
+                                    </p>
+                                </td>
+                                <td class="social-icons">
+                                    <a href="{$facebookUrl}" class="social-icon" target=_blank>
+                                        <img src="{$siteUrl}/images/social/facebook.png" alt="Facebook">
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

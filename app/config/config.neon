@@ -3,7 +3,10 @@
 # https://nette.org/security-warning
 #
 parameters:
+    siteName: "PRET & TNT"
+    siteUrl: "https://pret.ifmsa.cz"
     googleApiKey: YOUR_API_KEY
+    facebookEventUrl: "https://www.facebook.com"
     private:
         username: "user"
         password: "pass"
@@ -57,6 +60,7 @@ services:
     - App\Helpers\AppParams(@container::getParameters())
     - App\Helpers\PrivateParams(%private%)
     - App\Helpers\RegistrationLabelsHelper
+    - App\Helpers\Emails\EmailHelper
     - App\Helpers\Emails\RegistrationEmailsSender
     - App\Helpers\Emails\PaymentEmailsSender
     - App\Helpers\Emails\EmailsParams(%emails%)
