@@ -22,6 +22,12 @@ parameters:
         serverGetTransactionResultUrl: ""
 
 
+reCaptcha:
+    siteKey: '<your_site_key>'
+    secretKey: '<your_secret_key>'
+    methodName: 'addReCaptcha'  # optional
+
+
 application:
     errorPresenter: Error
     mapping:
@@ -84,6 +90,7 @@ extensions:
     events: Kdyby\Events\DI\EventsExtension
     annotations: Kdyby\Annotations\DI\AnnotationsExtension
     doctrine: Kdyby\Doctrine\DI\OrmExtension
+    reCaptcha: ReCaptchaControl\DI\Extension
 
 
 doctrine:

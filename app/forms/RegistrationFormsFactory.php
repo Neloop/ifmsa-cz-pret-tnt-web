@@ -119,6 +119,7 @@ class RegistrationFormsFactory
     public function createPretRegistrationForm(): BootstrapForm
     {
         $form = $this->createBasicRegistrationForm();
+        $form->addReCaptcha('captcha', NULL, "Please prove you're not a robot.");
         $form->addSubmit('send', 'Register');
         $form->onSuccess[] = array($this, 'pretRegistrationFormSucceeded');
         return $form;
@@ -138,6 +139,7 @@ class RegistrationFormsFactory
                 ->setRequired("Usage of Knowledge is required")
                 ->addRule(Form::MAX_LENGTH, "Usage of Knowledge too long", 1000);
 
+        $form->addReCaptcha('captcha', NULL, "Please prove you're not a robot.");
         $form->addSubmit('send', 'Register');
         $form->onSuccess[] = array($this, 'tntRegistrationFormSucceeded');
         return $form;

@@ -40,7 +40,7 @@ class MenuControl extends Nette\Application\UI\Control
         $tnt->subItems[] = new MenuItem("Social programme", "Tnt", "socialProgramme");
 
         $venues->subItems[] = new MenuItem("Boarding", "Venues", "boarding");
-        $venues->subItems[] = new MenuItem("Lodging", "Venues", "lodging");
+        $venues->subItems[] = new MenuItem("Accommodation", "Venues", "accommodation");
         $venues->subItems[] = new MenuItem("Transportation", "Venues", "transportation");
         $venues->subItems[] = new MenuItem("Main event", "Venues", "mainEvent");
 

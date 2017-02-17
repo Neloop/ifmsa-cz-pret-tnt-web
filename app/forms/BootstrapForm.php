@@ -18,7 +18,7 @@ class BootstrapForm extends Form
         $renderer->wrappers['control']['container'] = 'div class="col-10"';
         $renderer->wrappers['label']['container'] = 'div class="col-2 control-label"';
         $renderer->wrappers['control']['description'] = 'span class="help-block"';
-        $renderer->wrappers['control']['errorcontainer'] = 'span class="help-block"';
+        $renderer->wrappers['control']['errorcontainer'] = 'span class="help-block text-danger"';
         $renderer->wrappers['error']['container'] = 'div';
         $renderer->wrappers['error']['item'] = 'div class="alert alert-danger" role="alert"';
         $this->getElementPrototype()->class('form-horizontal');
