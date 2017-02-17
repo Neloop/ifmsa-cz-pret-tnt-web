@@ -5,7 +5,7 @@
 parameters:
     siteName: "PRET & TNT"
     siteUrl: "https://pret.ifmsa.cz"
-    googleApiKey: YOUR_API_KEY
+    googleMapsApiKey: YOUR_API_KEY
     facebookEventUrl: "https://www.facebook.com"
     private:
         username: "user"
@@ -53,9 +53,11 @@ session:
 
 services:
     router: App\RouterFactory::createRouter
+    authenticator: App\Security\MyAuthenticator
 
     # forms
     - App\Forms\RegistrationFormsFactory
+    - App\Forms\LoginFormFactory
 
     # helpers
     - App\Helpers\AppParams(@container::getParameters())

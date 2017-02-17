@@ -2,10 +2,11 @@
 
 namespace App\Presenters;
 
-use Nette\Http\IResponse;
 use App\Helpers\PrivateParams;
 use App\Model\Repository\Participants;
 use App\Helpers\RegistrationLabelsHelper;
+use App\Helpers\Emails\PaymentEmailsSender;
+use App\Forms\LoginFormFactory;
 
 class PrivatePresenter extends BasePresenter
 {
@@ -27,31 +28,70 @@ class PrivatePresenter extends BasePresenter
      */
     public $registrationLabelsHelper;
 
-    public function startup()
+    /**
+     * @var LoginFormFactory
+     * @inject
+     */
+    public $loginFormFactory;
+
+    /**
+     * @var PaymentEmailsSender
+     * @inject
+     */
+    public $paymentEmailsSender;
+
+    protected function createComponentLoginForm()
     {
-        parent::startup();
+        $form = $this->loginFormFactory->createLoginForm();
+        $form->onSuccess[] = function () {
+            $this->flashMessage('You have been succesfully logged in.', "success");
+            $this->redirect("Private:list");
+        };
+        return $form;
+    }
 
-        if (!isset($_SERVER['PHP_AUTH_USER']) ||
-                $_SERVER['PHP_AUTH_USER'] !== $this->privateParams->getUsername() ||
-                $_SERVER['PHP_AUTH_PW'] !== $this->privateParams->getPassword()) {
-            $response = $this->getHttpResponse();
-            $response->setHeader('WWW-Authenticate', 'Basic realm="PRET&TNT CZ Private Parts"');
-            $response->setCode(IResponse::S401_UNAUTHORIZED);
-
-            echo "<h1>Authentication failed</h1>";
-
-            $this->terminate();
+    private function isLoggedIn()
+    {
+        if (!$this->user->isLoggedIn()) {
+            $this->redirect("Private:");
         }
     }
 
     public function actionDefault()
     {
+        if ($this->user->isLoggedIn()) {
+            $this->redirect("Private:list");
+        }
+    }
+
+    public function actionList()
+    {
+        $this->isLoggedIn();
+
         $this->template->participants = $this->participants->findAll();
     }
 
     public function actionParticipant($id)
     {
+        $this->isLoggedIn();
+
         $this->template->labelsHelper = $this->registrationLabelsHelper;
         $this->template->participant = $this->participants->findOrThrow($id);
+    }
+
+    public function actionSendPaymentEmail($id)
+    {
+        $this->isLoggedIn();
+
+        $participant = $this->participants->findOrThrow($id);
+        if ($this->paymentEmailsSender->send($participant)) {
+            $participant->paymentEmailSent = true;
+            $this->participants->flush();
+            $this->flashMessage("Payment Details Email successfully sent to participant", "success");
+        } else {
+            $this->flashMessage("Error during sending Payment Details Email, please try it again later", "warning");
+        }
+
+        $this->redirect("Private:participant", $id);
     }
 }

@@ -18,7 +18,7 @@ class RegistrationLabelsHelper
             "visaNeeded" => "Do you need a visa to Czech republic?",
             "invitationLetterNeeded" => "Do you need an invitation letter?",
             "nmo" => "NMO",
-            "nmoPosition" => "NMO Position",
+            "nmoPosition" => "Position in NMO",
             "ifmsaEventsAttended" => "IFMSA events attended",
             "universityFaculty" => "University/Faculty",
             "city" => "City",

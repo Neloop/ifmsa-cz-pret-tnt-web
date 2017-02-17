@@ -13,12 +13,14 @@ class BootstrapForm extends Form
 
         $renderer = $this->getRenderer();
         $renderer->wrappers['controls']['container'] = null;
-        $renderer->wrappers['pair']['container'] = 'div class=row form-group';
+        $renderer->wrappers['pair']['container'] = 'div class="form-group row"';
         $renderer->wrappers['pair']['.error'] = 'has-error';
-        $renderer->wrappers['control']['container'] = 'div class=col-9';
-        $renderer->wrappers['label']['container'] = 'div class="col-3 control-label"';
-        $renderer->wrappers['control']['description'] = 'span class=help-block';
-        $renderer->wrappers['control']['errorcontainer'] = 'span class=help-block';
+        $renderer->wrappers['control']['container'] = 'div class="col-10"';
+        $renderer->wrappers['label']['container'] = 'div class="col-2 control-label"';
+        $renderer->wrappers['control']['description'] = 'span class="help-block"';
+        $renderer->wrappers['control']['errorcontainer'] = 'span class="help-block"';
+        $renderer->wrappers['error']['container'] = 'div';
+        $renderer->wrappers['error']['item'] = 'div class="alert alert-danger" role="alert"';
         $this->getElementPrototype()->class('form-horizontal');
 
         $this->onRender[] = function ($form) {

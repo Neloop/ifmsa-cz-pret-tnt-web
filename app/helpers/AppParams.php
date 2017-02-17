@@ -9,14 +9,14 @@ class AppParams extends Nette\Object
 {
     protected $siteName;
     protected $siteUrl;
-    protected $googleApiKey;
+    protected $googleMapsApiKey;
     protected $facobookEventUrl;
 
     public function __construct(array $config)
     {
         $this->siteName = Arrays::get($config, ["siteName"], "");
         $this->siteUrl = Arrays::get($config, ["siteUrl"], "");
-        $this->googleApiKey = Arrays::get($config, ["googleApiKey"], "");
+        $this->googleMapsApiKey = Arrays::get($config, ["googleMapsApiKey"], "");
         $this->facobookEventUrl = Arrays::get($config, ["facebookEventUrl"], "");
     }
 
@@ -30,9 +30,9 @@ class AppParams extends Nette\Object
         return $this->siteUrl;
     }
 
-    public function getGoogleApiKey()
+    public function getGoogleMapsApiKey()
     {
-        return $this->googleApiKey;
+        return $this->googleMapsApiKey;
     }
 
     public function getFacebookEventUrl()

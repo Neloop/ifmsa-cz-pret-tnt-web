@@ -31,6 +31,7 @@ use Kdyby\Doctrine\Entities\MagicAccessors;
  * @property string $tntVisionAsTrainer
  * @property string $tntUsageOfKnowledge
  * @property boolean $paid
+ * @property boolean $paymentEmailSent
  * @property \DateTime $registrationDate
  * @property PaymentTransaction $paymentTransaction
  */
@@ -147,6 +148,11 @@ class Participant
      * @ORM\Column(type="boolean")
      */
     protected $paid = false;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $paymentEmailSent = false;
 
     /**
      * @ORM\Column(type="datetime")

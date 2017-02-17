@@ -1,9 +1,106 @@
 {block content}
-<h1 n:block="title">Participant</h1>
+<h1 n:block="title">{$participant->pretOrTnt|upper} Participant</h1>
 <table class="table">
     <tr>
-        <th>{$labelsHelper->getLabel("firstname")}</th>
-        <td>{$participant->firstname}</td>
+        <th>Name</th>
+        <td>{$participant->firstname} {$participant->surname}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("email")}</th>
+        <td>{$participant->email}</td>
+    </tr>
+    <tr>
+        <th>Registration Date (UTC)</th>
+        <td>{$participant->registrationDateUtc|date:'d. n. Y H:i'}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("pretOrTnt")}</th>
+        <td>{$participant->pretOrTnt|upper}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("phone")}</th>
+        <td>{$participant->phone}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("allergies")}</th>
+        <td>{$participant->allergies}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("diet")}</th>
+        <td>{$participant->diet}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("visaNeeded")}</th>
+        <td>{$participant->visaNeeded ? "Yes" : "No"}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("invitationLetterNeeded")}</th>
+        <td>{$participant->invitationLetterNeeded ? "Yes" : "No"}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("nmo")}</th>
+        <td>{$participant->nmo}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("nmoPosition")}</th>
+        <td>{$participant->nmoPosition}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("ifmsaEventsAttended")}</th>
+        <td>{$participant->ifmsaEventsAttended}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("universityFaculty")}</th>
+        <td>{$participant->universityFaculty}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("city")}</th>
+        <td>{$participant->city}</td>
+    </tr>
+    <tr>
+        <th>{$labelsHelper->getLabel("yearOfStudy")}</th>
+        <td>{$participant->yearOfStudy}</td>
+    </tr>
+
+    <tr>
+        <th colspan="2">{$labelsHelper->getLabel("motivation")}</th>
+    </tr>
+    <tr>
+        <td colspan="2">{$participant->motivation}</td>
+    </tr>
+
+    {if $participant->isTnt()}
+    <tr>
+        <th colspan="2">{$labelsHelper->getLabel("tntStrengthsAsTrainer")}</th>
+    </tr>
+    <tr>
+        <td colspan="2">{$participant->tntStrengthsAsTrainer}</td>
+    </tr>
+
+    <tr>
+        <th colspan="2">{$labelsHelper->getLabel("tntVisionAsTrainer")}</th>
+    </tr>
+    <tr>
+        <td colspan="2">{$participant->tntVisionAsTrainer}</td>
+    </tr>
+
+    <tr>
+        <th colspan="2">{$labelsHelper->getLabel("tntUsageOfKnowledge")}</th>
+    </tr>
+    <tr>
+        <td colspan="2">{$participant->tntUsageOfKnowledge}</td>
+    </tr>
+    {/if}
+</table>
+<h2>Payment Details</h2>
+<table class="table">
+    <tr>
+        <th>Paid</th>
+        <td>{$participant->paid ? "Yes" : "No"}</td>
+    </tr>
+    <tr>
+        <th>Send Payment Details Email</th>
+        <td>Not available at the moment!</td>
     </tr>
 </table>
 {/block}
