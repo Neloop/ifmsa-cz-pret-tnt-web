@@ -254,6 +254,24 @@ footer {
     width: 25%;
 }
 
+.form-group label, .form-group legend {
+    font-weight: bold;
+}
+
+.form-check .form-check-label {
+    font-weight: normal;
+    width: 100%;
+}
+
+.inline-radio label {
+    vertical-align: middle
+}
+.inline-radio input[type=text] {
+    margin-left: 10px;
+    width: auto;
+    display: inline-block;
+}
+
 @media only screen and (max-width : 992px) {
     nav {
         width: 0;

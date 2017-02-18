@@ -1,6 +1,127 @@
 {block content}
 <h1 n:block="title">PRET Registration</h1>
 
-{control pretRegistrationForm}
+{form pretRegistrationForm}
+    <div class="row">
+    {var $formItem = $form["firstname"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    {var $formItem = $form["surname"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    {var $formItem = $form["email"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    {var $formItem = $form["phone"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+        {var $formItem = $form["allergies"]}
+            <div class="form-group {if $formItem->required}required{/if}">
+                {label $formItem /}
+                {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+            </div>
+        {var $formItem = $form["visaNeeded"]}
+            <div class="form-check {if $formItem->required}required{/if}">
+                <label class="form-check-label">
+                    {$formItem->getControlPart()->class("form-check-input", true)}
+                    {$formItem->getLabelPart()[0]}
+                </label>
+                <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+            </div>
+        {var $formItem = $form["invitationLetterNeeded"]}
+            <div class="form-check {if $formItem->required}required{/if}">
+                <label class="form-check-label">
+                    {$formItem->getControlPart()->class("form-check-input", true)}
+                    {$formItem->getLabelPart()[0]}
+                </label>
+                <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+            </div>
+        </div>
+    {var $formItem = $form["diet"]}
+    {var $formItemText = $form["dietText"]}
+        <fieldset class="form-group col-6 {if $formItem->required}required{/if}">
+            <legend class="col-form-legend">{$formItem->label[0]}</legend>
+            {foreach $formItem->items as $item => $label}
+                {if $iterator->counter != count($formItem->items)}
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            {input $formItem->name:$item, class => "form-check-input"} {$label}
+                        </label>
+                    </div>
+                {else}
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            {input $formItem->name:$item, class => "form-check-input"} {$label}
+                            {input $formItemText} <span class="form-text text-danger" n:ifcontent>{$formItemText->error}</span>
+                        </label>
+                    </div>
+                {/if}
+            {/foreach}
+            <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </fieldset>
+    </div>
+    <div class="row">
+    {var $formItem = $form["nmo"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    {var $formItem = $form["nmoPosition"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    {var $formItem = $form["universityFaculty"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    {var $formItem = $form["city"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    {var $formItem = $form["yearOfStudy"]}
+        <div class="form-group col-6 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    </div>
+    <div class="row">
+    {var $formItem = $form["ifmsaEventsAttended"]}
+        <div class="form-group col-12 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    {var $formItem = $form["motivation"]}
+        <div class="form-group col-12 {if $formItem->required}required{/if}">
+            {label $formItem /}
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    </div>
+    <div class="row">
+    {var $formItem = $form["captcha"]}
+        <div class="form-group col-12 {if $formItem->required}required{/if}">
+            {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
+        </div>
+    </div>
+    <div class="row">
+    {var $formItem = $form["send"]}
+        <div class="form-group col-12">
+            {input $formItem}
+        </div>
+    </div>
+{/form}
 
 {/block}
