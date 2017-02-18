@@ -6,6 +6,8 @@ use Nette;
 use App\Model\Repository\Participants;
 use App\Model\Repository\PaymentTransactions;
 use App\Helpers\Payment\PaymentTransactionsHelper;
+use App\Helpers\PretEventHelper;
+use App\Helpers\TntEventHelper;
 use App\Exceptions\PaymentException;
 
 class PaymentPresenter extends BasePresenter
@@ -30,6 +32,16 @@ class PaymentPresenter extends BasePresenter
      * @inject
      */
     public $paymentTransactions;
+    /**
+     * @var PretEventHelper
+     * @inject
+     */
+    public $pretEventHelper;
+    /**
+     * @var TntEventHelper
+     * @inject
+     */
+    public $tntEventHelper;
 
     public function actionStartTransaction($id)
     {
@@ -39,8 +51,15 @@ class PaymentPresenter extends BasePresenter
         }
 
         // prepare vars
-        $description = "hello"; // TODO
-        $amount = 100;
+        $description = "Type:{$participant->pretOrTnt};";
+        $description .= "Email:{$participant->email};";
+        $description .= "RegDate:{$participant->registrationDateUtc->format('Y-m-d H:i:s')}";
+
+        if ($participant->isPret()) {
+            $amount = $this->pretEventHelper->getParticipantFee($participant);
+        } else {
+            $amount = $this->tntEventHelper->getParticipantFee($participant);
+        }
 
         // start transaction
         try {
@@ -56,8 +75,7 @@ class PaymentPresenter extends BasePresenter
             $this->participants->flush();
 
             // and finally redirect user to gateway
-            //$this->redirectUrl($url);
-            $this->redirect("Payment:transactionOk", $transaction->transactionId); // TODO
+            $this->redirectUrl($url);
         } catch (PaymentException $e) {
             $this->error($e->getMessage());
         }

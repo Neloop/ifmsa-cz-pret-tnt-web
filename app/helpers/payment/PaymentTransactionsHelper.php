@@ -49,7 +49,7 @@ class PaymentTransactionsHelper
         // create connection and register transaction
         $response =
                 $this->paymentConnection->startTransaction(
-                    $amount,
+                    $amount * 100,
                     $ip,
                     $description,
                     $this->paymentParams->currency

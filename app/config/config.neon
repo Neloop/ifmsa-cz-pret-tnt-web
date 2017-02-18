@@ -7,6 +7,16 @@ parameters:
     siteUrl: "https://pret.ifmsa.cz"
     googleMapsApiKey: YOUR_API_KEY
     facebookEventUrl: "https://www.facebook.com"
+    pretEvent:
+        earlyStart: "YYYY-MM-DD HH:MM:SS"  # in UTC
+        regularStart: "YYYY-MM-DD HH:MM:SS"  # in UTC
+        end: "YYYY-MM-DD HH:MM:SS"  # in UTC
+        earlyFee: 120  # in currency defined at payment.currency
+        regularFee: 140  # in currency defined at payment.currency
+    tntEvent:
+        start: "YYYY-MM-DD HH:MM:SS"  # in UTC
+        end: "YYYY-MM-DD HH:MM:SS"  # in UTC
+        fee: 130  # in currency defined at payment.currency
     private:
         username: "user"
         password: "pass"
@@ -67,6 +77,10 @@ services:
 
     # helpers
     - App\Helpers\AppParams(@container::getParameters())
+    - App\Helpers\PretEventParams(%pretEvent%)
+    - App\Helpers\TntEventParams(%tntEvent%)
+    - App\Helpers\PretEventHelper
+    - App\Helpers\TntEventHelper
     - App\Helpers\PrivateParams(%private%)
     - App\Helpers\RegistrationLabelsHelper
     - App\Helpers\Emails\EmailHelper

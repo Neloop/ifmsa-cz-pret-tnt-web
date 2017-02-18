@@ -6,6 +6,8 @@ use App\Helpers\PrivateParams;
 use App\Model\Repository\Participants;
 use App\Helpers\RegistrationLabelsHelper;
 use App\Helpers\Emails\PaymentEmailsSender;
+use App\Helpers\PretEventHelper;
+use App\Helpers\TntEventHelper;
 use App\Forms\LoginFormFactory;
 
 class PrivatePresenter extends BasePresenter
@@ -39,6 +41,18 @@ class PrivatePresenter extends BasePresenter
      * @inject
      */
     public $paymentEmailsSender;
+
+    /**
+     * @var PretEventHelper
+     * @inject
+     */
+    public $pretEventHelper;
+
+    /**
+     * @var TntEventHelper
+     * @inject
+     */
+    public $tntEventHelper;
 
     protected function createComponentLoginForm()
     {
@@ -76,12 +90,20 @@ class PrivatePresenter extends BasePresenter
         $this->isLoggedIn();
 
         $this->template->labelsHelper = $this->registrationLabelsHelper;
-        $this->template->participant = $this->participants->findOrThrow($id);
+        $this->template->participant = $participant = $this->participants->findOrThrow($id);
+
+        if ($participant->isPret()) {
+            $this->template->fee = $this->pretEventHelper->getParticipantFee($participant);
+        } else {
+            $this->template->fee = $this->tntEventHelper->getParticipantFee($participant);
+        }
     }
 
     public function actionSendPaymentEmail($id)
     {
         $this->isLoggedIn();
+
+        $this->redirect("Homepage:"); // TODO: remove this, when payment email ready
 
         $participant = $this->participants->findOrThrow($id);
         if ($this->paymentEmailsSender->send($participant)) {

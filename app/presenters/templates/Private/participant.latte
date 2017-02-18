@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <th>Registration Date (UTC)</th>
-        <td>{$participant->registrationDateUtc|date:'d. n. Y H:i'}</td>
+        <td>{$participant->registrationDateUtc|date:'j. n. Y H:i'}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("pretOrTnt")}</th>
@@ -100,7 +100,16 @@
     </tr>
     <tr>
         <th>Send Payment Details Email</th>
-        <td>Not available at the moment!</td>
+        <td>
+            <a n:href="Private:sendPaymentEmail, id => $participant->id" class="btn btn-primary">Send</a>
+            {if $participant->paymentEmailSent}
+                <span class="text-danger">Email already sent!</span>
+            {/if}
+        </td>
+    </tr>
+    <tr>
+        <th>Fee</th>
+        <td>{$fee} &euro;</td>
     </tr>
 </table>
 {/block}

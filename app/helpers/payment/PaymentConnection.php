@@ -16,7 +16,7 @@ class PaymentConnection
         $this->paymentParams = $paymentParams;
         $this->guzzleClient = new GuzzleHttp\Client(array(
             //"verify" => \Composer\CaBundle\CaBundle::getSystemCaRootBundlePath(),
-            "verify" => false, // TODO
+            "verify" => false,
             "query" => ["key" => $paymentParams->serverAuthKey]
         ));
     }

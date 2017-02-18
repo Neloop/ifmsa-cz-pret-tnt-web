@@ -4,6 +4,7 @@ namespace App\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Kdyby\Doctrine\Entities\MagicAccessors;
+use App\Helpers\DatetimeHelper;
 
 /**
  * Participant
@@ -32,7 +33,7 @@ use Kdyby\Doctrine\Entities\MagicAccessors;
  * @property string $tntUsageOfKnowledge
  * @property boolean $paid
  * @property boolean $paymentEmailSent
- * @property \DateTime $registrationDate
+ * @property \DateTime $registrationDateUtc
  * @property PaymentTransaction $paymentTransaction
  */
 class Participant
@@ -199,7 +200,13 @@ class Participant
         $this->yearOfStudy = $yearOfStudy;
         $this->motivation = $motivation;
 
-        $this->registrationDateUtc = \App\Helpers\DatetimeHelper::getNowUTC();
+        $this->registrationDateUtc = DatetimeHelper::getNowUTC();
+    }
+
+    public function getRegistrationDateUtc()
+    {
+        $original = $this->registrationDateUtc->format("Y-m-d H:i:s");
+        return DatetimeHelper::createUTC($original);
     }
 
     public function isPret(): bool
