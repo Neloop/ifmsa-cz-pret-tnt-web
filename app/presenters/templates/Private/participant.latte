@@ -96,7 +96,13 @@
 <table class="table">
     <tr>
         <th>Paid</th>
-        <td>{$participant->paid ? "Yes" : "No"}</td>
+        <td>
+            {if $participant->paid}
+                <span class="text-success">Yes</span>
+            {else}
+                <span class="text-danger">No</span>
+            {/if}
+        </td>
     </tr>
     <tr>
         <th>Send Payment Details Email</th>

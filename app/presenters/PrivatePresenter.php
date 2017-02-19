@@ -103,8 +103,6 @@ class PrivatePresenter extends BasePresenter
     {
         $this->isLoggedIn();
 
-        $this->redirect("Homepage:"); // TODO: remove this, when payment email ready
-
         $participant = $this->participants->findOrThrow($id);
         if ($this->paymentEmailsSender->send($participant)) {
             $participant->paymentEmailSent = true;

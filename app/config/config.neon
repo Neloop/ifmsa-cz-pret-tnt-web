@@ -6,7 +6,7 @@ parameters:
     siteName: "PRET & TNT"
     siteUrl: "https://pret.ifmsa.cz"
     siteAlternativeUrl: "https://tnt.ifmsa.cz"
-    participantPaymentUrl: %siteUrl%/payment/start-transaction/
+    participantPaymentUrl: %siteUrl%/payment/start-transaction
     googleMapsApiKey: YOUR_API_KEY
     facebookEventUrl: "https://www.facebook.com"
     pretEvent:

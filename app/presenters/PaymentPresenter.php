@@ -92,14 +92,14 @@ class PaymentPresenter extends BasePresenter
             $correct = $this->paymentTransactionsHelper->processTransactionOk($transaction);
             if ($correct) {
                 // just let us know that transaction is ok to our database
-                $participant = $transaction->eventParticipant;
+                $participant = $transaction->participant;
                 $participant->paid = true;
-                $this->eventParticipants->flush();
+                $this->participants->flush();
             } else {
-                $this->redirect("Payment:transactionIncorrect", urlencode($transId));
+                $this->redirect("Payment:transactionIncorrect", $transId);
             }
         } catch (PaymentException $e) {
-            $this->error($e->getMessage());
+            $this->redirect("Payment:transactionIncorrect", $transId);
         }
     }
 
