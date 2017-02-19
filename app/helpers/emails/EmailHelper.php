@@ -20,7 +20,8 @@ class EmailHelper
     /** @var AppParams */
     private $appParams;
 
-    public function __construct(IMailer $mailer, AppParams $appParams, EmailsParams $emailsParams)
+    public function __construct(IMailer $mailer, AppParams $appParams,
+            EmailsParams $emailsParams)
     {
         $this->mailer = $mailer;
         $this->emailsParams = $emailsParams;

@@ -9,6 +9,8 @@ class AppParams extends Nette\Object
 {
     protected $siteName;
     protected $siteUrl;
+    protected $siteAlternativeUrl;
+    protected $participantPaymentUrl;
     protected $googleMapsApiKey;
     protected $facobookEventUrl;
 
@@ -16,6 +18,8 @@ class AppParams extends Nette\Object
     {
         $this->siteName = Arrays::get($config, ["siteName"], "");
         $this->siteUrl = Arrays::get($config, ["siteUrl"], "");
+        $this->siteAlternativeUrl = Arrays::get($config, ["siteAlternativeUrl"], "");
+        $this->participantPaymentUrl = Arrays::get($config, ["participantPaymentUrl"], "");
         $this->googleMapsApiKey = Arrays::get($config, ["googleMapsApiKey"], "");
         $this->facobookEventUrl = Arrays::get($config, ["facebookEventUrl"], "");
     }
@@ -28,6 +32,16 @@ class AppParams extends Nette\Object
     public function getSiteUrl()
     {
         return $this->siteUrl;
+    }
+
+    public function getSiteAlternativeUrl()
+    {
+        return $this->siteAlternativeUrl;
+    }
+
+    public function getParticipantPaymentUrl()
+    {
+        return $this->participantPaymentUrl;
     }
 
     public function getGoogleMapsApiKey()
