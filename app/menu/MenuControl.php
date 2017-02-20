@@ -45,8 +45,8 @@ class MenuControl extends Nette\Application\UI\Control
         $venues->subItems[] = new MenuItem("Main event", "Venues", "mainEvent");
 
         $registration->subItems[] = new MenuItem("Timetable & fees", "Registration", "information");
-        //$registration->subItems[] = new MenuItem("PRET Registration", "Registration", "pretForm");
-        //$registration->subItems[] = new MenuItem("TNT Registration", "Registration", "tntForm");
+        $registration->subItems[] = new MenuItem("PRET Registration", "Registration", "pretForm");
+        $registration->subItems[] = new MenuItem("TNT Registration", "Registration", "tntForm");
 
         return $items;
     }

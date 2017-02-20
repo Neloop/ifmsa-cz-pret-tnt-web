@@ -86,7 +86,7 @@ class PaymentTransactionsHelper
     public function processTransactionOk(PaymentTransaction $transaction)
     {
         $response = $this->paymentConnection->getTransactionResult(
-            urlencode($transaction->transactionId)
+            $transaction->transactionId
         );
         $respArray = json_decode($response, true);
 
