@@ -4,28 +4,28 @@
 {form tntRegistrationForm}
     <div class="row">
     {var $formItem = $form["firstname"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>
     {var $formItem = $form["surname"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>
     {var $formItem = $form["email"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>
     {var $formItem = $form["phone"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
         {var $formItem = $form["allergies"]}
             <div class="form-group {if $formItem->required}required{/if}">
                 {label $formItem /}
@@ -50,7 +50,7 @@
         </div>
     {var $formItem = $form["diet"]}
     {var $formItemText = $form["dietText"]}
-        <fieldset class="form-group col-6 {if $formItem->required}required{/if}">
+        <fieldset class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             <legend class="col-form-legend">{$formItem->label[0]}</legend>
             {foreach $formItem->items as $item => $label}
                 {if $iterator->counter != count($formItem->items)}
@@ -73,27 +73,27 @@
     </div>
     <div class="row">
     {var $formItem = $form["nmo"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>
     {var $formItem = $form["nmoPosition"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>
     {var $formItem = $form["universityFaculty"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>
     {var $formItem = $form["city"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>
     {var $formItem = $form["yearOfStudy"]}
-        <div class="form-group col-6 {if $formItem->required}required{/if}">
+        <div class="form-group col-12 col-lg-6 {if $formItem->required}required{/if}">
             {label $formItem /}
             {input $formItem} <span class="form-text text-danger" n:ifcontent>{$formItem->error}</span>
         </div>

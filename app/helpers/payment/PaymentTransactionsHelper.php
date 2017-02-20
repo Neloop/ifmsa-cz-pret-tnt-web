@@ -122,7 +122,7 @@ class PaymentTransactionsHelper
     {
         // get information from merchant and store them in database
         $response = $this->paymentConnection->getTransactionResult(
-            urlencode($transaction->transactionId)
+            $transaction->transactionId
         );
         $response = $errorMsg . ' + ' . $response;
 

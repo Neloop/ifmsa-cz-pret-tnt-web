@@ -12,11 +12,11 @@ class BootstrapForm extends Form
         parent::__construct($parent, $name);
 
         $renderer = $this->getRenderer();
-        $renderer->wrappers['controls']['container'] = null;
-        $renderer->wrappers['pair']['container'] = 'div class="form-group row"';
+        $renderer->wrappers['controls']['container'] = 'div class="row"';
+        $renderer->wrappers['pair']['container'] = 'div class="form-group col-12"';
         $renderer->wrappers['pair']['.error'] = 'has-error';
-        $renderer->wrappers['control']['container'] = 'div class="col-10"';
-        $renderer->wrappers['label']['container'] = 'div class="col-2 control-label"';
+        $renderer->wrappers['control']['container'] = null;
+        $renderer->wrappers['label']['container'] = null;
         $renderer->wrappers['control']['description'] = 'span class="help-block"';
         $renderer->wrappers['control']['errorcontainer'] = 'span class="help-block text-danger"';
         $renderer->wrappers['error']['container'] = 'div';
