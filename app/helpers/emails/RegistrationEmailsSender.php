@@ -33,7 +33,7 @@ class RegistrationEmailsSender
 
         $message = "<p>Dear IFMSA friend,</p>";
         $message .= "<p>thank you for your registration. There are 30 spots in the first registration wave so we will consider all registrations carefully. We will let you know before the second registration period if you are chosen or not.</p>";
-        $message .= "<p>Stay tuned on our website <a href='{$this->appParams->getSiteUrl()}'>pret.ifmsa.cz</a> / <a href='{$this->appParams->getSiteAlternativeUrl()}'>tnt.ifmsa.cz</a> or the <a href='{$this->appParams->getFacebookEventUrl()}'>FB event.</a></p>";
+        $message .= "<p>Stay tuned on our website <a href='{$this->appParams->getSiteUrl()}' target='_blank'>pret.ifmsa.cz</a> / <a href='{$this->appParams->getSiteAlternativeUrl()}' target='_blank'>tnt.ifmsa.cz</a> or the <a href='{$this->appParams->getFacebookEventUrl()}' target='_blank'>FB event.</a></p>";
 
         return $this->emailHelper->send([$participant->email], $subject, $message);
     }

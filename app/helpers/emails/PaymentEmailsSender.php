@@ -29,7 +29,7 @@ class PaymentEmailsSender
 
         $message = "<p>Dear IFMSA friend,</p>";
         $message .= "<p>thank you again for your registration. We have great news for you, you were chosen to participate PRET&TNT Prague 2017. There is only one final step, payment for the event.</p>";
-        $message .= "<p>Your registration will be recognized as binding if you execute payment through our payment gateway which resides <a href='{$this->appParams->getParticipantPaymentUrl()}/{$participant->id}'>here</a>.</p>";
+        $message .= "<p>Your registration will be recognized as binding if you execute payment through our payment gateway which resides <a href='{$this->appParams->getParticipantPaymentUrl()}/{$participant->id}' target='_blank'>here</a>.</p>";
         $message .= "<p>And this is it, we will look forward to meet you in Prague!</p>";
 
         return $this->emailHelper->send([$participant->email], $subject, $message);
