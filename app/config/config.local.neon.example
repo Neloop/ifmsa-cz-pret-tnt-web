@@ -1,0 +1,44 @@
+parameters:
+    siteName: "PRET & TNT"
+    siteUrl: "https://pret.ifmsa.cz"
+    siteAlternativeUrl: "https://tnt.ifmsa.cz"
+    participantPaymentUrl: %siteUrl%/payment/start-transaction
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY
+    facebookEventUrl: FACEBOOK_URL
+    pretEvent:
+        earlyStart: "2017-02-20 00:00:00"  # in UTC
+        regularStart: "2017-04-01 00:00:00"  # in UTC
+        end: "2017-04-28 00:00:00"  # in UTC
+        earlyFee: 120  # in currency defined at payment.currency
+        regularFee: 140  # in currency defined at payment.currency
+    tntEvent:
+        start: "2017-02-20 00:00:00"  # in UTC
+        end: "2017-03-05 00:00:00"  # in UTC
+        fee: 130  # in currency defined at payment.currency
+    private:
+        username: "user"
+        password: "pass"
+    emails:
+        from: "from@from.from"
+        reportTo: "to@to.to"  # after registration, report about participant is sent to this email
+        subjectPrefix: "PRET&TNT CZ"
+    payment:
+        service: "pret-tnt"
+        currency: 978
+        serverAuthKey: AUTH_KEY
+        serverStartTransactionUrl: START_TRANSACTION_URL
+        serverGetTransactionResultUrl: GET_TRANSACTION_RESULT_URL
+
+
+reCaptcha:
+    siteKey: SITE_KEY
+    secretKey: SECRET_KEY
+
+
+doctrine:
+    user: 'root'
+    password: ''
+    host: localhost
+    dbname: 'ifmsa-pret-tnt'
+    metadata:
+        App\Model: %appDir%/model

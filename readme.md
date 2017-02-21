@@ -1,6 +1,6 @@
 # IFMSA CZ - PRET/TNT Website
 
-Desc
+Simple website presenting two events (PRET, TNT) hosting by IFMSA CZ with registration system.
 
 ## Installation
 
