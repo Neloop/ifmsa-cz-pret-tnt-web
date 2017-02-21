@@ -250,6 +250,15 @@ footer {
     width: 50%;
 }
 
+.content-carousel {
+    width: 50%;
+    margin: auto;
+}
+
+.carousel-item.active, .carousel-item-next, .carousel-item-prev{
+    display: block !important;
+}
+
 .profile-img-card {
     width: 25%;
 }
@@ -312,6 +321,10 @@ footer {
     }
 
     .content-video {
+        width: 100%;
+    }
+
+    .content-carousel {
         width: 100%;
     }
 
