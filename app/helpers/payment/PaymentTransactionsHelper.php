@@ -9,21 +9,40 @@ use App\Model\Repository\PaymentTransactions;
 use App\Exceptions\PaymentException;
 
 /**
- * Description of PaymentTransactionsHelper
- *
- * @author Martin
+ * Payment gateway transaction helper which manages connection to the remote
+ * server through @see PaymentConnection and also take care of all appropriate
+ * database entities like @see PaymentTransaction and @see PaymentError.
  */
 class PaymentTransactionsHelper
 {
-    /** @var PaymentParams */
+    /**
+     * Payment parameters from config files.
+     * @var PaymentParams
+     */
     private $paymentParams;
-    /** @var PaymentConnection */
+    /**
+     * Actual connection helper to the remote server.
+     * @var PaymentConnection
+     */
     private $paymentConnection;
-    /** @var PaymentErrors */
+    /**
+     * Payment errors repository.
+     * @var PaymentErrors
+     */
     private $paymentErrors;
-    /** @var PaymentTransactions */
+    /**
+     * Payment transactions repository.
+     * @var PaymentTransactions
+     */
     private $paymentTransactions;
 
+    /**
+     * Constructor initialized via DI.
+     * @param PaymentParams $paymentParams
+     * @param PaymentConnection $paymentConnection
+     * @param PaymentErrors $paymentErrors
+     * @param PaymentTransactions $paymentTransactions
+     */
     public function __construct(
         PaymentParams $paymentParams,
         PaymentConnection $paymentConnection,
@@ -37,15 +56,23 @@ class PaymentTransactionsHelper
     }
 
     /**
-     *
-     * @param string $description
-     * @param int $amount
-     * @param string $ip
-     * @return array($url, $transaction) Redirection URL where payment gateway is placed and transaction entity.
+     * Start transaction by requesting transaction info from remote server and
+     * then examination of response. If the response is successful and in the
+     * right format, return URL where payment page is located and transaction
+     * entity.
+     * @param string $description description of new transaction
+     * @param int $amount amount in whole crowns or euros.
+     * @param string $ip IP address of client which requested payment
+     * @return array($url, $transaction) Redirection URL where payment gateway
+     * is placed and transaction entity.
      * @throws PaymentException if transaction initialization failed
      */
-    public function startTransaction(string $description, int $amount, string $ip): array
-    {
+    public function startTransaction(
+        string $description,
+        int $amount,
+        string $ip
+    ): array {
+
         // create connection and register transaction
         $response =
                 $this->paymentConnection->startTransaction(
@@ -73,14 +100,18 @@ class PaymentTransactionsHelper
             $error = new PaymentError('startTransaction', $response);
             $this->paymentErrors->persist($error);
 
-            throw new PaymentException('Transaction initialization failed, error logged');
+            throw new PaymentException('Transaction initialization failed, '
+                    . 'error logged');
         }
     }
 
     /**
-     *
+     * Response from payment gateway was successful, now process results and
+     * write them into database. If the transaction was correct return true,
+     * otherwise return false.
      * @param PaymentTransaction $transaction
-     * @return boolean True if transaction was successful, false if transaction was incorrect.
+     * @return bool True if transaction was successful, false if transaction
+     * was incorrect.
      * @throws PaymentException if transaction failed critically
      */
     public function processTransactionOk(PaymentTransaction $transaction)
@@ -114,12 +145,15 @@ class PaymentTransactionsHelper
     }
 
     /**
-     *
+     * Payment failed critically and it need to be processed and stored.
      * @param PaymentTransaction $transaction
-     * @param string $errorMsg
+     * @param string $errorMsg error message
      */
-    public function processTransactionFail(PaymentTransaction $transaction, string $errorMsg)
-    {
+    public function processTransactionFail(
+        PaymentTransaction $transaction,
+        string $errorMsg
+    ) {
+    
         // get information from merchant and store them in database
         $response = $this->paymentConnection->getTransactionResult(
             $transaction->transactionId

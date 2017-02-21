@@ -3,11 +3,16 @@
 namespace App\Exceptions;
 
 /**
- *
- * @author Neloop
+ * Used in payment helpers as indication of critical error during starting or
+ * retrieving transaction from remote server.
  */
 class PaymentException extends \Exception
 {
+    /**
+     * Constructor.
+     * @param type $message
+     * @param type $previous defaulted on null
+     */
     public function __construct($message, $previous = null)
     {
         parent::__construct($message, 0, $previous);

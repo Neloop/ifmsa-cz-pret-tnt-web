@@ -5,21 +5,31 @@ namespace App\Helpers;
 use App\Model\Entity\Participant;
 
 /**
- * Description of PretEventHelper
- *
- * @author Neloop
+ * Helper for PRET event and interpretation of parameters given in
+ * configuration file.
  */
 class PretEventHelper
 {
 
-    /** @var PretEventParams */
+    /**
+     * PRET event parameters from config file.
+     * @var PretEventParams
+     */
     private $pretEventParams;
 
+    /**
+     * Constructor initialized via DI.
+     * @param PretEventParams $pretEventParams
+     */
     public function __construct(PretEventParams $pretEventParams)
     {
         $this->pretEventParams = $pretEventParams;
     }
 
+    /**
+     * Detect if PRET event is still open for registration.
+     * @return bool true if PRET is still open
+     */
     public function canRegisterNow(): bool
     {
         $now = DatetimeHelper::getNowUTC();
@@ -30,6 +40,11 @@ class PretEventHelper
         }
     }
 
+    /**
+     * Get fee for given participant based on registration date.
+     * @param Participant $participant
+     * @return int in currency stated in payment config
+     */
     public function getParticipantFee(Participant $participant): int
     {
         $registrationDate = $participant->registrationDateUtc;

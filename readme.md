@@ -30,4 +30,4 @@ PHP 7.0 or higher.
 
 ## License
 
-MIT License
+[MIT License](LICENSE)

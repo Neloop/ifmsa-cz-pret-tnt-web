@@ -8,26 +8,53 @@ use Nette\Mail\Message;
 use Nette\Mail\SendException;
 use Latte;
 
+/**
+ * Email helper providing sending of all emails in the application. All emails
+ * have the same template specified in current directory.
+ */
 class EmailHelper
 {
-
-    /** @var IMailer */
+    /**
+     * Mailer service.
+     * @var IMailer
+     */
     private $mailer;
-
-    /** @var EmailsParams */
+    /**
+     * Parameter for emails from config files.
+     * @var EmailsParams
+     */
     private $emailsParams;
-
-    /** @var AppParams */
+    /**
+     * Application parameters from config files.
+     * @var AppParams
+     */
     private $appParams;
 
-    public function __construct(IMailer $mailer, AppParams $appParams,
-            EmailsParams $emailsParams)
-    {
+    /**
+     * Constructor initialized via DI.
+     * @param IMailer $mailer
+     * @param AppParams $appParams
+     * @param EmailsParams $emailsParams
+     */
+    public function __construct(
+        IMailer $mailer,
+        AppParams $appParams,
+        EmailsParams $emailsParams
+    ) {
+
         $this->mailer = $mailer;
         $this->emailsParams = $emailsParams;
         $this->appParams = $appParams;
     }
 
+    /**
+     * Constructs email message, initializes its template and sends it to given
+     * recipient from address defined in config.
+     * @param array $to possibility of more recipients
+     * @param string $subject subject of the message
+     * @param string $messageText the message
+     * @return bool if email was sent successfully
+     */
     public function send(array $to, string $subject, string $messageText): bool
     {
         $latte = new Latte\Engine;

@@ -5,15 +5,32 @@ namespace App\Helpers;
 use Nette;
 use Nette\Utils\Arrays;
 
+/**
+ * Parameters defined in config files concerning TNT event.
+ */
 class TntEventParams extends Nette\Object
 {
-    /** @var \DateTime */
+    /**
+     * Start date and time of registration to TNT event.
+     * @var \DateTime
+     */
     protected $start;
-    /** @var \DateTime */
+    /**
+     * End date and time of registration to TNT event.
+     * @var \DateTime
+     */
     protected $end;
-    /** @var int */
+    /**
+     * Registration fee which participants have to pay for event. Presented in
+     * currency defined in payment parameters.
+     * @var int
+     */
     protected $fee;
 
+    /**
+     * Constructor initialized via DI.
+     * @param array $config
+     */
     public function __construct(array $config)
     {
         $this->start = DatetimeHelper::createUTC(Arrays::get($config, ["start"], ""));
@@ -21,16 +38,28 @@ class TntEventParams extends Nette\Object
         $this->fee = Arrays::get($config, ["fee"], "");
     }
 
+    /**
+     * Get start of TNT event registration.
+     * @return \DateTime
+     */
     public function getStart(): \DateTime
     {
         return $this->start;
     }
 
+    /**
+     * Get end of TNT event registration.
+     * @return \DateTime
+     */
     public function getEnd(): \DateTime
     {
         return $this->end;
     }
 
+    /**
+     * Get fee applied to participants of TNT event.
+     * @return int
+     */
     public function getFee(): int
     {
         return $this->fee;

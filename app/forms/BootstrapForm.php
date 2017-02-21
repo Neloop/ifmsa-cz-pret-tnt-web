@@ -5,8 +5,17 @@ namespace App\Forms;
 use Nette;
 use Nette\Application\UI\Form;
 
+/**
+ * Special form derived from basic nette form for Twitter bootstrap css/js
+ * framework. During construction renderer is appropriatelly set up.
+ */
 class BootstrapForm extends Form
 {
+    /**
+     * Set up parent instance and appropriate rendering for bootstrap.
+     * @param Nette\ComponentModel\IContainer $parent
+     * @param string $name
+     */
     public function __construct(Nette\ComponentModel\IContainer $parent = null, $name = null)
     {
         parent::__construct($parent, $name);

@@ -6,11 +6,15 @@ use Nette;
 use Nette\Application\Routers\RouteList;
 use Nette\Application\Routers\Route;
 
+/**
+ * Factory for default application router.
+ */
 class RouterFactory
 {
     use Nette\StaticClass;
 
     /**
+     * Get router for this application.
      * @return Nette\Application\IRouter
      */
     public static function createRouter()

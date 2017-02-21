@@ -9,18 +9,32 @@ use App\Helpers\Emails\RegistrationEmailsSender;
 use Nette\Forms\Form;
 
 /**
- *
- * @author Neloop
+ * Factory for both registration forms used by participants.
  */
 class RegistrationFormsFactory
 {
-    /** @var Participants */
+    /**
+     * Participants repository.
+     * @var Participants
+     */
     private $participants;
-    /** @var RegistrationLabelsHelper */
+    /**
+     * Labels helper.
+     * @var RegistrationLabelsHelper
+     */
     private $labelsHelper;
-    /** @var RegistrationEmailsSender */
+    /**
+     * Helper which sends registration emails.
+     * @var RegistrationEmailsSender
+     */
     private $registrationEmailsSender;
 
+    /**
+     * Constructor initialized via DI.
+     * @param Participants $participants
+     * @param RegistrationLabelsHelper $registrationLabelsHelper
+     * @param RegistrationEmailsSender $registrationEmailsSender
+     */
     public function __construct(
         Participants $participants,
         RegistrationLabelsHelper $registrationLabelsHelper,
@@ -32,7 +46,11 @@ class RegistrationFormsFactory
         $this->registrationEmailsSender = $registrationEmailsSender;
     }
 
-    private function getDietItems()
+    /**
+     * Get all items which should be visible within diet radio list.
+     * @return array
+     */
+    private function getDietItems(): array
     {
         return array(
             "regular" => "Regular",
@@ -42,6 +60,10 @@ class RegistrationFormsFactory
         );
     }
 
+    /**
+     * Create basic form which is same for both events.
+     * @return BootstrapForm
+     */
     private function createBasicRegistrationForm(): BootstrapForm
     {
         $form = new BootstrapForm();
@@ -111,6 +133,10 @@ class RegistrationFormsFactory
         return $form;
     }
 
+    /**
+     * Create form specific for PRET event.
+     * @return BootstrapForm
+     */
     public function createPretRegistrationForm(): BootstrapForm
     {
         $form = $this->createBasicRegistrationForm();
@@ -119,6 +145,10 @@ class RegistrationFormsFactory
         return $form;
     }
 
+    /**
+     * Create form specific for TNT event.
+     * @return BootstrapForm
+     */
     public function createTntRegistrationForm(): BootstrapForm
     {
         $form = $this->createBasicRegistrationForm();
@@ -142,15 +172,11 @@ class RegistrationFormsFactory
     }
 
     /**
-     * @param BootstrapForm $form
+     * Get value of diet from radio list or from additional text if another item
+     * was chosen.
      * @param array $values
-     * @return bool true if form is ok
+     * @return string
      */
-    private function checkBasicRegistrationForm(BootstrapForm $form, $values): bool
-    {
-        return true;
-    }
-
     private function getDietFromValues($values): string
     {
         if ($values->diet === "another") {
@@ -160,6 +186,12 @@ class RegistrationFormsFactory
         }
     }
 
+    /**
+     * Create participant entity with some basic information from form values.
+     * @param BootstrapForm $form
+     * @param array $values
+     * @return Participant
+     */
     private function createBasicParticipant(BootstrapForm $form, $values): Participant
     {
         $participant = new Participant(
@@ -182,12 +214,14 @@ class RegistrationFormsFactory
         return $participant;
     }
 
+    /**
+     * Called on successful PRET registration form submit. Stores information
+     * about participant into database.
+     * @param BootstrapForm $form
+     * @param array $values
+     */
     public function pretRegistrationFormSucceeded(BootstrapForm $form, $values)
     {
-        if (!$this->checkBasicRegistrationForm($form, $values)) {
-            return;
-        }
-
         $participant = $this->createBasicParticipant($form, $values);
         $participant->setPret();
         $this->participants->persist($participant);
@@ -195,12 +229,14 @@ class RegistrationFormsFactory
         $this->registrationEmailsSender->send($participant);
     }
 
+    /**
+     * Called on successful TNT registration form submit. Stores information
+     * about participant into database.
+     * @param BootstrapForm $form
+     * @param array $values
+     */
     public function tntRegistrationFormSucceeded(BootstrapForm $form, $values)
     {
-        if (!$this->checkBasicRegistrationForm($form, $values)) {
-            return;
-        }
-
         $participant = $this->createBasicParticipant($form, $values);
         $participant->setTnt();
         $participant->tntStrengthsAsTrainer = $values->tntStrengthsAsTrainer;

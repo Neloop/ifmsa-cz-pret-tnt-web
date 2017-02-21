@@ -4,10 +4,13 @@ namespace App\Helpers;
 
 /**
  *
- * @author Neloop
  */
 class RegistrationLabelsHelper
 {
+    /**
+     *
+     * @var array
+     */
     private $labels = array(
             "firstname" => "Firstname",
             "surname" => "Surname",
@@ -30,7 +33,12 @@ class RegistrationLabelsHelper
             "tntUsageOfKnowledge" => "How do you plan to use the acquired knowledge as a trainer?"
         );
 
-    public function getLabel($key)
+    /**
+     *
+     * @param string $key
+     * @return string
+     */
+    public function getLabel(string $key): string
     {
         return $this->labels[$key];
     }

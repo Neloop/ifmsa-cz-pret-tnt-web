@@ -5,13 +5,15 @@ namespace App\Menu;
 use Nette;
 
 /**
- * Description of MenuControl
- *
+ * Control containing menu with all its items and rendering set up.
  */
 class MenuControl extends Nette\Application\UI\Control
 {
-
-    private function createItems()
+    /**
+     * Create all MenuItem object which should be in the menu.
+     * @return array list of menu items
+     */
+    private function createItems(): array
     {
         $items = array();
 
@@ -51,7 +53,11 @@ class MenuControl extends Nette\Application\UI\Control
         return $items;
     }
 
-    private function create()
+    /**
+     * Create all items in menu and figure out which ones are active.
+     * @return array list of menu items
+     */
+    private function create(): array
     {
         $result = $this->createItems();
 
@@ -71,6 +77,9 @@ class MenuControl extends Nette\Application\UI\Control
         return $result;
     }
 
+    /**
+     * Render menu from special template and display all items.
+     */
     public function render()
     {
         $this->template->setFile(__DIR__ . '/menu.latte');

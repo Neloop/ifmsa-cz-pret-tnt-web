@@ -8,23 +8,29 @@ use Nette\Security\Identity;
 use Nette\Security\AuthenticationException;
 
 /**
- * Description of MyAuthenticator
- *
- * @author Neloop
+ * Simple authenticator which uses only one username and password for
+ * authentication. Credentials are taken from application configuration files.
  */
 class MyAuthenticator implements IAuthenticator
 {
 
-    /** PrivateParams */
+    /**
+     * Private application parameters from config file.
+     * @var PrivateParams
+     */
     private $privateParams;
 
+    /**
+     * Constructor initialized via DI.
+     * @param PrivateParams $privateParams
+     */
     public function __construct(PrivateParams $privateParams)
     {
         $this->privateParams = $privateParams;
     }
 
     /**
-     * Authenticates user against given credentials.
+     * Authenticates user with given credentials against default ones.
      * @param array $credentials
      * @return Identity
      * @throws AuthenticationException if username or password is incorrect

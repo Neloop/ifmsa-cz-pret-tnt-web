@@ -5,21 +5,31 @@ namespace App\Helpers;
 use App\Model\Entity\Participant;
 
 /**
- * Description of TntEventHelper
- *
- * @author Neloop
+ * Helper for TNT event and interpretation of parameters given in
+ * configuration file.
  */
 class TntEventHelper
 {
 
-    /** @var TntEventParams */
+    /**
+     * TNT event parameters from config file.
+     * @var TntEventParams
+     */
     private $tntEventParams;
 
+    /**
+     * Constructor initialized via DI.
+     * @param TntEventParams $tntEventParams
+     */
     public function __construct(TntEventParams $tntEventParams)
     {
         $this->tntEventParams = $tntEventParams;
     }
 
+    /**
+     * Detect if TNT event is still open for registration.
+     * @return bool true if TNT is still open
+     */
     public function canRegisterNow(): bool
     {
         $now = DatetimeHelper::getNowUTC();
@@ -30,6 +40,11 @@ class TntEventHelper
         }
     }
 
+    /**
+     * Get fee for given participant.
+     * @param Participant $participant
+     * @return int in currency defined in payment config
+     */
     public function getParticipantFee(Participant $participant): int
     {
         return $this->tntEventParams->getFee();

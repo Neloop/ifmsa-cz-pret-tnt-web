@@ -6,23 +6,40 @@ use App\Model\Entity\Participant;
 use App\Helpers\AppParams;
 
 /**
- *
- * @author Neloop
+ * Helper which provides sending of payment email to the participant. Payment
+ * email is supposed to be sent on demand after thorough inspection of all
+ * registrated participants. Mentioned email is containing payment link
+ * generated for appropriate participant.
  */
 class PaymentEmailsSender
 {
-    /** @var EmailHelper */
+    /**
+     * Sender which handles actual email sending.
+     * @var EmailHelper
+     */
     private $emailHelper;
-
-    /** @var AppParams */
+    /**
+     * Application parameters from config files.
+     * @var AppParams
+     */
     private $appParams;
 
+    /**
+     * Constructor initialized via DI.
+     * @param EmailHelper $emailHelper
+     * @param AppParams $appParams
+     */
     public function __construct(EmailHelper $emailHelper, AppParams $appParams)
     {
         $this->emailHelper = $emailHelper;
         $this->appParams = $appParams;
     }
 
+    /**
+     * Sends email with details about payment to the given participant.
+     * @param Participant $participant
+     * @return bool if email was sent successfully
+     */
     public function send(Participant $participant): bool
     {
         $subject = strtoupper($participant->pretOrTnt) . " Payment Details";

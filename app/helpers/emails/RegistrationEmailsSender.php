@@ -6,28 +6,51 @@ use App\Model\Entity\Participant;
 use App\Helpers\AppParams;
 
 /**
- *
- * @author Neloop
+ * Helper which is supposed to send emails after participant registration.
+ * Emails are sent to participant and also to email address used for reporting
+ * about new participants.
  */
 class RegistrationEmailsSender
 {
-    /** @var EmailHelper */
+    /**
+     * Actual sender of emails.
+     * @var EmailHelper
+     */
     private $emailHelper;
-
-    /** @var EmailsParams */
+    /**
+     * Emails parameters from config files.
+     * @var EmailsParams
+     */
     private $emailsParams;
-
-    /** @var AppParams */
+    /**
+     * Application parameters from config files.
+     * @var AppParams
+     */
     private $appParams;
 
-    public function __construct(EmailHelper $emailHelper, EmailsParams $emailsParams, AppParams $appParams)
-    {
+    /**
+     * Constructor initialized via DI.
+     * @param EmailHelper $emailHelper
+     * @param EmailsParams $emailsParams
+     * @param AppParams $appParams
+     */
+    public function __construct(
+        EmailHelper $emailHelper,
+        EmailsParams $emailsParams,
+        AppParams $appParams
+    ) {
+
         $this->emailHelper = $emailHelper;
         $this->emailsParams = $emailsParams;
         $this->appParams = $appParams;
     }
 
-    private function sendToParticipant(Participant $participant)
+    /**
+     * Send email with some further information to event participant.
+     * @param Participant $participant
+     * @return bool if email was sent successfully
+     */
+    private function sendToParticipant(Participant $participant): bool
     {
         $subject = strtoupper($participant->pretOrTnt) . " Registration";
 
@@ -38,7 +61,12 @@ class RegistrationEmailsSender
         return $this->emailHelper->send([$participant->email], $subject, $message);
     }
 
-    private function sendToOrganizers(Participant $participant)
+    /**
+     * Send report email about new participant to special email address.
+     * @param Participant $participant
+     * @return bool if email was sent successfully
+     */
+    private function sendToOrganizers(Participant $participant): bool
     {
         $subject = strtoupper($participant->pretOrTnt) . " Registration Report";
 
@@ -50,6 +78,11 @@ class RegistrationEmailsSender
         return $this->emailHelper->send([$this->emailsParams->reportTo], $subject, $message);
     }
 
+    /**
+     * Sends both emails to the participant and to the reporting email address.
+     * @param Participant $participant
+     * @return bool if emails were sent successfully
+     */
     public function send(Participant $participant): bool
     {
         $resultParticipant = $this->sendToParticipant($participant);

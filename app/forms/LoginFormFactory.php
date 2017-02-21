@@ -6,19 +6,30 @@ use Nette;
 use Nette\Security\User;
 
 /**
- *
- * @author Neloop
+ * Factory which handles login form and authentication used within private parts
+ * of the application.
  */
 class LoginFormFactory
 {
-    /** @var User */
+    /**
+     * Nette user.
+     * @var User
+     */
     private $user;
 
+    /**
+     * Constructor initialized via DI.
+     * @param User $user nette user instance
+     */
     public function __construct(User $user)
     {
         $this->user = $user;
     }
 
+    /**
+     * Create login form and return it.
+     * @return BootstrapForm
+     */
     public function createLoginForm(): BootstrapForm
     {
         $form = new BootstrapForm;
@@ -35,6 +46,12 @@ class LoginFormFactory
         return $form;
     }
 
+    /**
+     * If submit of login form succeeded this callback is called. User is
+     * authenticated through simple authenticator.
+     * @param BootstrapForm $form
+     * @param array $values
+     */
     public function loginFormSucceeded(BootstrapForm $form, $values)
     {
         try {
