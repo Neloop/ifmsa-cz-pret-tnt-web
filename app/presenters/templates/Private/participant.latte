@@ -47,7 +47,7 @@
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("ifmsaEventsAttended")}</th>
-        <td>{$participant->ifmsaEventsAttended}</td>
+        <td>{$participant->ifmsaEventsAttended|escape|nl2br|noescape}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("universityFaculty")}</th>
@@ -66,7 +66,7 @@
         <th colspan="2">{$labelsHelper->getLabel("motivation")}</th>
     </tr>
     <tr>
-        <td colspan="2">{$participant->motivation}</td>
+        <td colspan="2">{$participant->motivation|escape|nl2br|noescape}</td>
     </tr>
 
     {if $participant->isTnt()}
@@ -74,21 +74,21 @@
         <th colspan="2">{$labelsHelper->getLabel("tntStrengthsAsTrainer")}</th>
     </tr>
     <tr>
-        <td colspan="2">{$participant->tntStrengthsAsTrainer}</td>
+        <td colspan="2">{$participant->tntStrengthsAsTrainer|escape|nl2br|noescape}</td>
     </tr>
 
     <tr>
         <th colspan="2">{$labelsHelper->getLabel("tntVisionAsTrainer")}</th>
     </tr>
     <tr>
-        <td colspan="2">{$participant->tntVisionAsTrainer}</td>
+        <td colspan="2">{$participant->tntVisionAsTrainer|escape|nl2br|noescape}</td>
     </tr>
 
     <tr>
         <th colspan="2">{$labelsHelper->getLabel("tntUsageOfKnowledge")}</th>
     </tr>
     <tr>
-        <td colspan="2">{$participant->tntUsageOfKnowledge}</td>
+        <td colspan="2">{$participant->tntUsageOfKnowledge|escape|nl2br|noescape}</td>
     </tr>
     {/if}
 </table>
