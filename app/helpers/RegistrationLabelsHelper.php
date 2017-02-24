@@ -18,7 +18,7 @@ class RegistrationLabelsHelper
             "phone" => "Phone Number",
             "allergies" => "Allergies",
             "diet" => "Diet",
-            "visaNeeded" => "Do you need a visa to Czech republic?",
+            "visaNeeded" => "Do you need a visa to the Czech republic?",
             "invitationLetterNeeded" => "Do you need an invitation letter?",
             "nmo" => "NMO",
             "nmoPosition" => "Position in NMO",

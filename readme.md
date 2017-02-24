@@ -1,6 +1,6 @@
 # IFMSA CZ - PRET/TNT Website
 
-Simple website presenting two events (PRET, TNT) hosting by IFMSA CZ with registration system.
+Simple website presenting two events (PRET, TNT) hosting by IFMSA CZ with registration system. Part of the implementation is also integration of payment which is handled by CUK exchange system also managed by IFMSA CZ.
 
 ## Installation
 

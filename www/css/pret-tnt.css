@@ -194,22 +194,12 @@ footer {
     font-size: 1.2rem;
 }
 
-.card {
-    border-radius: 0;
-}
-
-.card img {
-    border-radius: 0;
-}
-
 .card .card-footer {
     background-color: #e0f0ef;
-    border-radius: 0;
 }
 
 .card .card-header {
     background-color: #e0f0ef;
-    border-radius: 0;
 }
 
 .table th {
@@ -261,6 +251,10 @@ footer {
 
 .profile-img-card {
     width: 25%;
+}
+
+.contacts-card {
+    border: none;
 }
 
 .form-group label, .form-group legend {

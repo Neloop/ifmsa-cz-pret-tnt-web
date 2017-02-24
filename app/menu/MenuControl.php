@@ -24,7 +24,7 @@ class MenuControl extends Nette\Application\UI\Control
         $items[] = $tnt = new MenuItem("TNT", "Tnt");
         $items[] = $venues = new MenuItem("Venues", "Venues");
         $items[] = $registration = new MenuItem("Registration & fees", "Registration");
-        //$items[] = new MenuItem("Contacts", "Contacts");
+        $items[] = new MenuItem("Contacts", "Contacts");
         //$items[] = new MenuItem("Sponzors", "Sponzors");
 
         $aboutUs->subItems[] = new MenuItem("IFMSA CZ", "AboutUs", "ifmsaCz");
@@ -39,7 +39,7 @@ class MenuControl extends Nette\Application\UI\Control
         $tnt->subItems[] = new MenuItem("Basic information", "Tnt", "information");
         //$tnt->subItems[] = new MenuItem("Agenda", "Tnt", "agenda");
         $tnt->subItems[] = new MenuItem("Trainers", "Tnt", "trainers");
-        $tnt->subItems[] = new MenuItem("Social programme", "Tnt", "socialProgramme");
+        //$tnt->subItems[] = new MenuItem("Social programme", "Tnt", "socialProgramme");
 
         //$venues->subItems[] = new MenuItem("Boarding", "Venues", "boarding");
         $venues->subItems[] = new MenuItem("Accommodation", "Venues", "accommodation");
