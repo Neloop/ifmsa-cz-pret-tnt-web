@@ -30,7 +30,8 @@
 		"kdyby/doctrine": "^3.1",
 		"guzzlehttp/guzzle": "^6.2",
 		"composer/ca-bundle": "^1.0",
-		"uestla/recaptcha-control": "^6.0"
+		"uestla/recaptcha-control": "^6.0",
+		"alcohol/iso4217": "^3.1"
 	},
 	"require-dev": {
 		"nette/tester": "^1.6"

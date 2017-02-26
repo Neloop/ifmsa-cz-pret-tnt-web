@@ -94,8 +94,10 @@ class PrivatePresenter extends BasePresenter
 
         if ($participant->isPret()) {
             $this->template->fee = $this->pretEventHelper->getParticipantFee($participant);
+            $this->template->currency = $this->pretEventHelper->getCurrency();
         } else {
             $this->template->fee = $this->tntEventHelper->getParticipantFee($participant);
+            $this->template->currency = $this->tntEventHelper->getCurrency();
         }
     }
 

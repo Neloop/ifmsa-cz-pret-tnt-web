@@ -3,12 +3,13 @@
 namespace App\Helpers;
 
 use App\Model\Entity\Participant;
+use App\Helpers\Payment\PaymentParams;
 
 /**
  * Helper for TNT event and interpretation of parameters given in
  * configuration file.
  */
-class TntEventHelper
+class TntEventHelper extends BaseEventHelper
 {
 
     /**
@@ -20,9 +21,12 @@ class TntEventHelper
     /**
      * Constructor initialized via DI.
      * @param TntEventParams $tntEventParams
+     * @param PaymentParams $paymentParams
      */
-    public function __construct(TntEventParams $tntEventParams)
+    public function __construct(TntEventParams $tntEventParams,
+            PaymentParams $paymentParams)
     {
+        parent::__construct($paymentParams);
         $this->tntEventParams = $tntEventParams;
     }
 

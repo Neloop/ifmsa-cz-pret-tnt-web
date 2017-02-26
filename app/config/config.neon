@@ -13,12 +13,12 @@ parameters:
         earlyStart: "YYYY-MM-DD HH:MM:SS"  # in UTC
         regularStart: "YYYY-MM-DD HH:MM:SS"  # in UTC
         end: "YYYY-MM-DD HH:MM:SS"  # in UTC
-        earlyFee: 120  # in currency defined at payment.currency
-        regularFee: 140  # in currency defined at payment.currency
+        earlyFee: 3400  # in currency defined at payment.currency
+        regularFee: 3850  # in currency defined at payment.currency
     tntEvent:
         start: "YYYY-MM-DD HH:MM:SS"  # in UTC
         end: "YYYY-MM-DD HH:MM:SS"  # in UTC
-        fee: 130  # in currency defined at payment.currency
+        fee: 3600  # in currency defined at payment.currency
     private:
         username: "user"
         password: "pass"
@@ -28,7 +28,7 @@ parameters:
         subjectPrefix: "PRET&TNT CZ"
     payment:
         service: "pret-tnt"
-        currency: 978  # ISO 4217: 203=CZK 978=EUR 840=USD 941=RSD 703=SKK 440=LTL 233=EEK 643=RUB 891=YUM
+        currency: 203  # ISO 4217: 203=CZK 978=EUR 840=USD 941=RSD 703=SKK 440=LTL 233=EEK 643=RUB 891=YUM
         serverAuthKey: ""
         serverStartTransactionUrl: ""
         serverGetTransactionResultUrl: ""

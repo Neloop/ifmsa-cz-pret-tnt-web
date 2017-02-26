@@ -3,12 +3,13 @@
 namespace App\Helpers;
 
 use App\Model\Entity\Participant;
+use App\Helpers\Payment\PaymentParams;
 
 /**
  * Helper for PRET event and interpretation of parameters given in
  * configuration file.
  */
-class PretEventHelper
+class PretEventHelper extends BaseEventHelper
 {
 
     /**
@@ -20,9 +21,12 @@ class PretEventHelper
     /**
      * Constructor initialized via DI.
      * @param PretEventParams $pretEventParams
+     * @param PaymentParams $paymentParams
      */
-    public function __construct(PretEventParams $pretEventParams)
+    public function __construct(PretEventParams $pretEventParams,
+            PaymentParams $paymentParams)
     {
+        parent::__construct($paymentParams);
         $this->pretEventParams = $pretEventParams;
     }
 

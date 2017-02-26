@@ -13,27 +13,27 @@ class PaymentParams extends Nette\Object
      *
      * @var string
      */
-    public $service;
+    private $service;
     /**
      *
      * @var string
      */
-    public $currency;
+    private $currency;
     /**
      *
      * @var string
      */
-    public $serverAuthKey;
+    private $serverAuthKey;
     /**
      *
      * @var string
      */
-    public $serverStartTransactionUrl;
+    private $serverStartTransactionUrl;
     /**
      *
      * @var string
      */
-    public $serverGetTransactionResultUrl;
+    private $serverGetTransactionResultUrl;
 
     /**
      * Constructor initialized via DI.
