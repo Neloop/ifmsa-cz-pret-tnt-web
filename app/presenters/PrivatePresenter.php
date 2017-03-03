@@ -83,6 +83,9 @@ class PrivatePresenter extends BasePresenter
         $this->isLoggedIn();
 
         $this->template->participants = $this->participants->findAll();
+        $this->template->participantsCount = $this->participants->countAll();
+        $this->template->pretParticipantsCount = $this->participants->countPretParticipants();
+        $this->template->tntParticipantsCount = $this->participants->countTntParticipants();
     }
 
     public function actionParticipant($id)

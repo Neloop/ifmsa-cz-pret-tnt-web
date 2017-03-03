@@ -92,6 +92,16 @@ class BaseRepository extends Nette\Object
     }
 
     /**
+     * Count elements which fullfil given criteria.
+     * @param array $criteria
+     * @return int
+     */
+    public function countBy(array $criteria)
+    {
+        return $this->repository->countBy($criteria);
+    }
+
+    /**
      * Count all entities within this repository.
      * @return int
      */

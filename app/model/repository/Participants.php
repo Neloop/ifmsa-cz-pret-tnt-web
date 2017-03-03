@@ -18,4 +18,14 @@ class Participants extends BaseRepository
     {
         parent::__construct($em, Participant::class);
     }
+
+    public function countPretParticipants()
+    {
+        return $this->countBy(array("pretOrTnt" => "pret"));
+    }
+
+    public function countTntParticipants()
+    {
+        return $this->countBy(array("pretOrTnt" => "tnt"));
+    }
 }
