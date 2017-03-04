@@ -13,7 +13,7 @@ parameters:
         regularFee: 140  # in currency defined at payment.currency
     tntEvent:
         start: "2017-02-20 00:00:00"  # in UTC
-        end: "2017-03-05 00:00:00"  # in UTC
+        end: "2017-03-12 00:00:00"  # in UTC
         fee: 130  # in currency defined at payment.currency
     private:
         username: "user"
