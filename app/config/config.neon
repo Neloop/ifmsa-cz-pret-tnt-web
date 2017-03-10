@@ -3,7 +3,7 @@
 # https://nette.org/security-warning
 #
 parameters:
-    siteName: "PRET & TNT"
+    siteName: "PRET&TNT CZ"
     siteUrl: "https://pret.ifmsa.cz"
     siteAlternativeUrl: "https://tnt.ifmsa.cz"
     participantPaymentUrl: %siteUrl%/payment/start-transaction
