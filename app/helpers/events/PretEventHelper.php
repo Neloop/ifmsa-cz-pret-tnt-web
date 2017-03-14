@@ -23,9 +23,11 @@ class PretEventHelper extends BaseEventHelper
      * @param PretEventParams $pretEventParams
      * @param PaymentParams $paymentParams
      */
-    public function __construct(PretEventParams $pretEventParams,
-            PaymentParams $paymentParams)
-    {
+    public function __construct(
+        PretEventParams $pretEventParams,
+        PaymentParams $paymentParams
+    ) {
+    
         parent::__construct($paymentParams);
         $this->pretEventParams = $pretEventParams;
     }

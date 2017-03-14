@@ -29,20 +29,21 @@ abstract class BaseEventHelper
      * Detect if event is still open for registration.
      * @return bool true if is still open
      */
-    public abstract function canRegisterNow(): bool;
+    abstract public function canRegisterNow(): bool;
 
     /**
      * Get fee for given participant based on registration date.
      * @param Participant $participant
      * @return int in currency stated in payment config
      */
-    public abstract function getParticipantFee(Participant $participant): int;
+    abstract public function getParticipantFee(Participant $participant): int;
 
     /**
      * Get currency of participant fee.
      * @return string
      */
-    public function getCurrency() {
+    public function getCurrency()
+    {
         $iso4217 = new \Alcohol\ISO4217();
         return $iso4217->getByNumeric($this->paymentParams->currency)["alpha3"];
     }

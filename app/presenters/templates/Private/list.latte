@@ -1,8 +1,15 @@
 {block content}
-<h1 n:block="title">List of All Participants</h1>
-<small>Total: {$participantsCount} participants; PRET: {$pretParticipantsCount} participants; TNT: {$tntParticipantsCount} participants</small>
+<div class="row">
+    <div class="col-12">
+        <h1 n:block="title">List of All Participants</h1>
+        <small>Total: {$participantsCount} participants; PRET: {$pretParticipantsCount} participants; TNT: {$tntParticipantsCount} participants</small>
+    </div>
+    <div class="col-12">
+        <a n:href="Private:generateTransactionsTable" class="btn btn-primary">Generate Transactions Table</a>
+    </div>
+</div>
 <div class="vgap-1"></div>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Name</th>
@@ -20,8 +27,22 @@
             <td>{$participant->nmo}</td>
             <td>{$participant->pretOrTnt|upper}</td>
             <td>{$participant->registrationDateUtc|date:'d. n. Y H:i'}</td>
-            <td>{$participant->paid ? "Yes" : "No"}</td>
+            <td>
+                {if $participant->paid}
+                    <span class="text-success">Yes</span>
+                {else}
+                    <span class="text-danger">No</span>
+                {/if}
+            </td>
         </tr>
     </tbody>
 </table>
+<div class="row">
+    <div class="col-12">
+        <small>Total: {$participantsCount} participants; PRET: {$pretParticipantsCount} participants; TNT: {$tntParticipantsCount} participants</small>
+    </div>
+    <div class="col-12">
+        <a n:href="Private:generateTransactionsTable" class="btn btn-primary">Generate Transactions Table</a>
+    </div>
+</div>
 {/block}

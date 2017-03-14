@@ -2,12 +2,15 @@
 
 namespace App\Presenters;
 
+use Nette;
 use App\Helpers\PrivateParams;
 use App\Model\Repository\Participants;
 use App\Helpers\RegistrationLabelsHelper;
 use App\Helpers\Emails\PaymentEmailsSender;
 use App\Helpers\PretEventHelper;
 use App\Helpers\TntEventHelper;
+use App\Helpers\Table\TransactionsTableFactory;
+use App\Helpers\ResponseHelper;
 use App\Forms\LoginFormFactory;
 
 class PrivatePresenter extends BasePresenter
@@ -53,6 +56,18 @@ class PrivatePresenter extends BasePresenter
      * @inject
      */
     public $tntEventHelper;
+
+    /**
+     * @var ResponseHelper
+     * @inject
+     */
+    public $responseHelper;
+
+    /**
+     * @var TransactionsTableFactory
+     * @inject
+     */
+    public $transactionsTableFactory;
 
     protected function createComponentLoginForm()
     {
@@ -118,5 +133,14 @@ class PrivatePresenter extends BasePresenter
         }
 
         $this->redirect("Private:participant", $id);
+    }
+
+    public function actionGenerateTransactionsTable()
+    {
+        $this->isLoggedIn();
+
+        $content = $this->transactionsTableFactory->createTransactionsTable();
+        $this->responseHelper->setXlsxFileResponse($this->getHttpResponse(), 'table.xlsx');
+        $this->sendResponse(new Nette\Application\Responses\TextResponse($content));
     }
 }

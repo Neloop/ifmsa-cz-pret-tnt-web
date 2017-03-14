@@ -92,6 +92,14 @@
     </tr>
     {/if}
 </table>
+
+<div class="vgap-1"></div>
+<div class="form-group">
+    <label for="tableInsertion">Table Insertion Helper:</label>
+    <textarea class="form-control" id="tableInsertion">{$participant->firstname} {$participant->surname}	{$participant->nmo}	{$participant->email}			{$participant->visaNeeded ? "1" : "0"}	{$participant->invitationLetterNeeded ? "1" : "0"}</textarea>
+</div>
+<div class="vgap-1"></div>
+
 <h2>Payment Details</h2>
 <table class="table">
     <tr>

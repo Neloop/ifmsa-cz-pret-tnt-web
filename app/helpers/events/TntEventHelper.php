@@ -23,9 +23,11 @@ class TntEventHelper extends BaseEventHelper
      * @param TntEventParams $tntEventParams
      * @param PaymentParams $paymentParams
      */
-    public function __construct(TntEventParams $tntEventParams,
-            PaymentParams $paymentParams)
-    {
+    public function __construct(
+        TntEventParams $tntEventParams,
+        PaymentParams $paymentParams
+    ) {
+    
         parent::__construct($paymentParams);
         $this->tntEventParams = $tntEventParams;
     }

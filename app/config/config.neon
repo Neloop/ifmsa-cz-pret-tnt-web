@@ -89,6 +89,8 @@ services:
     - App\Helpers\Emails\RegistrationEmailsSender
     - App\Helpers\Emails\PaymentEmailsSender
     - App\Helpers\Emails\EmailsParams(%emails%)
+    - App\Helpers\Table\TransactionsTableFactory
+    - App\Helpers\ResponseHelper
 
     # payment
     - App\Helpers\Payment\PaymentConnection
