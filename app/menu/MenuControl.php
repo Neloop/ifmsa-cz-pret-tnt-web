@@ -50,6 +50,12 @@ class MenuControl extends Nette\Application\UI\Control
         $registration->subItems[] = new MenuItem("PRET Registration", "Registration", "pretForm");
         $registration->subItems[] = new MenuItem("TNT Registration", "Registration", "tntForm");
 
+        if ($this->presenter->user->isLoggedIn()) {
+            $items[] = $priv = new MenuItem("Management", "Private");
+            $priv->subItems[] = new MenuItem("List of Participants", "Private", "list");
+            $priv->subItems[] = new MenuItem("List of Transactions", "Private", "transactions");
+        }
+
         return $items;
     }
 

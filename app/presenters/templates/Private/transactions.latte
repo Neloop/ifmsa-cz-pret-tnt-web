@@ -1,0 +1,49 @@
+{block content}
+<div class="row">
+    <div class="col-12">
+        <h1 n:block="title">List of All Transactions</h1>
+        <small>Total: {$transactionsCount} transactions</small>
+    </div>
+    <div class="col-12">
+        <a n:href="Private:generateTransactionsTable" class="btn btn-primary">Generate Transactions Table</a>
+    </div>
+</div>
+<div class="vgap-1"></div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Participant</th>
+            <th>Start Date</th>
+            <th>Result</th>
+            <th>Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr n:foreach="$transactions as $transaction">
+            <td>{$transaction->description|escape|replace:";":"<br>"|noescape}</td>
+            <td>
+                {if $transaction->participant}
+                    <a n:href="Private:participant, 'id' => $transaction->participant->id">{$transaction->participant->firstname} {$transaction->participant->surname}</a></td>
+                {/if}
+            <td>{$transaction->tDate|date:'j.n.Y H:i'}</td>
+            <td>{$transaction->result}</td>
+            <td>
+                {if $transaction->participant && $transaction->participant->paid}
+                    <span class="text-success">Yes</span>
+                {else}
+                    <span class="text-danger">No</span>
+                {/if}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-12">
+        <small>Total: {$transactionsCount} transactions</small>
+    </div>
+    <div class="col-12">
+        <a n:href="Private:generateTransactionsTable" class="btn btn-primary">Generate Transactions Table</a>
+    </div>
+</div>
+{/block}

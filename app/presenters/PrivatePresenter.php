@@ -5,6 +5,7 @@ namespace App\Presenters;
 use Nette;
 use App\Helpers\PrivateParams;
 use App\Model\Repository\Participants;
+use App\Model\Repository\PaymentTransactions;
 use App\Helpers\RegistrationLabelsHelper;
 use App\Helpers\Emails\PaymentEmailsSender;
 use App\Helpers\PretEventHelper;
@@ -68,6 +69,12 @@ class PrivatePresenter extends BasePresenter
      * @inject
      */
     public $transactionsTableFactory;
+
+    /**
+     * @var PaymentTransactions
+     * @inject
+     */
+    public $paymentTransactions;
 
     protected function createComponentLoginForm()
     {
@@ -142,5 +149,13 @@ class PrivatePresenter extends BasePresenter
         $content = $this->transactionsTableFactory->createTransactionsTable();
         $this->responseHelper->setXlsxFileResponse($this->getHttpResponse(), 'table.xlsx');
         $this->sendResponse(new Nette\Application\Responses\TextResponse($content));
+    }
+
+    public function actionTransactions()
+    {
+        $this->isLoggedIn();
+
+        $this->template->transactions = $this->paymentTransactions->findBy(array(), array("id" => "desc"));
+        $this->template->transactionsCount = $this->paymentTransactions->countAll();
     }
 }
