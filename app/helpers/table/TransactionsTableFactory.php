@@ -51,7 +51,9 @@ class TransactionsTableFactory
             $transaction = $participant->paymentTransaction;
             if ($transaction) {
                 $start = $transaction->tDate->format("j.n.Y H:i");
-                $end = $transaction->transactionEndDate->format("j.n.Y H:i");
+                if ($transaction->transactionEndDate) {
+                    $end = $transaction->transactionEndDate->format("j.n.Y H:i");
+                }
             }
 
             if ($participant->isPret()) {
