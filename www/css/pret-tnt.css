@@ -194,6 +194,10 @@ footer {
     font-size: 1.2rem;
 }
 
+.card {
+    margin-bottom: 30px;
+}
+
 .card .card-footer {
     background-color: #e0f0ef;
 }
