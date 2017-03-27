@@ -190,6 +190,14 @@ footer {
     margin-bottom: -159px;
 }
 
+.random-heart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: none;
+}
+
 .welcome-text {
     font-size: 1.2rem;
 }

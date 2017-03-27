@@ -64,6 +64,11 @@ class TransactionsTableFactory
                 $currency = $this->tntEventHelper->getCurrency();
             }
 
+            // if participant already paid, obtain appropriate amount
+            if ($transaction) {
+                $amount = $transaction->amount;
+            }
+
             $data[] = array(
                 $start, $end, $participant->firstname, $participant->surname,
                 $amount, $currency, $participant->paid ? "Yes" : "No",
