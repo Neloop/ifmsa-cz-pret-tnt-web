@@ -47,7 +47,7 @@ class PaymentPresenter extends BasePresenter
     {
         $participant = $this->participants->findOrThrow($id);
         if ($participant->paid) {
-            $this->error("Participant already paid");
+            $this->redirect("Payment:transactionPaid");
         }
 
         // prepare vars
