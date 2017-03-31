@@ -77,7 +77,7 @@ class PaymentTransaction
     protected $response;
 
     /**
-     * @ORM\OneToOne(targetEntity="Participant", mappedBy="paymentTransaction")
+     * @ORM\ManyToOne(targetEntity="Participant", inversedBy="paymentTransactions")
      */
     protected $participant;
 

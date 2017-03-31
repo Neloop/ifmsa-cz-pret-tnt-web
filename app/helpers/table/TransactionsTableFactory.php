@@ -48,7 +48,7 @@ class TransactionsTableFactory
             $start = "";
             $end = "";
 
-            $transaction = $participant->paymentTransaction;
+            $transaction = $participant->successfulTransaction;
             if ($transaction) {
                 $start = $transaction->tDate->format("j.n.Y H:i");
                 if ($transaction->transactionEndDate) {

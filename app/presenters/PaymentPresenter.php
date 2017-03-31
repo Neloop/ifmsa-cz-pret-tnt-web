@@ -71,8 +71,8 @@ class PaymentPresenter extends BasePresenter
                     );
 
             // save transaction to participant
-            $participant->paymentTransaction = $transaction;
-            $this->participants->flush();
+            $transaction->participant = $participant;
+            $this->paymentTransactions->flush();
 
             // and finally redirect user to gateway
             $this->redirectUrl($url);

@@ -5,6 +5,7 @@ namespace App\Model\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Kdyby\Doctrine\Entities\MagicAccessors;
 use App\Helpers\DatetimeHelper;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Participant
@@ -34,7 +35,7 @@ use App\Helpers\DatetimeHelper;
  * @property boolean $paid
  * @property boolean $paymentEmailSent
  * @property \DateTime $registrationDateUtc
- * @property PaymentTransaction $paymentTransaction
+ * @property PaymentTransaction $successfulTransaction
  */
 class Participant
 {
@@ -161,9 +162,9 @@ class Participant
     protected $registrationDateUtc;
 
     /**
-     * @ORM\OneToOne(targetEntity="PaymentTransaction", inversedBy="participant")
+     * @ORM\OneToMany(targetEntity="PaymentTransaction", mappedBy="participant")
      */
-    protected $paymentTransaction;
+    protected $paymentTransactions;
 
 
     public function __construct(
@@ -201,6 +202,7 @@ class Participant
         $this->motivation = $motivation;
 
         $this->registrationDateUtc = DatetimeHelper::getNowUTC();
+        $this->paymentTransactions = new ArrayCollection;
     }
 
     public function getRegistrationDateUtc()
@@ -227,5 +229,16 @@ class Participant
     public function setTnt()
     {
         $this->pretOrTnt = self::TNT_KEY;
+    }
+
+    public function getSuccessfulTransaction()
+    {
+        return $this->paymentTransactions->filter(function (PaymentTransaction $transaction) {
+            if ($transaction->isOk()) {
+                return true;
+            } else {
+                return false;
+            }
+        })->first();
     }
 }
