@@ -88,6 +88,10 @@ class PaymentPresenter extends BasePresenter
             $this->error("Access Denied");
         }
 
+        if ($transaction->participant->paid) {
+            $this->redirect("Payment:transactionPaid");
+        }
+
         try {
             $correct = $this->paymentTransactionsHelper->processTransactionOk($transaction);
             if ($correct) {

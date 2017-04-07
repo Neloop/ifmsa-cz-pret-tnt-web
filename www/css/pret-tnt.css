@@ -198,6 +198,17 @@ footer {
     display: none;
 }
 
+.easter-egg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: none;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
 .welcome-text {
     font-size: 1.2rem;
 }
@@ -285,6 +296,41 @@ footer {
     margin-left: 10px;
     width: auto;
     display: inline-block;
+}
+
+.rotate0 {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    transform-origin: left top;
+}
+
+.rotate180 {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transform-origin: center center;
+}
+
+.rotate270 {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    transform-origin: left top;
 }
 
 @media only screen and (max-width : 992px) {
