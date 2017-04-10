@@ -280,6 +280,10 @@ footer {
     border: none;
 }
 
+.sponzors-img-wrapper {
+    padding: 10px;
+}
+
 .form-group label, .form-group legend {
     font-weight: bold;
 }

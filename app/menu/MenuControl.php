@@ -25,7 +25,7 @@ class MenuControl extends Nette\Application\UI\Control
         $items[] = $venues = new MenuItem("Venues", "Venues");
         $items[] = $registration = new MenuItem("Registration & fees", "Registration");
         $items[] = new MenuItem("Contacts", "Contacts");
-        //$items[] = new MenuItem("Sponzors", "Sponzors");
+        $items[] = new MenuItem("Sponzors", "Sponzors");
 
         $aboutUs->subItems[] = new MenuItem("IFMSA CZ", "AboutUs", "ifmsaCz");
         $aboutUs->subItems[] = new MenuItem("Prague", "AboutUs", "prague");
