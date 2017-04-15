@@ -32,6 +32,7 @@ class MenuControl extends Nette\Application\UI\Control
         $aboutUs->subItems[] = new MenuItem("How to reach us", "AboutUs", "reachUs");
 
         $pret->subItems[] = new MenuItem("Basic information", "Pret", "information");
+        $pret->subItems[] = new MenuItem("Global Health", "Pret", "globalHealth");
         //$pret->subItems[] = new MenuItem("Agenda", "Pret", "agenda");
         $pret->subItems[] = new MenuItem("Trainers", "Pret", "trainers");
         //$pret->subItems[] = new MenuItem("Social programme", "Pret", "socialProgramme");
