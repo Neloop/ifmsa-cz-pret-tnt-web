@@ -337,6 +337,18 @@ footer {
     transform-origin: left top;
 }
 
+.agenda-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.agenda-table td, .agenda-table th {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-transform: uppercase;
+}
+
 @media only screen and (max-width : 992px) {
     nav {
         width: 0;
