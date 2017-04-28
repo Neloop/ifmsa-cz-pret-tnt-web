@@ -339,7 +339,6 @@ footer {
 
 .agenda-table {
     width: 100%;
-    table-layout: fixed;
 }
 
 .agenda-table td, .agenda-table th {
@@ -347,6 +346,37 @@ footer {
     padding-left: 10px;
     padding-right: 10px;
     text-transform: uppercase;
+    width: 16%;
+    border: 1px solid #D9D9D9;
+}
+
+.tnt-agenda-table {
+    width: 100%;
+}
+
+.tnt-agenda-table th {
+    color: white;
+}
+
+.tnt-agenda-table td, .tnt-agenda-table th {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    width: 16%;
+    border: 1px solid gray;
+}
+
+.agenda-trainers-table {
+    width: 100%;
+}
+
+.agenda-trainers-table td, .agenda-trainers-table th {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20%;
+    border: 1px solid #D9D9D9;
 }
 
 @media only screen and (max-width : 992px) {
