@@ -3,12 +3,13 @@
 namespace App\Helpers;
 
 /**
- *
+ * Registration labels holder which is able to find label value to appropriate
+ * label key identification.
  */
 class RegistrationLabelsHelper
 {
     /**
-     *
+     * List of all labels which this helper contains.
      * @var array
      */
     private $labels = array(
@@ -34,7 +35,7 @@ class RegistrationLabelsHelper
         );
 
     /**
-     *
+     * For the given key find appropriate label values.
      * @param string $key
      * @return string
      */

@@ -10,27 +10,27 @@ use Nette;
 class PaymentParams extends Nette\Object
 {
     /**
-     *
+     * Identification of this service which is used in CUK payment gateway.
      * @var string
      */
     private $service;
     /**
-     *
+     * Currency in the proper three number format.
      * @var string
      */
     private $currency;
     /**
-     *
+     * Access key used in CUK payment gateway.
      * @var string
      */
     private $serverAuthKey;
     /**
-     *
+     * Address where transaction start endpoint resides.
      * @var string
      */
     private $serverStartTransactionUrl;
     /**
-     *
+     * Address where get transaction results endpoint resides.
      * @var string
      */
     private $serverGetTransactionResultUrl;
@@ -49,7 +49,7 @@ class PaymentParams extends Nette\Object
     }
 
     /**
-     *
+     * Gets service identification.
      * @return string
      */
     public function getService(): string
@@ -58,7 +58,7 @@ class PaymentParams extends Nette\Object
     }
 
     /**
-     *
+     * Gets currency.
      * @return string
      */
     public function getCurrency(): string
@@ -67,7 +67,7 @@ class PaymentParams extends Nette\Object
     }
 
     /**
-     *
+     * Gets CUK payment gateway access key.
      * @return string
      */
     public function getServerAuthKey(): string
@@ -76,7 +76,7 @@ class PaymentParams extends Nette\Object
     }
 
     /**
-     *
+     * Gets address of start transaction endpoint.
      * @return string
      */
     public function getServerStartTransactionUrl(): string
@@ -85,7 +85,7 @@ class PaymentParams extends Nette\Object
     }
 
     /**
-     *
+     * Gets address of get transaction results endpoint.
      * @return string
      */
     public function getServerGetTransactionResultUrl(): string

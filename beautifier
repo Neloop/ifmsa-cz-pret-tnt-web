@@ -1,1 +1,1 @@
-phpcbf --extensions=php --standard=PSR2 --no-patch app
+phpcbf --extensions=php --standard=PSR2 app
