@@ -100,10 +100,10 @@ class PaymentPresenter extends BasePresenter
                 $participant->paid = true;
                 $this->participants->flush();
             } else {
-                $this->redirect("Payment:transactionIncorrect", $transId);
+                $this->forward("Payment:transactionIncorrect", $transId);
             }
         } catch (PaymentException $e) {
-            $this->redirect("Payment:transactionIncorrect", $transId);
+            $this->forward("Payment:transactionIncorrect", $transId);
         }
     }
 
