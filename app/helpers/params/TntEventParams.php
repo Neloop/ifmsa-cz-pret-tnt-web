@@ -2,14 +2,16 @@
 
 namespace App\Helpers;
 
-use Nette;
+use Nette\SmartObject;
 use Nette\Utils\Arrays;
 
 /**
  * Parameters defined in config files concerning TNT event.
  */
-class TntEventParams extends Nette\Object
+class TntEventParams
 {
+    use SmartObject;
+
     /**
      * Start date and time of registration to TNT event.
      * @var \DateTime

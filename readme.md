@@ -26,7 +26,7 @@ It is CRITICAL that whole `app/`, `log/` and `temp/` directories are not accessi
 
 ## Requirements
 
-PHP 7.0 or higher.
+PHP 7.2 or higher.
 
 ## License
 

@@ -8,8 +8,10 @@ use Nette\Utils\Arrays;
 /**
  * Parameters defined in config files concerning sending of emails.
  */
-class EmailsParams extends Nette\Object
+class EmailsParams
 {
+    use Nette\SmartObject;
+
     /**
      * Email address of sender of all sent emails.
      * @var string

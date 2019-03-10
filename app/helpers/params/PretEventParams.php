@@ -2,14 +2,16 @@
 
 namespace App\Helpers;
 
-use Nette;
+use Nette\SmartObject;
 use Nette\Utils\Arrays;
 
 /**
  * Parameters defined in config files concerning PRET event.
  */
-class PretEventParams extends Nette\Object
+class PretEventParams
 {
+    use SmartObject;
+
     /**
      * Start date and time of early registration for PRET event.
      * @var \DateTime

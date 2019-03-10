@@ -32,7 +32,7 @@ class PaymentConnection
         $this->guzzleClient = new GuzzleHttp\Client(array(
             //"verify" => \Composer\CaBundle\CaBundle::getSystemCaRootBundlePath(),
             "verify" => false,
-            "query" => ["key" => $paymentParams->serverAuthKey]
+            "query" => ["key" => $paymentParams->getServerAuthKey()]
         ));
     }
 
@@ -47,9 +47,9 @@ class PaymentConnection
      */
     public function startTransaction($amount, $ip, $desc, $currency): string
     {
-        $response = $this->guzzleClient->post($this->paymentParams->serverStartTransactionUrl, array(
+        $response = $this->guzzleClient->post($this->paymentParams->getServerStartTransactionUrl(), array(
             "form_params" => array(
-                "service" => $this->paymentParams->service,
+                "service" => $this->paymentParams->getService(),
                 "amount" => $amount,
                 "currency" => $currency,
                 "ipAddress" => $ip,
@@ -68,9 +68,9 @@ class PaymentConnection
      */
     public function getTransactionResult($transactionId): string
     {
-        $response = $this->guzzleClient->post($this->paymentParams->serverGetTransactionResultUrl, array(
+        $response = $this->guzzleClient->post($this->paymentParams->getServerGetTransactionResultUrl(), array(
             "form_params" => array(
-                "service" => $this->paymentParams->service,
+                "service" => $this->paymentParams->getService(),
                 "transactionId" => $transactionId
             )
         ));

@@ -79,7 +79,7 @@ class PaymentTransactionsHelper
                     $amount * 100,
                     $ip,
                     $description,
-                    $this->paymentParams->currency
+                    $this->paymentParams->getCurrency()
                 );
         $respArray = json_decode($response, true);
 

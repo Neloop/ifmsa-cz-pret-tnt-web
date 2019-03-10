@@ -3,7 +3,6 @@
 namespace App\Model\Repository;
 
 use App\Exceptions\NotFoundException;
-use Nette;
 use Kdyby\Doctrine\EntityManager;
 use Kdyby\Doctrine\EntityRepository;
 use Doctrine\Common\Collections\Criteria;
@@ -11,7 +10,7 @@ use Doctrine\Common\Collections\Criteria;
 /**
  * Base repository which is used in all derived repositories.
  */
-class BaseRepository extends Nette\Object
+class BaseRepository
 {
     /**
      * Doctrine entity manager.
@@ -38,11 +37,11 @@ class BaseRepository extends Nette\Object
     /**
      * Find one entity by its identification.
      * @param string $id
-     * @return type|NULL
+     * @return object|NULL
      */
     public function findOneById($id)
     {
-        return $this->repository->findOneById($id);
+        return $this->repository->find($id);
     }
 
     /**
@@ -79,7 +78,7 @@ class BaseRepository extends Nette\Object
     /**
      * Find one entity with given identification or throw exception.
      * @param string $id identification
-     * @return entity
+     * @return object
      * @throws NotFoundException if entity cannot be found
      */
     public function findOrThrow($id)
@@ -112,7 +111,7 @@ class BaseRepository extends Nette\Object
 
     /**
      * Persist given entity into database.
-     * @param entity $entity persisted entity
+     * @param object $entity persisted entity
      * @param bool $autoFlush if true repository will be flushed
      */
     public function persist($entity, $autoFlush = true)
@@ -125,7 +124,7 @@ class BaseRepository extends Nette\Object
 
     /**
      * Remove given entity from database.
-     * @param entity $entity removed entity
+     * @param object $entity removed entity
      * @param bool $autoFlush if true repository will be flushed
      */
     public function remove($entity, $autoFlush = true)

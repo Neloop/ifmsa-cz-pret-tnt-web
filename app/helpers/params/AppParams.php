@@ -2,14 +2,16 @@
 
 namespace App\Helpers;
 
-use Nette;
+use Nette\SmartObject;
 use Nette\Utils\Arrays;
 
 /**
  * Top level application parameters defined in config files.
  */
-class AppParams extends Nette\Object
+class AppParams
 {
+    use SmartObject;
+
     /**
      * Identificator of this website.
      * @var string

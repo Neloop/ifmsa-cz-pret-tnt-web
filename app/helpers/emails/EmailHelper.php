@@ -62,15 +62,15 @@ class EmailHelper
         $params = [
             "subject"   => $subject,
             "message"   => $messageText,
-            "siteUrl"    => $this->appParams->siteUrl,
-            "siteName"  => $this->appParams->siteName,
-            "facebookUrl" => $this->appParams->facebookEventUrl
+            "siteUrl"    => $this->appParams->getSiteUrl(),
+            "siteName"  => $this->appParams->getSiteName(),
+            "facebookUrl" => $this->appParams->getFacebookEventUrl()
         ];
         $html = $latte->renderToString(__DIR__ . "/email.latte", $params);
 
         $message = new Message;
-        $message->setFrom($this->emailsParams->from)
-                ->setSubject($this->emailsParams->subjectPrefix . " - " . $subject)
+        $message->setFrom($this->emailsParams->getFrom())
+                ->setSubject($this->emailsParams->getSubjectPrefix() . " - " . $subject)
                 ->setHtmlBody($html);
 
         foreach ($to as $receiver) {

@@ -45,6 +45,6 @@ abstract class BaseEventHelper
     public function getCurrency()
     {
         $iso4217 = new \Alcohol\ISO4217();
-        return $iso4217->getByNumeric($this->paymentParams->currency)["alpha3"];
+        return $iso4217->getByNumeric($this->paymentParams->getCurrency())["alpha3"];
     }
 }

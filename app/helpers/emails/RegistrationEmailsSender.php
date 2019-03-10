@@ -75,7 +75,7 @@ class RegistrationEmailsSender
         $message .= "Email: {$participant->email}<br>";
         $message .= "Registration Date: {$participant->registrationDateUtc->format('j. n. Y H:i')}";
 
-        return $this->emailHelper->send([$this->emailsParams->reportTo], $subject, $message);
+        return $this->emailHelper->send([$this->emailsParams->getReportTo()], $subject, $message);
     }
 
     /**
