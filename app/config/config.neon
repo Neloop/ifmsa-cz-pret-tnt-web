@@ -116,5 +116,9 @@ doctrine:
     password: ''
     host: localhost
     dbname: 'ifmsa-pret-tnt'
+    charset: utf8mb4
+    defaultTableOptions:
+        charset: utf8mb4
+        collate: utf8mb4_unicode_ci
     metadata:
         App\Model: %appDir%/model
