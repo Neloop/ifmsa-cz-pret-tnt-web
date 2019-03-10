@@ -1,6 +1,6 @@
 {
-	"name": "ifmsa/pret",
-	"description": "Pret",
+	"name": "ifmsa-cz/pret",
+	"description": "PRET/TNT event webpages",
 	"homepage": "https://github.com/Neloop",
 	"type": "project",
 	"license": ["MIT"],
@@ -10,8 +10,18 @@
 			"homepage": "http://polankam.cz"
 		}
 	],
+	"config": {
+		"platform": {
+			"php": "7.2.14"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"composer dump-autoload --optimize --classmap-authoritative"
+		]
+	},
 	"require": {
-		"php": ">=5.6.0",
+		"php": ">= 7.2",
 		"nette/application": "^2.4",
 		"nette/bootstrap": "^2.4.2",
 		"nette/caching": "^2.5",
@@ -22,12 +32,12 @@
 		"nette/http": "^2.4",
 		"nette/mail": "^2.4",
 		"nette/robot-loader": "^2.4",
-		"nette/safe-stream": "^2.3",
+		"nette/safe-stream": "^2.4",
 		"nette/security": "^2.4",
 		"nette/utils": "^2.4",
 		"latte/latte": "^2.4",
-		"tracy/tracy": "^2.4",
-		"kdyby/doctrine": "^3.1",
+		"tracy/tracy": "^2.5",
+		"kdyby/doctrine": "^3.3",
 		"guzzlehttp/guzzle": "^6.2",
 		"composer/ca-bundle": "^1.0",
 		"uestla/recaptcha-control": "^6.0",
