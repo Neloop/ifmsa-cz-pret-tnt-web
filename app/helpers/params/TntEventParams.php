@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use Nette\SmartObject;
 use Nette\Utils\Arrays;
 
 /**
@@ -10,8 +9,6 @@ use Nette\Utils\Arrays;
  */
 class TntEventParams
 {
-    use SmartObject;
-
     /**
      * Start date and time of registration to TNT event.
      * @var \DateTime

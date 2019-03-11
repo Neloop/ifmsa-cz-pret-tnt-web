@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use Nette\SmartObject;
 use Nette\Utils\Arrays;
 
 /**
@@ -10,8 +9,6 @@ use Nette\Utils\Arrays;
  */
 class PrivateParams
 {
-    use SmartObject;
-
     /**
      * Username used for authentication in private parts of website.
      * @var string

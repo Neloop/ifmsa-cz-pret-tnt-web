@@ -2,7 +2,6 @@
 
 namespace App\Helpers\Emails;
 
-use Nette;
 use Nette\Utils\Arrays;
 
 /**
@@ -10,8 +9,6 @@ use Nette\Utils\Arrays;
  */
 class EmailsParams
 {
-    use Nette\SmartObject;
-
     /**
      * Email address of sender of all sent emails.
      * @var string

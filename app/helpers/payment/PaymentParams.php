@@ -2,15 +2,11 @@
 
 namespace App\Helpers\Payment;
 
-use Nette;
-
 /**
  * Parameters defined in config files concerning events payment.
  */
 class PaymentParams
 {
-    use Nette\SmartObject;
-
     /**
      * Identification of this service which is used in CUK payment gateway.
      * @var string
