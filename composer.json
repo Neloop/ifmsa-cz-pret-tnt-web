@@ -40,7 +40,7 @@
 		"kdyby/doctrine": "^3.3",
 		"guzzlehttp/guzzle": "^6.2",
 		"composer/ca-bundle": "^1.0",
-		"uestla/recaptcha-control": "^6.0",
+		"uestla/recaptcha-control": "^7.0",
 		"alcohol/iso4217": "^3.1",
 		"mk-j/php_xlsxwriter": "^0.32.0"
 	},
