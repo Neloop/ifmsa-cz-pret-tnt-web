@@ -12,24 +12,24 @@
         <meta property="og:url" content="{$baseUrl}" />
         <meta property="og:image" content="{$baseUrl}/images/prague-heart.png" />
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
         <link rel="shortcut icon" href="{$basePath}/images/favicon.ico">
-        <link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="{$basePath}/css/lightbox.min.css">
-        <link rel="stylesheet" href="{$basePath}/css/pret-tnt.css?version=14">
+        <link rel="stylesheet" href="{$basePath}/css/styles.css?version=1">
     </head>
     <body>
 
         <header class="navbar navbar-full">
             <div class="social-area">
                 <a href="{$appParams->getFacebookEventUrl()}" target="_blank">
-                    <img src="{$basePath}/images/social/facebook.png">
+                    <img alt="Facebook Event" src="{$basePath}/images/social/facebook.png">
                 </a>
             </div>
-            <div class="row">
-                <div class="col-12 text-center date-area"><span>27. 4. &#8211; 1. 5. 2017</span></div>
-                <div class="col-12 text-center">
-                    <a n:href="Homepage:"><img class="prague-heart" src="{$basePath}/images/prague-heart.png"></a>
+            <div class="logo-area">
+                <div class="text-center date-area"><span>27. 4. &#8211; 1. 5. 2017</span></div>
+                <div class="text-center">
+                    <a n:href="Homepage:"><img alt="Prague Heart" class="prague-heart" src="{$basePath}/images/prague-heart.png"></a>
                 </div>
             </div>
         </header>
@@ -58,13 +58,12 @@
         </footer>
 
         {block scripts}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="{$basePath}/js/nette-live-form-validation-1.8.1/live-form-validation.js"></script>
-        <script src="{$basePath}/js/bootstrap.min.js?version=1"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="{$basePath}/js/lightbox.min.js"></script>
         <script src="{$basePath}/js/recaptcha.js"></script>
-        <script src="{$basePath}/js/pret-tnt.js?version=5"></script>
+        <script src="{$basePath}/js/pret-tnt.js?version=1"></script>
         {/block}
     </body>
 </html>

@@ -154,6 +154,10 @@ footer {
     min-height: 2rem;
 }
 
+.logo-area {
+    width: 100%;
+}
+
 .date-area {
     padding: 0;
     margin: 0;
