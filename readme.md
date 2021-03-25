@@ -1,5 +1,7 @@
 # IFMSA CZ - PRET/TNT Website
 
+[![CI](https://github.com/Neloop/ifmsa-cz-pret-tnt-web/actions/workflows/ci.yml/badge.svg)](https://github.com/Neloop/ifmsa-cz-pret-tnt-web/actions/workflows/ci.yml)
+
 Simple website presenting two events (PRET, TNT) hosting by IFMSA CZ with registration system. Part of the implementation is also integration of payment which is handled by CUK exchange system also managed by IFMSA CZ.
 
 ## Installation
