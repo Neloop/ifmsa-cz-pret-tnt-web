@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use App\Model\Entity\PaymentTransaction;
 use Nette;
 use App\Model\Repository\Participants;
 use App\Model\Repository\PaymentTransactions;
@@ -43,17 +44,17 @@ class PaymentPresenter extends BasePresenter
      */
     public $tntEventHelper;
 
-    public function actionStartTransaction($id)
+    public function actionStartTransaction(string $id): void
     {
         $participant = $this->participants->findOrThrow($id);
-        if ($participant->paid) {
+        if ($participant->isPaid()) {
             $this->redirect("Payment:transactionPaid");
         }
 
         // prepare vars
-        $description = "Type:{$participant->pretOrTnt};";
-        $description .= "Email:{$participant->email};";
-        $description .= "RegDate:{$participant->registrationDateUtc->format('Y-m-d H:i:s')}";
+        $description = "Type:{$participant->getPretOrTnt()};";
+        $description .= "Email:{$participant->getEmail()};";
+        $description .= "RegDate:{$participant->getRegistrationDateUtc()->format('Y-m-d H:i:s')}";
 
         if ($participant->isPret()) {
             $amount = $this->pretEventHelper->getParticipantFee($participant);
@@ -63,6 +64,7 @@ class PaymentPresenter extends BasePresenter
 
         // start transaction
         try {
+            /** @var PaymentTransaction $transaction */
             list($url, $transaction) =
                     $this->paymentTransactionsHelper->startTransaction(
                         $description,
@@ -71,7 +73,7 @@ class PaymentPresenter extends BasePresenter
                     );
 
             // save transaction to participant
-            $transaction->participant = $participant;
+            $transaction->setParticipant($participant);
             $this->paymentTransactions->flush();
 
             // and finally redirect user to gateway
@@ -81,14 +83,14 @@ class PaymentPresenter extends BasePresenter
         }
     }
 
-    public function actionTransactionOk($transId)
+    public function actionTransactionOk(string $transId): void
     {
         $transaction = $this->paymentTransactions->findOneByTransactionId($transId);
         if (!$transaction) {
             $this->error("Access Denied");
         }
 
-        if ($transaction->participant->paid) {
+        if ($transaction->getParticipant()->isPaid()) {
             $this->redirect("Payment:transactionPaid");
         }
 
@@ -96,8 +98,8 @@ class PaymentPresenter extends BasePresenter
             $correct = $this->paymentTransactionsHelper->processTransactionOk($transaction);
             if ($correct) {
                 // just let us know that transaction is ok to our database
-                $participant = $transaction->participant;
-                $participant->paid = true;
+                $participant = $transaction->getParticipant();
+                $participant->setPaid(true);
                 $this->participants->flush();
             } else {
                 $this->forward("Payment:transactionIncorrect", $transId);
@@ -107,17 +109,17 @@ class PaymentPresenter extends BasePresenter
         }
     }
 
-    public function actionTransactionIncorrect($transId)
+    public function actionTransactionIncorrect(string $transId): void
     {
         $transaction = $this->paymentTransactions->findOneByTransactionId($transId);
         if (!$transaction) {
             $this->error("Access Denied");
         }
 
-        $this->template->result = $transaction->result;
+        $this->template->result = $transaction->getResult();
     }
 
-    public function actionTransactionFail($transId, $errorMsg)
+    public function actionTransactionFail(string $transId, string $errorMsg): void
     {
         $transaction = $this->paymentTransactions->findOneByTransactionId($transId);
         if (!$transaction) {

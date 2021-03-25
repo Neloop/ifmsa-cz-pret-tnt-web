@@ -2,6 +2,8 @@
 
 namespace App\Model\Entity;
 
+use DateTime;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Helpers\DatetimeHelper;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,31 +12,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Participant
  *
  * @ORM\Entity
- *
- * @property integer $id
- * @property string $firstname
- * @property string $surname
- * @property string $email
- * @property string $phone
- * @property string $allergies
- * @property string $diet
- * @property bool $visaNeeded
- * @property bool $invitationLetterNeeded
- * @property string $nmo
- * @property string $nmoPosition
- * @property string $ifmsaEventsAttended
- * @property string $universityFaculty
- * @property string $city
- * @property integer $yearOfStudy
- * @property string $motivation
- * @property string $pretOrTnt
- * @property string $tntStrengthsAsTrainer
- * @property string $tntVisionAsTrainer
- * @property string $tntUsageOfKnowledge
- * @property boolean $paid
- * @property boolean $paymentEmailSent
- * @property \DateTime $registrationDateUtc
- * @property PaymentTransaction $successfulTransaction
  */
 class Participant
 {
@@ -45,141 +22,189 @@ class Participant
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue
+     *
+     * @var int
      */
     protected $id;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $firstname;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $surname;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $email;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $phone;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @var string|null
      */
     protected $allergies;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @var string
      */
     protected $diet;
 
     /**
      * @ORM\Column(type="boolean")
+     * 
+     * @var bool
      */
     protected $visaNeeded;
 
     /**
      * @ORM\Column(type="boolean")
+     * 
+     * @var bool
      */
     protected $invitationLetterNeeded;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $nmo;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $nmoPosition;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @var string|null
      */
     protected $ifmsaEventsAttended;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $universityFaculty;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $city;
 
     /**
      * @ORM\Column(type="integer")
+     * 
+     * @var int
      */
     protected $yearOfStudy;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @var string
      */
     protected $motivation;
 
     /**
      * @ORM\Column(type="string")
+     * 
+     * @var string
      */
     protected $pretOrTnt = "";
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @var string
      */
     protected $tntStrengthsAsTrainer = "";
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @var string
      */
     protected $tntVisionAsTrainer = "";
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @var string
      */
     protected $tntUsageOfKnowledge = "";
 
     /**
      * @ORM\Column(type="boolean")
+     *
+     * @var bool
      */
     protected $paid = false;
 
     /**
      * @ORM\Column(type="boolean")
+     *
+     * @var bool
      */
     protected $paymentEmailSent = false;
 
     /**
      * @ORM\Column(type="datetime")
+     *
+     * @var DateTime
      */
     protected $registrationDateUtc;
 
     /**
      * @ORM\OneToMany(targetEntity="PaymentTransaction", mappedBy="participant")
+     *
+     * @var Collection<int, PaymentTransaction>
      */
     protected $paymentTransactions;
 
 
     public function __construct(
-        $firstname,
-        $surname,
-        $email,
-        $phone,
-        $allergies,
-        $diet,
-        $visaNeeded,
-        $invitationLetterNeeded,
-        $nmo,
-        $nmoPosition,
-        $ifmsaEventsAttended,
-        $university,
-        $city,
-        $yearOfStudy,
-        $motivation
+        string $firstname,
+        string $surname,
+        string $email,
+        string $phone,
+        ?string $allergies,
+        string $diet,
+        bool $visaNeeded,
+        bool $invitationLetterNeeded,
+        string $nmo,
+        string $nmoPosition,
+        ?string $ifmsaEventsAttended,
+        string $university,
+        string $city,
+        int $yearOfStudy,
+        string $motivation
     ) {
 
         $this->firstname = $firstname;
@@ -202,7 +227,7 @@ class Participant
         $this->paymentTransactions = new ArrayCollection;
     }
 
-    public function getRegistrationDateUtc()
+    public function getRegistrationDateUtc(): DateTime
     {
         $original = $this->registrationDateUtc->format("Y-m-d H:i:s");
         return DatetimeHelper::createUTC($original);
@@ -210,217 +235,188 @@ class Participant
 
     public function isPret(): bool
     {
-        return $this->pretOrTnt === self::PRET_KEY ? true : false;
+        return $this->pretOrTnt === self::PRET_KEY;
     }
 
-    public function setPret()
+    public function setPret(): void
     {
         $this->pretOrTnt = self::PRET_KEY;
     }
 
     public function isTnt(): bool
     {
-        return $this->pretOrTnt === self::TNT_KEY ? true : false;
+        return $this->pretOrTnt === self::TNT_KEY;
     }
 
-    public function setTnt()
+    public function setTnt(): void
     {
         $this->pretOrTnt = self::TNT_KEY;
     }
 
-    public function getSuccessfulTransaction()
+    public function getSuccessfulTransaction(): object
     {
         return $this->paymentTransactions->filter(function (PaymentTransaction $transaction) {
-            if ($transaction->isOk()) {
-                return true;
-            } else {
-                return false;
-            }
+            return $transaction->isOk();
         })->first();
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
     /**
-     * @return int
+     * @param bool $paid
      */
+    public function setPaid(bool $paid): void
+    {
+        $this->paid = $paid;
+    }
+
+    /**
+     * @param string $tntStrengthsAsTrainer
+     */
+    public function setTntStrengthsAsTrainer(string $tntStrengthsAsTrainer): void
+    {
+        $this->tntStrengthsAsTrainer = $tntStrengthsAsTrainer;
+    }
+
+    /**
+     * @param string $tntVisionAsTrainer
+     */
+    public function setTntVisionAsTrainer(string $tntVisionAsTrainer): void
+    {
+        $this->tntVisionAsTrainer = $tntVisionAsTrainer;
+    }
+
+    /**
+     * @param string $tntUsageOfKnowledge
+     */
+    public function setTntUsageOfKnowledge(string $tntUsageOfKnowledge): void
+    {
+        $this->tntUsageOfKnowledge = $tntUsageOfKnowledge;
+    }
+
+    /**
+     * @param bool $paymentEmailSent
+     */
+    public function setPaymentEmailSent(bool $paymentEmailSent): void
+    {
+        $this->paymentEmailSent = $paymentEmailSent;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getFirstname(): string
     {
         return $this->firstname;
     }
 
-    /**
-     * @return string
-     */
     public function getSurname(): string
     {
         return $this->surname;
     }
 
-    /**
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @return string
-     */
     public function getPhone(): string
     {
         return $this->phone;
     }
 
-    /**
-     * @return string
-     */
-    public function getAllergies(): string
+    public function getAllergies(): ?string
     {
         return $this->allergies;
     }
 
-    /**
-     * @return string
-     */
     public function getDiet(): string
     {
         return $this->diet;
     }
 
-    /**
-     * @return bool
-     */
     public function isVisaNeeded(): bool
     {
         return $this->visaNeeded;
     }
 
-    /**
-     * @return bool
-     */
     public function isInvitationLetterNeeded(): bool
     {
         return $this->invitationLetterNeeded;
     }
 
-    /**
-     * @return string
-     */
     public function getNmo(): string
     {
         return $this->nmo;
     }
 
-    /**
-     * @return string
-     */
     public function getNmoPosition(): string
     {
         return $this->nmoPosition;
     }
 
-    /**
-     * @return string
-     */
-    public function getIfmsaEventsAttended(): string
+    public function getIfmsaEventsAttended(): ?string
     {
         return $this->ifmsaEventsAttended;
     }
 
-    /**
-     * @return string
-     */
     public function getUniversityFaculty(): string
     {
         return $this->universityFaculty;
     }
 
-    /**
-     * @return string
-     */
     public function getCity(): string
     {
         return $this->city;
     }
 
-    /**
-     * @return int
-     */
     public function getYearOfStudy(): int
     {
         return $this->yearOfStudy;
     }
-
-    /**
-     * @return string
-     */
     public function getMotivation(): string
     {
         return $this->motivation;
     }
 
-    /**
-     * @return string
-     */
     public function getPretOrTnt(): string
     {
         return $this->pretOrTnt;
     }
 
-    /**
-     * @return string
-     */
     public function getTntStrengthsAsTrainer(): string
     {
         return $this->tntStrengthsAsTrainer;
     }
 
-    /**
-     * @return string
-     */
     public function getTntVisionAsTrainer(): string
     {
         return $this->tntVisionAsTrainer;
     }
 
-    /**
-     * @return string
-     */
     public function getTntUsageOfKnowledge(): string
     {
         return $this->tntUsageOfKnowledge;
     }
 
-    /**
-     * @return bool
-     */
     public function isPaid(): bool
     {
         return $this->paid;
     }
 
-    /**
-     * @return bool
-     */
     public function isPaymentEmailSent(): bool
     {
         return $this->paymentEmailSent;
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection<int, PaymentTransaction>
      */
-    public function getPaymentTransactions(): ArrayCollection
+    public function getPaymentTransactions(): Collection
     {
         return $this->paymentTransactions;
     }

@@ -53,7 +53,7 @@ class PretEventHelper extends BaseEventHelper
      */
     public function getParticipantFee(Participant $participant): int
     {
-        $registrationDate = $participant->registrationDateUtc;
+        $registrationDate = $participant->getRegistrationDateUtc();
         if ($registrationDate <= $this->pretEventParams->getRegularStart()) {
             return $this->pretEventParams->getEarlyFee();
         } else {

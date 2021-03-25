@@ -10,7 +10,7 @@ class RegistrationLabelsHelper
 {
     /**
      * List of all labels which this helper contains.
-     * @var array
+     * @var array<string, string>
      */
     private $labels = array(
             "firstname" => "Firstname",

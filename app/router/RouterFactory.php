@@ -15,7 +15,7 @@ class RouterFactory
 
     /**
      * Get router for this application.
-     * @return Nette\Application\IRouter
+     * @return Nette\Routing\Router
      */
     public static function createRouter()
     {

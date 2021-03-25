@@ -8,7 +8,7 @@ use App\Model;
 class HomepagePresenter extends BasePresenter
 {
 
-    public function renderDefault()
+    public function renderDefault(): void
     {
     }
 }

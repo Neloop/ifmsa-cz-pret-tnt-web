@@ -36,7 +36,7 @@ class LoginFormFactory
 
         $form->addText('username', 'Username')
                 ->setRequired('Please enter your username.')
-                ->setAttribute('autofocus');
+                ->setHtmlAttribute('autofocus');
 
         $form->addPassword('password', 'Password')
                 ->setRequired('Please enter your password.');
@@ -50,12 +50,12 @@ class LoginFormFactory
      * If submit of login form succeeded this callback is called. User is
      * authenticated through simple authenticator.
      * @param BootstrapForm $form
-     * @param array $values
+     * @param object $values
      */
-    public function loginFormSucceeded(BootstrapForm $form, $values)
+    public function loginFormSucceeded(BootstrapForm $form, $values): void
     {
         try {
-            $this->user->setExpiration('60 minutes', true);
+            $this->user->setExpiration('60 minutes');
             $this->user->login($values->username, $values->password);
         } catch (Nette\Security\AuthenticationException $e) {
             $form->addError($e->getMessage());

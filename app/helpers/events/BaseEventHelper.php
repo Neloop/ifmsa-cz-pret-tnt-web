@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Alcohol\ISO4217;
 use App\Model\Entity\Participant;
 use App\Helpers\Payment\PaymentParams;
 
@@ -19,6 +20,7 @@ abstract class BaseEventHelper
 
     /**
      * Constructor initialized via DI.
+     * @param PaymentParams $paymentParams
      */
     public function __construct(PaymentParams $paymentParams)
     {
@@ -44,7 +46,7 @@ abstract class BaseEventHelper
      */
     public function getCurrency()
     {
-        $iso4217 = new \Alcohol\ISO4217();
+        $iso4217 = new ISO4217();
         return $iso4217->getByNumeric($this->paymentParams->getCurrency())["alpha3"];
     }
 }

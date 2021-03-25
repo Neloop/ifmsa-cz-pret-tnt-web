@@ -7,6 +7,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Repository for all PaymentError entities.
+ *
+ * @extends BaseRepository<PaymentError>
  */
 class PaymentErrors extends BaseRepository
 {

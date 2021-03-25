@@ -46,7 +46,7 @@ class MenuItem
 
     /**
      * Array of this item sub items.
-     * @var array
+     * @var MenuItem[]
      */
     public $subItems = array();
 }

@@ -2,6 +2,7 @@
 
 namespace App\Model\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,62 +16,58 @@ class PaymentError
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue
+     *
+     * @var int
      */
     protected $id;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var DateTime
      */
     protected $errorTime;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=20)
+     *
+     * @var string
      */
     protected $action;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @var string|null
      */
     protected $response;
 
 
-    public function __construct($action, $response)
+    public function __construct(string $action, ?string $response)
     {
-        $this->errorTime = new \DateTime;
+        $this->errorTime = new DateTime;
         $this->action = $action;
         $this->response = $response;
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getErrorTime(): \DateTime
+    public function getErrorTime(): DateTime
     {
         return $this->errorTime;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAction()
+    public function getAction(): string
     {
         return $this->action;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getResponse()
+    public function getResponse(): ?string
     {
         return $this->response;
     }

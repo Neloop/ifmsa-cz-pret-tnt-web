@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use DateTime;
 use Nette\Utils\Arrays;
 
 /**
@@ -11,12 +12,12 @@ class TntEventParams
 {
     /**
      * Start date and time of registration to TNT event.
-     * @var \DateTime
+     * @var DateTime
      */
     protected $start;
     /**
      * End date and time of registration to TNT event.
-     * @var \DateTime
+     * @var DateTime
      */
     protected $end;
     /**
@@ -28,7 +29,7 @@ class TntEventParams
 
     /**
      * Constructor initialized via DI.
-     * @param array $config
+     * @param array<string, string> $config
      */
     public function __construct(array $config)
     {
@@ -39,18 +40,18 @@ class TntEventParams
 
     /**
      * Get start of TNT event registration.
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getStart(): \DateTime
+    public function getStart(): DateTime
     {
         return $this->start;
     }
 
     /**
      * Get end of TNT event registration.
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getEnd(): \DateTime
+    public function getEnd(): DateTime
     {
         return $this->end;
     }

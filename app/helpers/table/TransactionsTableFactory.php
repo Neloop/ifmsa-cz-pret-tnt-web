@@ -5,6 +5,7 @@ namespace App\Helpers\Table;
 use App\Model\Repository\Participants;
 use App\Helpers\PretEventHelper;
 use App\Helpers\TntEventHelper;
+use XLSXWriter;
 
 /**
  * Factory class responsible for generation of tables concerning transactions.
@@ -21,6 +22,8 @@ class TransactionsTableFactory
     /**
      * DI Constructor.
      * @param Participants $participants
+     * @param PretEventHelper $pretEventHelper
+     * @param TntEventHelper $tntEventHelper
      */
     public function __construct(
         Participants $participants,
@@ -76,7 +79,7 @@ class TransactionsTableFactory
             );
         }
 
-        $writer = new \XLSXWriter();
+        $writer = new XLSXWriter();
         $writer->writeSheet($data);
         return $writer->writeToString();
     }

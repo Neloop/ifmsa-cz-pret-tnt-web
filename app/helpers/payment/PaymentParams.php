@@ -35,7 +35,7 @@ class PaymentParams
 
     /**
      * Constructor initialized via DI.
-     * @param array $params
+     * @param array<string, string> $params
      */
     public function __construct(array $params)
     {

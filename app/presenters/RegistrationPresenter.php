@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use App\Forms\BootstrapForm;
 use App\Forms\RegistrationFormsFactory;
 use App\Helpers\PretEventHelper;
 use App\Helpers\TntEventHelper;
@@ -26,7 +27,7 @@ class RegistrationPresenter extends BasePresenter
      */
     public $tntEventHelper;
 
-    protected function createComponentPretRegistrationForm()
+    protected function createComponentPretRegistrationForm(): BootstrapForm
     {
         $form = $this->registrationFormsFactory->createPretRegistrationForm();
         $form->onSuccess[] = function () {
@@ -36,7 +37,7 @@ class RegistrationPresenter extends BasePresenter
         return $form;
     }
 
-    protected function createComponentTntRegistrationForm()
+    protected function createComponentTntRegistrationForm(): BootstrapForm
     {
         $form = $this->registrationFormsFactory->createTntRegistrationForm();
         $form->onSuccess[] = function () {
@@ -46,7 +47,7 @@ class RegistrationPresenter extends BasePresenter
         return $form;
     }
 
-    public function actionPretForm()
+    public function actionPretForm(): void
     {
         if (!$this->pretEventHelper->canRegisterNow()) {
             $this->flashMessage("Registration to PRET is already closed.");
@@ -54,7 +55,7 @@ class RegistrationPresenter extends BasePresenter
         }
     }
 
-    public function actionTntForm()
+    public function actionTntForm(): void
     {
         if (!$this->tntEventHelper->canRegisterNow()) {
             $this->flashMessage("Registration to TNT is already closed.");

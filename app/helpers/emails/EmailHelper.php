@@ -3,7 +3,7 @@
 namespace App\Helpers\Emails;
 
 use App\Helpers\AppParams;
-use Nette\Mail\IMailer;
+use Nette\Mail\Mailer;
 use Nette\Mail\Message;
 use Nette\Mail\SendException;
 use Latte;
@@ -16,7 +16,7 @@ class EmailHelper
 {
     /**
      * Mailer service.
-     * @var IMailer
+     * @var Mailer
      */
     private $mailer;
     /**
@@ -32,12 +32,12 @@ class EmailHelper
 
     /**
      * Constructor initialized via DI.
-     * @param IMailer $mailer
+     * @param Mailer $mailer
      * @param AppParams $appParams
      * @param EmailsParams $emailsParams
      */
     public function __construct(
-        IMailer $mailer,
+        Mailer $mailer,
         AppParams $appParams,
         EmailsParams $emailsParams
     ) {
@@ -50,7 +50,7 @@ class EmailHelper
     /**
      * Constructs email message, initializes its template and sends it to given
      * recipient from address defined in config.
-     * @param array $to possibility of more recipients
+     * @param string[] $to possibility of more recipients
      * @param string $subject subject of the message
      * @param string $messageText the message
      * @return bool if email was sent successfully

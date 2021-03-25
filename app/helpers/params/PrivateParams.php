@@ -22,7 +22,7 @@ class PrivateParams
 
     /**
      * Constructor initialized via DI.
-     * @param array $config
+     * @param array<string, string> $config
      */
     public function __construct(array $config)
     {

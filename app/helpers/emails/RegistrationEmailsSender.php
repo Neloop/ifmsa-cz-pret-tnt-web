@@ -52,13 +52,13 @@ class RegistrationEmailsSender
      */
     private function sendToParticipant(Participant $participant): bool
     {
-        $subject = strtoupper($participant->pretOrTnt) . " Registration";
+        $subject = strtoupper($participant->getPretOrTnt()) . " Registration";
 
         $message = "<p>Dear IFMSA friend,</p>";
         $message .= "<p>thank you for your registration. There are limited spots for both events so we will consider all registrations carefully. We will let you know according to registration dates you can find on website if you are chosen or not.</p>";
         $message .= "<p>Stay tuned on our website <a href='{$this->appParams->getSiteUrl()}' target='_blank'>pret.ifmsa.cz</a> / <a href='{$this->appParams->getSiteAlternativeUrl()}' target='_blank'>tnt.ifmsa.cz</a> or the <a href='{$this->appParams->getFacebookEventUrl()}' target='_blank'>FB event.</a></p>";
 
-        return $this->emailHelper->send([$participant->email], $subject, $message);
+        return $this->emailHelper->send([$participant->getEmail()], $subject, $message);
     }
 
     /**
@@ -68,12 +68,12 @@ class RegistrationEmailsSender
      */
     private function sendToOrganizers(Participant $participant): bool
     {
-        $subject = strtoupper($participant->pretOrTnt) . " Registration Report";
+        $subject = strtoupper($participant->getPretOrTnt()) . " Registration Report";
 
-        $message = "<p>New registration on " . strtoupper($participant->pretOrTnt) . " event.</p>";
-        $message .= "Name: {$participant->firstname} {$participant->surname}<br>";
-        $message .= "Email: {$participant->email}<br>";
-        $message .= "Registration Date: {$participant->registrationDateUtc->format('j. n. Y H:i')}";
+        $message = "<p>New registration on " . strtoupper($participant->getPretOrTnt()) . " event.</p>";
+        $message .= "Name: {$participant->getFirstname()} {$participant->getSurname()}<br>";
+        $message .= "Email: {$participant->getEmail()}<br>";
+        $message .= "Registration Date: {$participant->getRegistrationDateUtc()->format('j. n. Y H:i')}";
 
         return $this->emailHelper->send([$this->emailsParams->getReportTo()], $subject, $message);
     }

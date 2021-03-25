@@ -42,7 +42,7 @@ class PaymentEmailsSender
      */
     public function send(Participant $participant): bool
     {
-        $subject = strtoupper($participant->pretOrTnt) . " Payment Details";
+        $subject = strtoupper($participant->getPretOrTnt()) . " Payment Details";
 
         $message = "Dear applicant,<br>";
         $message .= "Thank you very much for your interest in PRET&TNT Prague"
@@ -58,7 +58,7 @@ class PaymentEmailsSender
                 . " soon as you proceed the payment. Payment is realised"
                 . " through our payment gateway and you can pay with your"
                 . " Master Card or Visa. Link for the payment is below:<br>";
-        $paymentLink = $this->appParams->getParticipantPaymentUrl() . "/" . $participant->id;
+        $paymentLink = $this->appParams->getParticipantPaymentUrl() . "/" . $participant->getId();
         $message .= "<a href='{$paymentLink}' target='_blank'>{$paymentLink}</a><br>";
         $message .= "<br>";
 
@@ -70,6 +70,6 @@ class PaymentEmailsSender
                 . " <a href='{$this->appParams->getFacebookEventUrl()}' target='_blank'>facebook event</a>"
                 . " to receive new updates about the event!<br>";
 
-        return $this->emailHelper->send([$participant->email], $subject, $message);
+        return $this->emailHelper->send([$participant->getEmail()], $subject, $message);
     }
 }

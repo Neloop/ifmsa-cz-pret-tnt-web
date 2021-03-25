@@ -2,18 +2,21 @@
 
 namespace App\Exceptions;
 
+use Exception;
+use Throwable;
+
 /**
  * Not found exception is used mainly in doctrine repositories as indication
  * that entity with particular filtering options cannot be found in database.
  */
-class NotFoundException extends \Exception
+class NotFoundException extends Exception
 {
     /**
      * Constructor.
      * @param string $message
-     * @param string? $previous defaulted on null
+     * @param Throwable|null $previous defaulted on null
      */
-    public function __construct($message, $previous = null)
+    public function __construct(string $message, Throwable $previous = null)
     {
         parent::__construct($message, 0, $previous);
     }

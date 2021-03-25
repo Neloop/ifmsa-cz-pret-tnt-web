@@ -17,12 +17,12 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
      */
     public $appParams;
 
-    protected function createComponentMenu()
+    protected function createComponentMenu(): MenuControl
     {
         return new MenuControl();
     }
 
-    protected function startup()
+    protected function startup(): void
     {
         parent::startup();
 

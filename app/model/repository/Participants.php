@@ -7,6 +7,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Repository for all Participant entities.
+ *
+ * @extends BaseRepository<Participant>
  */
 class Participants extends BaseRepository
 {
@@ -19,12 +21,12 @@ class Participants extends BaseRepository
         parent::__construct($em, Participant::class);
     }
 
-    public function countPretParticipants()
+    public function countPretParticipants(): int
     {
         return $this->countBy(array("pretOrTnt" => "pret"));
     }
 
-    public function countTntParticipants()
+    public function countTntParticipants(): int
     {
         return $this->countBy(array("pretOrTnt" => "tnt"));
     }

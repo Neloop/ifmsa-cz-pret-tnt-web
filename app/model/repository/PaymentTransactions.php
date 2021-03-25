@@ -7,6 +7,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Repository for all PaymentTransaction entities.
+ *
+ * @extends BaseRepository<PaymentTransaction>
  */
 class PaymentTransactions extends BaseRepository
 {

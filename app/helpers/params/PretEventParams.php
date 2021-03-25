@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use DateTime;
 use Nette\Utils\Arrays;
 
 /**
@@ -11,17 +12,17 @@ class PretEventParams
 {
     /**
      * Start date and time of early registration for PRET event.
-     * @var \DateTime
+     * @var DateTime
      */
     protected $earlyStart;
     /**
      * Start date and time of regular registration for PRET event.
-     * @var \DateTime
+     * @var DateTime
      */
     protected $regularStart;
     /**
      * End date and time of registration for PRET event.
-     * @var \DateTime
+     * @var DateTime
      */
     protected $end;
     /**
@@ -37,7 +38,7 @@ class PretEventParams
 
     /**
      * Constructor initialized via DI.
-     * @param array $config
+     * @param array<string, string> $config
      */
     public function __construct(array $config)
     {
@@ -50,27 +51,27 @@ class PretEventParams
 
     /**
      * Get start of early registration to PRET event.
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getEarlyStart(): \DateTime
+    public function getEarlyStart(): DateTime
     {
         return $this->earlyStart;
     }
 
     /**
      * Get start of regular registration to PRET event.
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getRegularStart(): \DateTime
+    public function getRegularStart(): DateTime
     {
         return $this->regularStart;
     }
 
     /**
      * Get end of registration to PRET event.
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getEnd(): \DateTime
+    public function getEnd(): DateTime
     {
         return $this->end;
     }

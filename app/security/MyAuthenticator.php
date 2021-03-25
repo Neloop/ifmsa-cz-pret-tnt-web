@@ -3,15 +3,16 @@
 namespace App\Security;
 
 use App\Helpers\PrivateParams;
-use Nette\Security\IAuthenticator;
-use Nette\Security\Identity;
+use Nette\Security\Authenticator;
 use Nette\Security\AuthenticationException;
+use Nette\Security\IIdentity;
+use Nette\Security\SimpleIdentity;
 
 /**
  * Simple authenticator which uses only one username and password for
  * authentication. Credentials are taken from application configuration files.
  */
-class MyAuthenticator implements IAuthenticator
+class MyAuthenticator implements Authenticator
 {
 
     /**
@@ -31,20 +32,19 @@ class MyAuthenticator implements IAuthenticator
 
     /**
      * Authenticates user with given credentials against default ones.
-     * @param array $credentials
-     * @return Identity
+     * @param string $user
+     * @param string $password
+     * @return IIdentity
      * @throws AuthenticationException if username or password is incorrect
      */
-    public function authenticate(array $credentials)
+    public function authenticate(string $user, string $password): IIdentity
     {
-        list($username, $password) = $credentials;
-
-        if ($username !== $this->privateParams->getUsername()) {
-            throw new AuthenticationException("User '{$username}' not found.");
+        if ($user !== $this->privateParams->getUsername()) {
+            throw new AuthenticationException("User '{$user}' not found.");
         } elseif ($password !== $this->privateParams->getPassword()) {
             throw new AuthenticationException("Invalid password");
         }
 
-        return new Identity($username);
+        return new SimpleIdentity($user);
     }
 }

@@ -7,6 +7,7 @@ use App\Model\Entity\PaymentTransaction;
 use App\Model\Repository\PaymentErrors;
 use App\Model\Repository\PaymentTransactions;
 use App\Exceptions\PaymentException;
+use DateTime;
 
 /**
  * Payment gateway transaction helper which manages connection to the remote
@@ -63,7 +64,7 @@ class PaymentTransactionsHelper
      * @param string $description description of new transaction
      * @param int $amount amount in whole crowns or euros.
      * @param string $ip IP address of client which requested payment
-     * @return array($url, $transaction) Redirection URL where payment gateway
+     * @return array<int, mixed> ($url, $transaction) Redirection URL where payment gateway
      * is placed and transaction entity.
      * @throws PaymentException if transaction initialization failed
      */
@@ -117,7 +118,7 @@ class PaymentTransactionsHelper
     public function processTransactionOk(PaymentTransaction $transaction)
     {
         $response = $this->paymentConnection->getTransactionResult(
-            $transaction->transactionId
+            $transaction->getTransactionId()
         );
         $respArray = json_decode($response, true);
 
@@ -126,12 +127,12 @@ class PaymentTransactionsHelper
             $resultCode = $respArray["resultCode"];
 
             // write information about transaction into db
-            $transaction->transactionEndDate = new \DateTime;
-            $transaction->result = $result;
-            $transaction->resultCode = $resultCode;
-            $transaction->result3dsecure = $respArray["result3dsecure"];
-            $transaction->cardNumber = $respArray["cardNumber"];
-            $transaction->response = $response;
+            $transaction->setTransactionEndDate(new DateTime);
+            $transaction->setResult($result);
+            $transaction->setResultCode($resultCode);
+            $transaction->setResult3dsecure($respArray["result3dsecure"]);
+            $transaction->setCardNumber($respArray["cardNumber"]);
+            $transaction->setResponse($response);
             $this->paymentTransactions->flush();
 
             return ($result == 'OK' && strlen($resultCode) == 3 &&
@@ -152,11 +153,11 @@ class PaymentTransactionsHelper
     public function processTransactionFail(
         PaymentTransaction $transaction,
         string $errorMsg
-    ) {
-    
+    ): void {
+
         // get information from merchant and store them in database
         $response = $this->paymentConnection->getTransactionResult(
-            $transaction->transactionId
+            $transaction->getTransactionId()
         );
         $response = $errorMsg . ' + ' . $response;
 
