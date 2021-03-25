@@ -38,12 +38,7 @@ class TntEventHelper extends BaseEventHelper
      */
     public function canRegisterNow(): bool
     {
-        $now = DatetimeHelper::getNowUTC();
-        if ($now <= $this->tntEventParams->getEnd()) {
-            return true;
-        } else {
-            return false;
-        }
+        return DatetimeHelper::getNowUTC() <= $this->tntEventParams->getEnd();
     }
 
     /**

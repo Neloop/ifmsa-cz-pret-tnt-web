@@ -1,72 +1,72 @@
 {block content}
-<h1 n:block="title">{$participant->pretOrTnt|upper} Participant</h1>
+<h1 n:block="title">{$participant->getPretOrTnt()|upper} Participant</h1>
 <table class="table">
     <tr>
         <th>Name</th>
-        <td>{$participant->firstname} {$participant->surname}</td>
+        <td>{$participant->getFirstname()} {$participant->getSurname()}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("email")}</th>
-        <td>{$participant->email}</td>
+        <td>{$participant->getEmail()}</td>
     </tr>
     <tr>
         <th>Registration Date (UTC)</th>
-        <td>{$participant->registrationDateUtc|date:'j. n. Y H:i'}</td>
+        <td>{$participant->getRegistrationDateUtc()|date:'j. n. Y H:i'}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("pretOrTnt")}</th>
-        <td>{$participant->pretOrTnt|upper}</td>
+        <td>{$participant->getPretOrTnt()|upper}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("phone")}</th>
-        <td>{$participant->phone}</td>
+        <td>{$participant->getPhone()}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("allergies")}</th>
-        <td>{$participant->allergies}</td>
+        <td>{$participant->getAllergies()}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("diet")}</th>
-        <td>{$participant->diet}</td>
+        <td>{$participant->getDiet()}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("visaNeeded")}</th>
-        <td>{$participant->visaNeeded ? "Yes" : "No"}</td>
+        <td>{$participant->isVisaNeeded() ? "Yes" : "No"}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("invitationLetterNeeded")}</th>
-        <td>{$participant->invitationLetterNeeded ? "Yes" : "No"}</td>
+        <td>{$participant->isInvitationLetterNeeded() ? "Yes" : "No"}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("nmo")}</th>
-        <td>{$participant->nmo}</td>
+        <td>{$participant->getNmo()}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("nmoPosition")}</th>
-        <td>{$participant->nmoPosition}</td>
+        <td>{$participant->getNmoPosition()}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("ifmsaEventsAttended")}</th>
-        <td>{$participant->ifmsaEventsAttended|breaklines}</td>
+        <td>{$participant->getIfmsaEventsAttended()|breaklines}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("universityFaculty")}</th>
-        <td>{$participant->universityFaculty}</td>
+        <td>{$participant->getUniversityFaculty()}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("city")}</th>
-        <td>{$participant->city}</td>
+        <td>{$participant->getCity()}</td>
     </tr>
     <tr>
         <th>{$labelsHelper->getLabel("yearOfStudy")}</th>
-        <td>{$participant->yearOfStudy}</td>
+        <td>{$participant->getYearOfStudy()}</td>
     </tr>
 
     <tr>
         <th colspan="2">{$labelsHelper->getLabel("motivation")}</th>
     </tr>
     <tr>
-        <td colspan="2">{$participant->motivation|breaklines}</td>
+        <td colspan="2">{$participant->getMotivation()|breaklines}</td>
     </tr>
 
     {if $participant->isTnt()}
@@ -74,21 +74,21 @@
         <th colspan="2">{$labelsHelper->getLabel("tntStrengthsAsTrainer")}</th>
     </tr>
     <tr>
-        <td colspan="2">{$participant->tntStrengthsAsTrainer|breaklines}</td>
+        <td colspan="2">{$participant->getTntStrengthsAsTrainer()|breaklines}</td>
     </tr>
 
     <tr>
         <th colspan="2">{$labelsHelper->getLabel("tntVisionAsTrainer")}</th>
     </tr>
     <tr>
-        <td colspan="2">{$participant->tntVisionAsTrainer|breaklines}</td>
+        <td colspan="2">{$participant->getTntVisionAsTrainer()|breaklines}</td>
     </tr>
 
     <tr>
         <th colspan="2">{$labelsHelper->getLabel("tntUsageOfKnowledge")}</th>
     </tr>
     <tr>
-        <td colspan="2">{$participant->tntUsageOfKnowledge|breaklines}</td>
+        <td colspan="2">{$participant->getTntUsageOfKnowledge()|breaklines}</td>
     </tr>
     {/if}
 </table>
@@ -96,7 +96,7 @@
 <div class="vgap-1"></div>
 <div class="form-group">
     <label for="tableInsertion">Table Insertion Helper:</label>
-    <textarea class="form-control" id="tableInsertion">{$participant->firstname} {$participant->surname}	{$participant->nmo}	{$participant->email}			{$participant->visaNeeded ? "1" : "0"}	{$participant->invitationLetterNeeded ? "1" : "0"}</textarea>
+    <textarea class="form-control" id="tableInsertion">{$participant->getFirstname()} {$participant->getSurname()}	{$participant->getNmo()}	{$participant->getEmail()}			{$participant->isVisaNeeded() ? "1" : "0"}	{$participant->isInvitationLetterNeeded() ? "1" : "0"}</textarea>
 </div>
 <div class="vgap-1"></div>
 
@@ -105,7 +105,7 @@
     <tr>
         <th>Paid</th>
         <td>
-            {if $participant->paid}
+            {if $participant->isPaid()}
                 <span class="text-success">Yes</span>
             {else}
                 <span class="text-danger">No</span>
@@ -115,8 +115,8 @@
     <tr>
         <th>Send Payment Details Email</th>
         <td>
-            <a n:href="Private:sendPaymentEmail, id => $participant->id" class="btn btn-primary">Send</a>
-            {if $participant->paymentEmailSent}
+            <a n:href="Private:sendPaymentEmail, id => $participant->getId()" class="btn btn-primary">Send</a>
+            {if $participant->isPaymentEmailSent()}
                 <span class="text-danger">Email already sent!</span>
             {/if}
         </td>

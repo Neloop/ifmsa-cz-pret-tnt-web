@@ -38,12 +38,7 @@ class PretEventHelper extends BaseEventHelper
      */
     public function canRegisterNow(): bool
     {
-        $now = DatetimeHelper::getNowUTC();
-        if ($now <= $this->pretEventParams->getEnd()) {
-            return true;
-        } else {
-            return false;
-        }
+        return DatetimeHelper::getNowUTC() <= $this->pretEventParams->getEnd();
     }
 
     /**

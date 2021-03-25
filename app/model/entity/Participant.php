@@ -253,11 +253,12 @@ class Participant
         $this->pretOrTnt = self::TNT_KEY;
     }
 
-    public function getSuccessfulTransaction(): object
+    public function getSuccessfulTransaction(): ?PaymentTransaction
     {
-        return $this->paymentTransactions->filter(function (PaymentTransaction $transaction) {
+        $payment = $this->paymentTransactions->filter(function (PaymentTransaction $transaction) {
             return $transaction->isOk();
         })->first();
+        return $payment === false ? null : $payment;
     }
 
     ////////////////////////////////////////////////////////////////////////////

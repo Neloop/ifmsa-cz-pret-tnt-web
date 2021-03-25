@@ -51,11 +51,11 @@ class TransactionsTableFactory
             $start = "";
             $end = "";
 
-            $transaction = $participant->successfulTransaction;
+            $transaction = $participant->getSuccessfulTransaction();
             if ($transaction) {
-                $start = $transaction->tDate->format("j.n.Y H:i");
-                if ($transaction->transactionEndDate) {
-                    $end = $transaction->transactionEndDate->format("j.n.Y H:i");
+                $start = $transaction->getTDate()->format("j.n.Y H:i");
+                if ($transaction->getTransactionEndDate()) {
+                    $end = $transaction->getTransactionEndDate()->format("j.n.Y H:i");
                 }
             }
 
@@ -69,13 +69,13 @@ class TransactionsTableFactory
 
             // if participant already paid, obtain appropriate amount
             if ($transaction) {
-                $amount = $transaction->amount;
+                $amount = $transaction->getAmount();
             }
 
             $data[] = array(
-                $start, $end, $participant->firstname, $participant->surname,
-                $amount, $currency, $participant->paid ? "Yes" : "No",
-                $participant->pretOrTnt
+                $start, $end, $participant->getFirstname(), $participant->getSurname(),
+                $amount, $currency, $participant->isPaid() ? "Yes" : "No",
+                $participant->getPretOrTnt()
             );
         }
 

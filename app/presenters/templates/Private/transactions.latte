@@ -21,15 +21,15 @@
     </thead>
     <tbody>
         <tr n:foreach="$transactions as $transaction">
-            <td>{$transaction->description|escape|replace:";":"<br>"|noescape}</td>
+            <td>{$transaction->getDescription()|escape|replace:";":"<br>"|noescape}</td>
             <td>
-                {if $transaction->participant}
-                    <a n:href="Private:participant, 'id' => $transaction->participant->id">{$transaction->participant->firstname} {$transaction->participant->surname}</a></td>
+                {if $transaction->getParticipant()}
+                    <a n:href="Private:participant, 'id' => $transaction->getParticipant()->getId()">{$transaction->getParticipant()->getFirstname()} {$transaction->getParticipant()->getSurname()}</a></td>
                 {/if}
-            <td>{$transaction->tDate|date:'j.n.Y H:i'}</td>
-            <td>{$transaction->result}</td>
+            <td>{$transaction->getTDate()|date:'j.n.Y H:i'}</td>
+            <td>{$transaction->getResult()}</td>
             <td>
-                {if $transaction->participant && $transaction->participant->paid}
+                {if $transaction->getParticipant() && $transaction->getParticipant()->isPaid()}
                     <span class="text-success">Yes</span>
                 {else}
                     <span class="text-danger">No</span>
