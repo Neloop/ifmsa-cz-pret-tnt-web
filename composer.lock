@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5578965b3de210d52a5c2229a0ed4363",
+    "content-hash": "6ef5550d67692d5a8b50cb2f6807678d",
     "packages": [
         {
             "name": "alcohol/iso4217",
@@ -1595,16 +1595,16 @@
         },
         {
             "name": "mk-j/php_xlsxwriter",
-            "version": "0.32",
+            "version": "0.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mk-j/PHP_XLSXWriter.git",
-                "reference": "94d5bb017b7fd3f3334309fba84de9b04ff0e07d"
+                "reference": "00579529fea072851789505b2dec0d14cdfffe60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mk-j/PHP_XLSXWriter/zipball/94d5bb017b7fd3f3334309fba84de9b04ff0e07d",
-                "reference": "94d5bb017b7fd3f3334309fba84de9b04ff0e07d",
+                "url": "https://api.github.com/repos/mk-j/PHP_XLSXWriter/zipball/00579529fea072851789505b2dec0d14cdfffe60",
+                "reference": "00579529fea072851789505b2dec0d14cdfffe60",
                 "shasum": ""
             },
             "require": {
@@ -1635,9 +1635,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mk-j/PHP_XLSXWriter/issues",
-                "source": "https://github.com/mk-j/PHP_XLSXWriter/tree/0.32"
+                "source": "https://github.com/mk-j/PHP_XLSXWriter/tree/master"
             },
-            "time": "2017-03-09T16:25:31+00:00"
+            "time": "2020-01-11T02:53:20+00:00"
         },
         {
             "name": "nette/application",
