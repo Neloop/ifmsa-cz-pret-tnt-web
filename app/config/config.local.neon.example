@@ -34,11 +34,9 @@ reCaptcha:
     siteKey: SITE_KEY
     secretKey: SECRET_KEY
 
-
-doctrine:
-    user: 'root'
-    password: ''
-    host: localhost
-    dbname: 'ifmsa-pret-tnt'
-    metadata:
-        App\Model: %appDir%/model
+nettrine.dbal:
+  connection:
+    host: "localhost"
+    user: "root"
+    password: ""
+    dbname: "ifmsa-pret-tnt"

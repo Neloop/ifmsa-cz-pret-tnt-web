@@ -37,7 +37,6 @@
 		"nette/utils": "^2.4",
 		"latte/latte": "^2.4",
 		"tracy/tracy": "^2.5",
-		"kdyby/doctrine": "^3.3",
 		"guzzlehttp/guzzle": "^6.2",
 		"composer/ca-bundle": "^1.0",
 		"uestla/recaptcha-control": "^7.0",

@@ -104,21 +104,41 @@ services:
 
 
 extensions:
-    console: Kdyby\Console\DI\ConsoleExtension
-    events: Kdyby\Events\DI\EventsExtension
-    annotations: Kdyby\Annotations\DI\AnnotationsExtension
-    doctrine: Kdyby\Doctrine\DI\OrmExtension
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+    nettrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
+    nettrine.cache: Nettrine\Cache\DI\CacheExtension
+    nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+    nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+    nettrine.orm: Nettrine\ORM\DI\OrmExtension
+    nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+    nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension(%consoleMode%)
+    nettrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
     reCaptcha: ReCaptchaControl\DI\Extension
 
 
-doctrine:
-    user: 'root'
-    password: ''
-    host: localhost
-    dbname: 'ifmsa-pret-tnt'
-    charset: utf8mb4
-    defaultTableOptions:
+nettrine.dbal:
+    debug:
+        panel: %debugMode%
+        sourcePaths: [%appDir%]
+    connection:
+        driver: pdo_mysql
+        host: localhost
+        dbname: 'ifmsa-pret-tnt'
+        user: 'root'
+        password: ''
         charset: utf8mb4
-        collate: utf8mb4_unicode_ci
-    metadata:
-        App\Model: %appDir%/model
+        defaultTableOptions:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+
+nettrine.orm:
+    configuration:
+        autoGenerateProxyClasses: true
+
+nettrine.orm.annotations:
+    mapping:
+        App\Model\Entity: %appDir%/model/entity
+
+
+console:
+    name: IFMSA CZ - PRET/TNT Website
