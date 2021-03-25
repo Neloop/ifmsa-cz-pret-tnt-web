@@ -3,7 +3,6 @@
 namespace App\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kdyby\Doctrine\Entities\MagicAccessors;
 
 /**
  * PaymentTransaction
@@ -12,7 +11,6 @@ use Kdyby\Doctrine\Entities\MagicAccessors;
  */
 class PaymentTransaction
 {
-    use MagicAccessors;
 
     /**
      * @ORM\Column(type="integer")
@@ -101,5 +99,111 @@ class PaymentTransaction
     public function isOk()
     {
         return $this->result == "OK";
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTransactionId()
+    {
+        return $this->transactionId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIpAddress()
+    {
+        return $this->ipAddress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResultCode()
+    {
+        return $this->resultCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResult3dsecure()
+    {
+        return $this->result3dsecure;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCardNumber()
+    {
+        return $this->cardNumber;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTDate(): \DateTime
+    {
+        return $this->tDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTransactionEndDate()
+    {
+        return $this->transactionEndDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipant()
+    {
+        return $this->participant;
     }
 }

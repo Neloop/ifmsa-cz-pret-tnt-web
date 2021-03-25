@@ -3,7 +3,6 @@
 namespace App\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kdyby\Doctrine\Entities\MagicAccessors;
 use App\Helpers\DatetimeHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -41,8 +40,6 @@ class Participant
 {
     const PRET_KEY = "pret";
     const TNT_KEY = "tnt";
-
-    use MagicAccessors;
 
     /**
      * @ORM\Column(type="integer")
@@ -240,5 +237,191 @@ class Participant
                 return false;
             }
         })->first();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSurname(): string
+    {
+        return $this->surname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAllergies(): string
+    {
+        return $this->allergies;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDiet(): string
+    {
+        return $this->diet;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisaNeeded(): bool
+    {
+        return $this->visaNeeded;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInvitationLetterNeeded(): bool
+    {
+        return $this->invitationLetterNeeded;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNmo(): string
+    {
+        return $this->nmo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNmoPosition(): string
+    {
+        return $this->nmoPosition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIfmsaEventsAttended(): string
+    {
+        return $this->ifmsaEventsAttended;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUniversityFaculty(): string
+    {
+        return $this->universityFaculty;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @return int
+     */
+    public function getYearOfStudy(): int
+    {
+        return $this->yearOfStudy;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMotivation(): string
+    {
+        return $this->motivation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPretOrTnt(): string
+    {
+        return $this->pretOrTnt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTntStrengthsAsTrainer(): string
+    {
+        return $this->tntStrengthsAsTrainer;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTntVisionAsTrainer(): string
+    {
+        return $this->tntVisionAsTrainer;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTntUsageOfKnowledge(): string
+    {
+        return $this->tntUsageOfKnowledge;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPaid(): bool
+    {
+        return $this->paid;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPaymentEmailSent(): bool
+    {
+        return $this->paymentEmailSent;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPaymentTransactions(): ArrayCollection
+    {
+        return $this->paymentTransactions;
     }
 }

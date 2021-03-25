@@ -3,7 +3,6 @@
 namespace App\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kdyby\Doctrine\Entities\MagicAccessors;
 
 /**
  * PaymentError
@@ -12,8 +11,6 @@ use Kdyby\Doctrine\Entities\MagicAccessors;
  */
 class PaymentError
 {
-    use MagicAccessors;
-
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -42,5 +39,39 @@ class PaymentError
         $this->errorTime = new \DateTime;
         $this->action = $action;
         $this->response = $response;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getErrorTime(): \DateTime
+    {
+        return $this->errorTime;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResponse()
+    {
+        return $this->response;
     }
 }

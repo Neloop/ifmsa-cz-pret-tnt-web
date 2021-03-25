@@ -10,8 +10,8 @@ class NotFoundException extends \Exception
 {
     /**
      * Constructor.
-     * @param type $message
-     * @param type $previous defaulted on null
+     * @param string $message
+     * @param string? $previous defaulted on null
      */
     public function __construct($message, $previous = null)
     {
