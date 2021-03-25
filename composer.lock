@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77d562ae079c0ee99b8675e6d3c0cc72",
+    "content-hash": "20cf602806ba7b7865eeaf145ac466b2",
     "packages": [
         {
             "name": "alcohol/iso4217",
@@ -4343,43 +4343,45 @@
         },
         {
             "name": "uestla/recaptcha-control",
-            "version": "7.0.1",
+            "version": "8.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uestla/ReCaptchaControl.git",
-                "reference": "27b2b9a4637a779221451a3d024495dd2d813307"
+                "reference": "9a1b14c674434218fa140f0126d1cb8c2e7f288c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uestla/ReCaptchaControl/zipball/27b2b9a4637a779221451a3d024495dd2d813307",
-                "reference": "27b2b9a4637a779221451a3d024495dd2d813307",
+                "url": "https://api.github.com/repos/uestla/ReCaptchaControl/zipball/9a1b14c674434218fa140f0126d1cb8c2e7f288c",
+                "reference": "9a1b14c674434218fa140f0126d1cb8c2e7f288c",
                 "shasum": ""
             },
             "require": {
-                "nette/di": "^2.4 || ^3.0",
-                "nette/forms": "^2.4 || ^3.0",
-                "nette/http": "^2.4 || ^3.0",
-                "nette/php-generator": "^2.4 || ^3.0",
-                "nette/utils": "^2.4 || ^3.0",
-                "php": ">=5.6.0"
+                "nette/di": "^3.0",
+                "nette/forms": "^3.0",
+                "nette/http": "^3.0",
+                "nette/php-generator": "^3.0",
+                "nette/utils": "^3.0",
+                "php": ">=7.1"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": "^3.8",
-                "latte/latte": "^2.4",
-                "nette/bootstrap": "^2.4",
-                "nette/tester": "^2.0",
-                "php": ">= 7.0",
-                "phpstan/phpstan-shim": "^0.9.2",
-                "tracy/tracy": "^2.4"
+                "guzzlehttp/guzzle": "^7.2",
+                "latte/latte": "^2.5",
+                "nette/bootstrap": "^3.0",
+                "nette/tester": "^2.2",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12.49",
+                "phpstan/phpstan-nette": "^0.12.9",
+                "tracy/tracy": "^2.6"
             },
             "suggest": {
-                "ext-curl": "Needed by the default ReCaptchaControl\\Http\\Requester\\CurlRequester."
+                "ext-curl": "Needed by the default ReCaptchaControl\\Http\\Requester\\CurlRequester.",
+                "guzzlehttp/guzzle": "Needed by ReCaptchaControl\\Http\\Requester\\GuzzleRequester."
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "ReCaptchaControl": "src/"
-                }
+                "classmap": [
+                    "src/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4394,9 +4396,9 @@
             ],
             "support": {
                 "issues": "https://github.com/uestla/ReCaptchaControl/issues",
-                "source": "https://github.com/uestla/ReCaptchaControl/tree/master"
+                "source": "https://github.com/uestla/ReCaptchaControl/tree/8.0.1"
             },
-            "time": "2018-05-28T17:27:28+00:00"
+            "time": "2020-10-13T09:25:20+00:00"
         }
     ],
     "packages-dev": [

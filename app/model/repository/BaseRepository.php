@@ -3,9 +3,9 @@
 namespace App\Model\Repository;
 
 use App\Exceptions\NotFoundException;
-use Kdyby\Doctrine\EntityManager;
-use Kdyby\Doctrine\EntityRepository;
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * Base repository which is used in all derived repositories.
@@ -14,7 +14,7 @@ class BaseRepository
 {
     /**
      * Doctrine entity manager.
-     * @var EntityManager
+     * @var EntityManagerInterface
      */
     protected $em;
     /**
@@ -25,13 +25,15 @@ class BaseRepository
 
     /**
      * Constructor.
-     * @param EntityManager $em
+     * @param EntityManagerInterface $em
      * @param string $entityType unique entity class name
      */
-    public function __construct(EntityManager $em, $entityType)
+    public function __construct(EntityManagerInterface $em, $entityType)
     {
         $this->em = $em;
-        $this->repository = $em->getRepository($entityType);
+        /** @var EntityRepository $repository */
+        $repository = $em->getRepository($entityType);
+        $this->repository = $repository;
     }
 
     /**
@@ -68,7 +70,7 @@ class BaseRepository
     /**
      * Find one entity by given parameters.
      * @param array $params
-     * @return array|NULL
+     * @return object|NULL
      */
     public function findOneBy($params)
     {
@@ -97,7 +99,7 @@ class BaseRepository
      */
     public function countBy(array $criteria)
     {
-        return $this->repository->countBy($criteria);
+        return $this->repository->count($criteria);
     }
 
     /**
@@ -106,7 +108,7 @@ class BaseRepository
      */
     public function countAll()
     {
-        return $this->repository->countBy();
+        return $this->repository->count();
     }
 
     /**

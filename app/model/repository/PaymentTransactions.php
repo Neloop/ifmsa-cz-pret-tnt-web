@@ -2,8 +2,8 @@
 
 namespace App\Model\Repository;
 
-use Kdyby\Doctrine\EntityManager;
 use App\Model\Entity\PaymentTransaction;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Repository for all PaymentTransaction entities.
@@ -12,9 +12,9 @@ class PaymentTransactions extends BaseRepository
 {
     /**
      * Constructor initialized via DI.
-     * @param EntityManager $em
+     * @param EntityManagerInterface $em
      */
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         parent::__construct($em, PaymentTransaction::class);
     }

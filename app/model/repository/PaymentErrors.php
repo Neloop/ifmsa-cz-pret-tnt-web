@@ -2,8 +2,8 @@
 
 namespace App\Model\Repository;
 
-use Kdyby\Doctrine\EntityManager;
 use App\Model\Entity\PaymentError;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Repository for all PaymentError entities.
@@ -12,9 +12,9 @@ class PaymentErrors extends BaseRepository
 {
     /**
      * Constructor initialized via DI.
-     * @param EntityManager $em
+     * @param EntityManagerInterface $em
      */
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         parent::__construct($em, PaymentError::class);
     }
