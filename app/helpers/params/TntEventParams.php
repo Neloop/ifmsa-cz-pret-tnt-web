@@ -35,7 +35,7 @@ class TntEventParams
     {
         $this->start = DatetimeHelper::createUTC(Arrays::get($config, ["start"], ""));
         $this->end = DatetimeHelper::createUTC(Arrays::get($config, ["end"], ""));
-        $this->fee = Arrays::get($config, ["fee"], "");
+        $this->fee = Arrays::get($config, ["fee"], 0);
     }
 
     /**

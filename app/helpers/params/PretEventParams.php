@@ -45,8 +45,8 @@ class PretEventParams
         $this->earlyStart = DatetimeHelper::createUTC(Arrays::get($config, ["earlyStart"], ""));
         $this->regularStart = DatetimeHelper::createUTC(Arrays::get($config, ["regularStart"], ""));
         $this->end = DatetimeHelper::createUTC(Arrays::get($config, ["end"], ""));
-        $this->earlyFee = Arrays::get($config, ["earlyFee"], "");
-        $this->regularFee = Arrays::get($config, ["regularFee"], "");
+        $this->earlyFee = Arrays::get($config, ["earlyFee"], 0);
+        $this->regularFee = Arrays::get($config, ["regularFee"], 0);
     }
 
     /**
