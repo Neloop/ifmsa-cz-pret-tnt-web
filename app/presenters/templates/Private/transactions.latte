@@ -21,7 +21,7 @@
     </thead>
     <tbody>
         <tr n:foreach="$transactions as $transaction">
-            <td>{$transaction->getDescription()|escape|replace:";":"<br>"|noescape}</td>
+            <td>{$transaction->getDescription()|escape|replace,";","<br>"|noescape}</td>
             <td>
                 {if $transaction->getParticipant()}
                     <a n:href="Private:participant, 'id' => $transaction->getParticipant()->getId()">{$transaction->getParticipant()->getFirstname()} {$transaction->getParticipant()->getSurname()}</a></td>

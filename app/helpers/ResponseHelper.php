@@ -10,18 +10,6 @@ use Nette\Http\IResponse;
  */
 class ResponseHelper
 {
-    /** @var Nette\Http\Response */
-    private $httpResponse;
-
-    /**
-     * DI Constructor.
-     * @param Nette\Http\Response $httpResponse
-     */
-    public function __construct(Nette\Http\Response $httpResponse)
-    {
-        $this->httpResponse = $httpResponse;
-    }
-
     /**
      * Set response to CSV file with given filename.
      * @param IResponse $response

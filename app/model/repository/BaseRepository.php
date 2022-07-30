@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityRepository;
 /**
  * Base repository which is used in all derived repositories.
  *
- * @template T
+ * @template T of object
  */
 abstract class BaseRepository
 {

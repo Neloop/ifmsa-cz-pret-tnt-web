@@ -80,6 +80,11 @@ class TransactionsTableFactory
         }
 
         $writer = new XLSXWriter();
+        $writer->setTitle('IFMSA PRET/TNT Transactions Table');
+        $writer->setSubject('');
+        $writer->setAuthor('IFMSA PRET/TNT Website');
+        $writer->setDescription('');
+        $writer->setCompany('');
         $writer->writeSheet($data);
         return $writer->writeToString();
     }
